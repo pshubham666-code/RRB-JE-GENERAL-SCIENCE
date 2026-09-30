@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE TEST 2</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE TEST 2 | RRB JE CBT-1 (APPLICATION & MODERATE-TO-TOUGH)</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Total Questions: 30 (Physics: 12 | Chemistry: 8 | Biology: 7 | Environment & Waste: 3)</li>
+        <li>Special Focus: Optics, Circuits, Electromagnetism & Environmental Applications</li>
+        <li>Marking: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-12) - Heavy Optics, Electricity & Magnetism
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "1. A person suffering from myopia (near-sightedness) cannot see objects clearly beyond 1.5 m. What should be the focal length and power of the corrective lens required to restore normal distant vision?",
+        options: ["f = -1.5 m, Power = -0.67 D", "f = +1.5 m, Power = +0.67 D", "f = -1.5 m, Power = -1.5 D", "f = +2.0 m, Power = +0.5 D"],
+        ans: 0,
+        exp: "For correcting myopia, a concave (diverging) lens is used so that the image of an object at infinity (u = -∞) is formed at the person's far point (v = -1.5 m). Lens formula: 1/f = 1/v - 1/u ⇒ 1/f = 1/(-1.5) - 1/(-∞) = -1/1.5 ⇒ f = -1.5 m. Power P = 1/f = -1/1.5 = -0.67 D."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. The absolute refractive indices of water and dense flint glass are 4/3 and 3/2 respectively. What is the speed of light in water relative to glass, and the refractive index of glass with respect to water?",
+        options: ["8/9 and 1.125", "9/8 and 1.125", "8/9 and 0.888", "9/8 and 0.888"],
+        ans: 1,
+        exp: "The refractive index of glass with respect to water is given by: wμg = μg / μw = (3/2) / (4/3) = 9/8 = 1.125. Since refractive index is inversely proportional to wave speed (v = c/μ), the speed in water relative to glass is vw / vg = μg / μw = 9/8."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. When an object is placed at a distance of 15 cm in front of a concave mirror of focal length 10 cm, what are the nature, magnification, and position of the image?",
+        options: [
+          "Real, inverted, magnified (m = -2), at 30 cm in front of the mirror",
+          "Virtual, erect, magnified (m = +2), at 30 cm behind the mirror",
+          "Real, inverted, diminished (m = -0.5), at 30 cm in front of the mirror",
+          "Real, inverted, magnified (m = -1.5), at 20 cm in front of the mirror"
+        ],
+        ans: 0,
+        exp: "Given: concave mirror f = -10 cm, u = -15 cm. Mirror formula: 1/v + 1/u = 1/f ⇒ 1/v = 1/(-10) - 1/(-15) = -1/10 + 1/15 = (-3+2)/30 = -1/30 ⇒ v = -30 cm (in front of the mirror, hence real). Magnification m = -v/u = -(-30)/(-15) = -2 (inverted and magnified)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "4. Three identical resistors of resistance R are available. Which combination will yield an equivalent resistance of (2/3)R?",
+        options: [
+          "Two resistors in series, connected in parallel with the third",
+          "Two resistors in parallel, connected in series with the third",
+          "All three connected in parallel",
+          "All three connected in series"
+        ],
+        ans: 0,
+        exp: "Case A: Two in series have equivalent R_s = R + R = 2R. Connecting this branch in parallel with the third resistor (R): 1/R_eq = 1/(2R) + 1/R = (1+2)/(2R) = 3/(2R) ⇒ R_eq = 2R/3."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "5. An electric geyser of resistance 20 Ω draws a current of 10 A from the mains. How much heat energy (in Joules) is generated in the heating element in 30 seconds?",
+        options: ["60,000 J", "30,000 J", "6,000 J", "12,000 J"],
+        ans: 0,
+        exp: "According to Joule's Law of Heating: H = I² · R · t. Here, I = 10 A, R = 20 Ω, and t = 30 s. H = (10)² × 20 × 30 = 100 × 20 × 30 = 60,000 Joules (or 60 kJ)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "6. How does the electrical resistivity (ρ) of pure metallic conductors and intrinsic semiconductors change with an increase in temperature?",
+        options: [
+          "Metals: increases; Semiconductors: decreases",
+          "Metals: decreases; Semiconductors: increases",
+          "Both increase linearly",
+          "Metals: increases; Semiconductors: remains constant"
+        ],
+        ans: 0,
+        exp: "In metals, rising temperature increases thermal lattice vibrations, leading to more frequent electron collisions and higher resistivity (positive temperature coefficient). In semiconductors, thermal energy breaks covalent bonds, releasing significant free electron-hole pairs, which drastically lowers resistivity (negative temperature coefficient)."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "7. A current-carrying straight conductor passes vertically through a horizontal plane. According to Maxwell's Right-Hand Thumb Rule, if conventional current flows vertically downwards, what is the direction of magnetic field lines as viewed from above?",
+        options: ["Clockwise", "Counter-clockwise", "Radially outwards", "Linear towards South"],
+        ans: 0,
+        exp: "By Maxwell's Right-Hand Thumb Rule, point the right thumb downwards (direction of electric current). The curled fingers curl in the clockwise direction when viewed from top."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "8. Fleming's Left-Hand Rule is used to determine the direction of force on a current-carrying conductor in a magnetic field. What do the Forefinger and Central (Middle) finger represent respectively?",
+        options: [
+          "Forefinger: Magnetic Field; Middle Finger: Current",
+          "Forefinger: Force; Middle Finger: Magnetic Field",
+          "Forefinger: Current; Middle Finger: Magnetic Field",
+          "Forefinger: Motion; Middle Finger: Induced EMF"
+        ],
+        ans: 0,
+        exp: "In Fleming's Left-Hand Rule (Electric Motor principle): Thumb = Motion/Force (F), Forefinger = Magnetic Field (B), and Middle/Center finger = Electric Current (I). Mnemonic: Father, Mother, Child (F, B, I)."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "9. A soft iron core is inserted inside a current-carrying solenoid. What happens to the magnetic field intensity inside the solenoid?",
+        options: [
+          "Increases dramatically due to high magnetic permeability",
+          "Decreases due to eddy current damping",
+          "Becomes zero",
+          "Remains completely unchanged"
+        ],
+        ans: 0,
+        exp: "Soft iron has exceptionally high relative magnetic permeability (μ_r >> 1) and low retentivity. Inserting it concentrates magnetic flux lines, strengthening the field manifold and forming an electromagnet."
+      },
+      {
+        sub: "Physics - Modern / Wave", badge: "badge-phy",
+        q: "10. In electromagnetic induction, the polarity and magnitude of the induced electromotive force (EMF) are determined by which pair of fundamental laws?",
+        options: [
+          "Faraday's Law gives magnitude, Lenz's Law gives direction",
+          "Ampere's Law gives magnitude, Fleming's Rule gives direction",
+          "Ohm's Law gives magnitude, Lenz's Law gives direction",
+          "Coulomb's Law gives magnitude, Faraday's Law gives direction"
+        ],
+        ans: 0,
+        exp: "Faraday's Law of Electromagnetic Induction states that induced EMF magnitude equals the rate of change of magnetic flux (|e| = dΦ/dt). Lenz's Law states the induced current flows in a direction that opposes the change producing it (e = -dΦ/dt), following conservation of energy."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "11. If the kinetic energy of a moving freight wagon is increased by 300% (made 4 times its initial value), by what percentage does its linear momentum increase?",
+        options: ["100%", "200%", "300%", "50%"],
+        ans: 0,
+        exp: "Kinetic energy KE = p² / (2m), so momentum p ∝ √(KE). If KE becomes 4 times (1 + 300% = 400% = 4×), then p_new = √(4) × p = 2p. The percentage increase in momentum = [(2p - p)/p] × 100 = 100%."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "12. What is the escape velocity from the surface of a spherical planet whose mass is 4 times that of Earth and radius is 4 times that of Earth?",
+        options: [
+          "Equal to Earth's escape velocity (11.2 km/s)",
+          "22.4 km/s",
+          "5.6 km/s",
+          "44.8 km/s"
+        ],
+        ans: 0,
+        exp: "Escape velocity v_e = √(2GM/R). For the new planet: v' = √[2G(4M)/(4R)] = √(2GM/R) = v_e = 11.2 km/s. The factor of 4 cancels out completely."
+      },
+
+      // CHEMISTRY (13-20) - Reactions, Equations & Everyday Application
+      {
+        sub: "Chemistry - Reactions", badge: "badge-chem",
+        q: "13. In the thermite reaction used by Indian Railways for on-site track welding, iron(III) oxide is reduced by aluminium powder according to: Fe₂O₃ + 2Al → Al₂O₃ + 2Fe + Heat. Which substance acts as the reducing agent?",
+        options: ["Aluminium (Al)", "Iron(III) oxide (Fe₂O₃)", "Aluminium oxide (Al₂O₃)", "Molten Iron (Fe)"],
+        ans: 0,
+        exp: "Aluminium (oxidation state 0) loses electrons and gets oxidized to Al³⁺ in Al₂O₃. Because it reduces iron(III) to metallic iron, Aluminium acts as the reducing agent. This highly exothermic reaction generates molten iron used for joining rails."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "14. A solution turns blue litmus red. When excess of an unknown compound X is added to this solution, the mixture changes back and turns red litmus blue. What could compound X be?",
+        options: ["Baking Soda (NaHCO₃)", "Hydrochloric acid (HCl)", "Common salt (NaCl)", "Vinegar (CH₃COOH)"],
+        ans: 0,
+        exp: "Initially, the solution was acidic (turned blue litmus red). To neutralize the acid and make the solution basic (turning red litmus blue), an alkaline/basic substance must be added. Baking soda (sodium hydrogen carbonate, NaHCO₃) is a basic salt."
+      },
+      {
+        sub: "Chemistry - Salts & Compounds", badge: "badge-chem",
+        q: "15. Permanent hardness of water cannot be removed by simple boiling. It is caused by the presence of dissolved:",
+        options: [
+          "Chlorides and Sulphates of Calcium and Magnesium",
+          "Bicarbonates of Calcium and Magnesium",
+          "Carbonates of Sodium and Potassium",
+          "Nitrates of Iron and Aluminium"
+        ],
+        ans: 0,
+        exp: "Temporary hardness is due to bicarbonates [Ca(HCO₃)₂, Mg(HCO₃)₂] which precipitate on boiling. Permanent hardness is caused by chlorides and sulphates (CaCl₂, MgCl₂, CaSO₄, MgSO₄) and requires chemical treatment such as Washing Soda (Na₂CO₃) or ion-exchange resin."
+      },
+      {
+        sub: "Chemistry - Periodic Table", badge: "badge-chem",
+        q: "16. Across a period in the Modern Periodic Table from left to right, which of the following trends is correct?",
+        options: [
+          "Atomic radius decreases, Electronegativity increases",
+          "Atomic radius increases, Ionization energy decreases",
+          "Metallic character increases, Non-metallic character decreases",
+          "Valence electrons decrease, Atomic size increases"
+        ],
+        ans: 0,
+        exp: "Moving left to right across a period, effective nuclear charge (Z_eff) increases as electrons enter the same shell. This pulls the valence shell closer (reducing atomic radius) and increases the tendency to attract shared electrons (increasing electronegativity)."
+      },
+      {
+        sub: "Chemistry - Carbon Compounds", badge: "badge-chem",
+        q: "17. What is the IUPAC functional group present in ethanoic acid and acetone respectively?",
+        options: [
+          "Carboxylic acid (-COOH) and Ketone (>C=O)",
+          "Ester (-COO-) and Aldehyde (-CHO)",
+          "Alcohol (-OH) and Ketone (>C=O)",
+          "Ether (-O-) and Carboxylic acid (-COOH)"
+        ],
+        ans: 0,
+        exp: "Ethanoic acid (CH₃COOH) contains the carboxyl functional group (-COOH). Acetone (dimethyl ketone, CH₃COCH₃) contains the ketone carbonyl group (>C=O)."
+      },
+      {
+        sub: "Chemistry - Metals & Non-Metals", badge: "badge-chem",
+        q: "18. Which amphoteric oxide among the following reacts with both strong acids and strong alkalis to produce salt and water?",
+        options: ["Aluminium oxide (Al₂O₃)", "Calcium oxide (CaO)", "Sodium oxide (Na₂O)", "Magnesium oxide (MgO)"],
+        ans: 0,
+        exp: "Amphoteric oxides exhibit both acidic and basic properties. Al₂O₃ reacts with HCl to form AlCl₃ (acting as a base) and with NaOH to form sodium aluminate, NaAlO₂ (acting as an acid). Zinc oxide (ZnO) is another prominent example."
+      },
+      {
+        sub: "Chemistry - Chemical Bonding", badge: "badge-chem",
+        q: "19. Why do solid ionic compounds like Sodium Chloride (NaCl) NOT conduct electricity, whereas their aqueous solutions or molten states do?",
+        options: [
+          "Ions are immobilized in a rigid crystal lattice in solid state",
+          "Solid NaCl has no ions, only covalent neutral molecules",
+          "Electrons move too rapidly in the solid state to establish current",
+          "Solid NaCl is non-polar and hydrophobic"
+        ],
+        ans: 0,
+        exp: "Ionic conduction requires mobile charge carriers. In solid NaCl, Na⁺ and Cl⁻ ions are held rigidly by electrostatic forces. When melted or dissolved in water, the lattice breaks down, freeing ions to move under an electric field."
+      },
+      {
+        sub: "Chemistry - Reactions", badge: "badge-chem",
+        q: "20. What gas is evolved with brisk effervescence when dilute hydrochloric acid is added to solid sodium carbonate (Na₂CO₃)?",
+        options: ["Carbon dioxide (CO₂)", "Hydrogen gas (H₂)", "Chlorine gas (Cl₂)", "Sulphur dioxide (SO₂)"],
+        ans: 0,
+        exp: "Metal carbonate + Acid → Salt + Water + Carbon dioxide gas: Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂↑. The released CO₂ turns lime water milky due to CaCO₃ precipitate formation."
+      },
+
+      // BIOLOGY (21-27) - Physiological Mechanisms & Applied Concepts
+      {
+        sub: "Biology - Human Physiology", badge: "badge-bio",
+        q: "21. In the human digestive system, which enzyme operates optimally in an acidic pH of 1.5–2.0 to hydrolyze dietary proteins into peptones?",
+        options: ["Pepsin", "Trypsin", "Salivary Amylase", "Pancreatic Lipase"],
+        ans: 0,
+        exp: "Pepsin is secreted by stomach gastric chief cells as inactive pepsinogen, activated by hydrochloric acid (HCl) produced by oxyntic/parietal cells. Trypsin also digests proteins, but functions in the alkaline environment (pH ~8) of the duodenum."
+      },
+      {
+        sub: "Biology - Human Physiology", badge: "badge-bio",
+        q: "22. In the human nervous system, what is the correct sequential pathway of nerve impulse transmission in a typical reflex arc?",
+        options: [
+          "Receptor → Sensory neuron → Spinal cord → Motor neuron → Effector muscle",
+          "Effector → Motor neuron → Brain → Sensory neuron → Receptor",
+          "Receptor → Motor neuron → Spinal cord → Sensory neuron → Effector",
+          "Spinal cord → Sensory neuron → Receptor → Motor neuron → Effector"
+        ],
+        ans: 0,
+        exp: "A reflex arc bypasses conscious brain processing for immediate response: Receptor detects stimulus → Sensory (afferent) neuron transmits to Spinal cord integration center → Motor (efferent) neuron carries command → Effector organ (muscle/gland) executes action."
+      },
+      {
+        sub: "Biology - Cytology & Genetics", badge: "badge-bio",
+        q: "23. In a classical Mendelian monohybrid cross between a homozygous tall pea plant (TT) and a homozygous dwarf pea plant (tt), what is the phenotypic ratio obtained in the F2 generation?",
+        options: ["3 Tall : 1 Dwarf", "1 Tall : 2 Medium : 1 Dwarf", "9 : 3 : 3 : 1", "All Tall plants"],
+        ans: 0,
+        exp: "The cross TT × tt produces heterozygous F1 (Tt, all phenotypically tall). Selfing F1 (Tt × Tt) gives genotypes 1 TT : 2 Tt : 1 tt. Because T is dominant over t, the phenotypic ratio in F2 is 3 Tall : 1 Dwarf."
+      },
+      {
+        sub: "Biology - Plant Physiology", badge: "badge-bio",
+        q: "24. Which phytohormone is primarily responsible for phototropism (bending of shoot tips towards light) by migrating to the shaded side and causing cellular elongation?",
+        options: ["Auxin", "Abscisic acid (ABA)", "Ethylene", "Cytokinin"],
+        ans: 0,
+        exp: "Auxin synthesized at the shoot apical meristem migrates toward the shaded side of the stem, stimulating cellular elongation there. This differential growth causes the shoot to bend towards the incident light (positive phototropism)."
+      },
+      {
+        sub: "Biology - Plant Physiology", badge: "badge-bio",
+        q: "25. Which hormone is termed the 'stress hormone' in plants because it triggers rapid closure of stomata during severe drought conditions?",
+        options: ["Abscisic Acid (ABA)", "Gibberellin", "Auxin", "Cytokinin"],
+        ans: 0,
+        exp: "Abscisic acid (ABA) promotes stomatal closure under water-deficit stress, minimizing transpirational water loss. It also induces seed dormancy and inhibits premature germination."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "26. Which blood vessel is unique in carrying oxygenated blood from the lungs directly into the left atrium of the human heart?",
+        options: ["Pulmonary Vein", "Pulmonary Artery", "Superior Vena Cava", "Aorta"],
+        ans: 0,
+        exp: "While systemic veins carry deoxygenated blood, the Pulmonary Veins are the sole exception, transporting freshly oxygenated blood from alveoli into the left atrium. The Pulmonary Artery conversely carries deoxygenated blood from the right ventricle to the lungs."
+      },
+      {
+        sub: "Biology - Excretory System", badge: "badge-bio",
+        q: "27. In the functional anatomy of the human nephron, where does the majority (approx. 70-80%) of essential water, glucose, amino acids, and electrolytes get reabsorbed back into peritubular capillaries?",
+        options: [
+          "Proximal Convoluted Tubule (PCT)",
+          "Distal Convoluted Tubule (DCT)",
+          "Loop of Henle",
+          "Collecting Duct"
+        ],
+        ans: 0,
+        exp: "The Proximal Convoluted Tubule (PCT) has simple cuboidal brush-border epithelium lined with dense microvilli, enabling obligate reabsorption of ~70-80% of filtrate water, electrolytes, and 100% of filtered glucose and amino acids."
+      },
+
+      // ENVIRONMENTAL SCIENCE & POLLUTION / WASTE (28-30) - RRB JE Syllabus
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "28. The progressive accumulation and increased concentration of persistent toxic non-biodegradable synthetic chemicals (such as DDT or heavy metals) at successively higher trophic levels of a food chain is termed:",
+        options: ["Biomagnification", "Eutrophication", "Bio-transformation", "Biodegradation"],
+        ans: 0,
+        exp: "Biomagnification occurs because non-biodegradable, fat-soluble compounds (like DDT, mercury) cannot be metabolized or excreted by organisms, concentrating progressively at higher trophic levels (culminating in top predators like raptors and humans)."
+      },
+      {
+        sub: "Environmental Pollution", badge: "badge-env",
+        q: "29. In water quality analysis, a very high Biochemical Oxygen Demand (BOD) value indicates that the water body is:",
+        options: [
+          "Highly polluted with organic waste, depleting dissolved oxygen",
+          "Extremely pure with high dissolved oxygen content",
+          "Rich in heavy mineral salts but free of microbial activity",
+          "Completely free of aerobic microorganisms"
+        ],
+        ans: 0,
+        exp: "Biochemical Oxygen Demand (BOD) measures the amount of dissolved oxygen consumed by aerobic microorganisms to decompose organic matter in a water sample. A higher BOD signifies high organic pollution, leading to oxygen depletion and fish mortality."
+      },
+      {
+        sub: "Waste Management & E-Waste", badge: "badge-env",
+        q: "30. Which toxic heavy metal, predominantly found in obsolete cathode ray tubes (CRTs), solder wire, and lead-acid storage batteries of electronic waste (e-waste), causes severe neurodevelopmental and renal damage in humans?",
+        options: ["Lead (Pb)", "Aluminium (Al)", "Silicon (Si)", "Iron (Fe)"],
+        ans: 0,
+        exp: "Lead (Pb) is a widespread hazardous constituent of e-waste (CRT glass funnels contain up to 2-3 kg of lead oxide, plus solder joints). When leached into groundwater from open dumps, it damages the human nervous, hemopoietic, and renal systems."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submit
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1 for right, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
