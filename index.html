@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RRB JE General Science Test - 30 MCQs</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f6f8;margin:0;color:#222}
+.container{max-width:800px;margin:auto;padding:18px}
+.card{background:white;border-radius:12px;padding:20px;margin:14px 0;box-shadow:0 2px 8px #0001}
+h1{font-size:24px;margin-bottom:5px}.sub{color:#666}
+.q{font-weight:600;margin-bottom:12px}
+label{display:block;padding:10px;margin:7px 0;border:1px solid #ddd;border-radius:8px;cursor:pointer}
+label:hover{background:#f5f5f5}
+button{width:100%;padding:14px;border:0;border-radius:9px;background:#1769aa;color:white;font-size:17px;font-weight:bold;cursor:pointer}
+#result{display:none;text-align:center}.score{font-size:32px;font-weight:bold}
+.explain{font-size:14px;color:#555;margin-top:8px}
+.correct{border-color:#2e7d32!important;background:#e8f5e9}
+.wrong{border-color:#c62828!important;background:#ffebee}
+.timer{position:sticky;top:0;background:#1769aa;color:#fff;padding:10px;text-align:center;border-radius:0 0 8px 8px;font-weight:bold;z-index:5}
+</style>
+</head>
+<body>
+<div class="timer">Time: <span id="time">20:00</span></div>
+<div class="container">
+<h1>RRB JE General Science Test</h1>
+<div class="sub">30 MCQs • Easy to Moderate • Physics + Chemistry + Biology</div>
+<form id="quiz"></form>
+<button type="button" onclick="submitTest()">Submit Test</button>
+<div id="result" class="card"></div>
+</div>
+<script>
+const questions=[
+["Physics","A body starts from rest and moves with uniform acceleration. Which quantity changes uniformly with time?","Velocity","Displacement","Acceleration","Mass",0,"For uniform acceleration, velocity changes uniformly with time."],
+["Physics","The SI unit of power is:","Joule","Watt","Newton","Pascal",1,"Power is the rate of doing work and its SI unit is watt."],
+["Physics","If the speed of a moving body is doubled, its kinetic energy becomes:","2 times","4 times","Half","Unchanged",1,"Kinetic energy is proportional to v²."],
+["Physics","Which device converts electrical energy into mechanical energy?","Generator","Electric motor","Transformer","Cell",1,"An electric motor converts electrical energy into mechanical energy."],
+["Physics","The resistance of a metallic conductor generally increases when:","Temperature increases","Temperature decreases","Length decreases","Area increases",0,"For metals, resistance generally increases with temperature."],
+["Physics","The phenomenon responsible for the formation of a rainbow is mainly:","Reflection only","Dispersion of light","Diffraction only","Polarisation",1,"Water droplets disperse white light into its constituent colours."],
+["Physics","A convex lens is also known as a:","Diverging lens","Converging lens","Plane lens","Cylindrical lens",1,"A convex lens converges parallel rays of light."],
+["Physics","The magnetic field around a straight current-carrying conductor is in the form of:","Straight parallel lines","Concentric circles","Ellipses","Random curves",1,"The magnetic field lines form concentric circles around the conductor."],
+["Physics","Which instrument is used to measure electric current?","Voltmeter","Ammeter","Barometer","Galvanometer only",1,"An ammeter measures electric current."],
+["Physics","A force of 10 N acts on a body of mass 2 kg. Its acceleration is:","2 m/s²","5 m/s²","10 m/s²","20 m/s²",1,"Using F=ma, a=10/2=5 m/s²."],
+
+["Chemistry","Which of the following is a chemical change?","Melting of ice","Boiling of water","Rusting of iron","Cutting of paper",2,"Rusting produces new substances, so it is a chemical change."],
+["Chemistry","The smallest particle of an element that retains its chemical properties is generally called:","Molecule","Atom","Ion","Compound",1,"An atom is the basic unit of an element."],
+["Chemistry","Which subatomic particle has no electric charge?","Proton","Electron","Neutron","Positron",2,"Neutrons are electrically neutral."],
+["Chemistry","The molecular formula of water is:","CO₂","H₂O","O₂","H₂",1,"Water contains two hydrogen atoms and one oxygen atom."],
+["Chemistry","Which gas is released when most metals react with dilute acids?","Oxygen","Hydrogen","Nitrogen","Carbon dioxide",1,"Metals above hydrogen in the activity series generally release H₂ with dilute acids."],
+["Chemistry","A reaction in which two or more substances combine to form a single product is called:","Decomposition reaction","Combination reaction","Displacement reaction","Neutralisation only",1,"A combination reaction forms one main product from two or more reactants."],
+["Chemistry","The pH of a neutral solution at about room temperature is:","0","5","7","14",2,"A neutral aqueous solution has pH 7 at about 25°C."],
+["Chemistry","Which of the following is an example of a displacement reaction?","CaCO₃ → CaO + CO₂","Zn + CuSO₄ → ZnSO₄ + Cu","HCl + NaOH → NaCl + H₂O","2H₂ + O₂ → 2H₂O",1,"Zinc displaces copper from copper sulphate."],
+["Chemistry","The atomic number of an element represents the number of:","Neutrons","Protons","Protons + neutrons","Electrons + neutrons",1,"Atomic number equals the number of protons in the nucleus."],
+["Chemistry","Which of these is an acid?","NaOH","HCl","NaCl","CaO",1,"Hydrochloric acid (HCl) is an acid."],
+
+["Biology","The basic structural and functional unit of life is:","Tissue","Organ","Cell","Organ system",2,"The cell is the basic structural and functional unit of life."],
+["Biology","Which organelle is known as the powerhouse of the cell?","Ribosome","Mitochondrion","Golgi apparatus","Lysosome",1,"Mitochondria produce most cellular ATP."],
+["Biology","Which organelle controls most activities of a eukaryotic cell?","Nucleus","Vacuole","Cell wall","Centrosome",0,"The nucleus contains genetic material and regulates cellular activities."],
+["Biology","Photosynthesis mainly occurs in the:","Mitochondria","Chloroplasts","Ribosomes","Lysosomes",1,"Chloroplasts contain chlorophyll and are the main site of photosynthesis."],
+["Biology","Which cell organelle is mainly involved in protein synthesis?","Ribosome","Lysosome","Vacuole","Golgi body",0,"Ribosomes are the sites of protein synthesis."],
+["Biology","Which of the following is biodegradable?","Plastic bottle","Glass","Vegetable waste","Aluminium can",2,"Vegetable waste is readily decomposed by microorganisms."],
+["Biology","Excessive nutrients entering a water body can cause algal blooms and oxygen depletion, a process called:","Eutrophication","Transpiration","Pollination","Nitrogen fixation",0,"Nutrient enrichment can cause eutrophication and reduce dissolved oxygen."],
+["Biology","Which gas is a major contributor to the enhanced greenhouse effect?","Carbon dioxide","Oxygen","Nitrogen","Hydrogen",0,"CO₂ is an important greenhouse gas whose increased concentration contributes to warming."],
+["Biology","Which of the following is a major primary pollutant emitted directly from vehicles?","Carbon monoxide","Ozone","PAN","Acid rain",0,"Carbon monoxide is emitted directly during incomplete combustion in engines."],
+["Biology","The ozone layer protects living organisms mainly from:","Infrared radiation","Ultraviolet radiation","Radio waves","Sound waves",1,"Stratospheric ozone absorbs much of the Sun's harmful UV radiation."]
+];
+
+const quiz=document.getElementById("quiz");
+questions.forEach((q,i)=>{
+  let html=`<div class="card" id="card${i}"><div class="q">${i+1}. ${q[1]}</div>`;
+  q.slice(2,6).forEach((opt,j)=>html+=`<label id="opt${i}${j}"><input type="radio" name="q${i}" value="${j}"> ${String.fromCharCode(65+j)}. ${opt}</label>`);
+  html+=`<div class="explain" id="exp${i}" style="display:none"></div></div>`;
+  quiz.innerHTML+=html;
+});
+let remaining=1200, submitted=false;
+const timer=setInterval(()=>{
+  if(submitted)return;
+  remaining--;
+  const m=Math.floor(remaining/60),s=remaining%60;
+  document.getElementById("time").textContent=`${m}:${String(s).padStart(2,"0")}`;
+  if(remaining<=0)submitTest();
+},1000);
+
+function submitTest(){
+ if(submitted)return;
+ submitted=true; clearInterval(timer);
+ let score=0;
+ questions.forEach((q,i)=>{
+   const selected=document.querySelector(`input[name="q${i}"]:checked`);
+   const ans=selected?Number(selected.value):-1;
+   const correct=q[6];
+   if(ans===correct)score++;
+   if(ans>=0) document.getElementById(`opt${i}${ans}`).classList.add(ans===correct?"correct":"wrong");
+   document.getElementById(`opt${i}${correct}`).classList.add("correct");
+   const e=document.getElementById(`exp${i}`);
+   e.style.display="block"; e.innerHTML=`<b>Answer:</b> ${String.fromCharCode(65+correct)}. ${q[correct+2]}<br>${q[7]}`;
+ });
+ const r=document.getElementById("result");
+ r.style.display="block";
+ r.innerHTML=`<div class="score">${score}/30</div><p>${score>=24?"Excellent work!":score>=18?"Good attempt!":"Keep practising!"}</p><p>Correct: ${score} &nbsp; | &nbsp; Wrong/Unattempted: ${30-score}</p>`;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
