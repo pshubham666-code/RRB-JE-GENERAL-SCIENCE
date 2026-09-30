@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE TEST 2</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE TEST 2 | RRB JE CBT-1 (BALANCED REVISED SET)</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Total Questions: 30 (Physics: 12 | Chemistry: 8 | Biology: 7 | Environment: 3)</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-12)
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "1. Which type of lens is prescribed by doctors to correct Myopia (near-sightedness)?",
+        options: ["Concave lens", "Convex lens", "Bifocal lens", "Cylindrical lens"],
+        ans: 0,
+        exp: "Concave lens (diverging lens) is used to correct Myopia because it diverges the incoming light rays before they hit the eye lens, shifting the image backward onto the retina."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. If a convex lens has a focal length of +25 cm, what is the power of the lens?",
+        options: ["+4.0 D", "+2.5 D", "+0.25 D", "-4.0 D"],
+        ans: 0,
+        exp: "Power P = 1 / f (in meters) = 100 / f (in cm). Here, P = +100 / 25 = +4.0 Dioptres (D)."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. When an object is placed at the Center of Curvature (C) of a concave mirror, where will the image be formed?",
+        options: ["At the Center of Curvature (C)", "At Focus (F)", "Between F and C", "Beyond C"],
+        ans: 0,
+        exp: "When an object is placed at C of a concave mirror, the image is formed at C itself. The image is real, inverted, and equal in size to the object."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "4. The twinkling of stars at night is caused by which optical phenomenon?",
+        options: ["Atmospheric refraction of starlight", "Total internal reflection", "Diffraction of light", "Scattering of light"],
+        ans: 0,
+        exp: "Atmospheric refraction occurs due to gradual changes in the refractive index of Earth's atmospheric layers of varying densities and temperatures."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "5. Two resistors of 6 Ω and 3 Ω are connected in parallel. What is their equivalent resistance?",
+        options: ["2 Ω", "9 Ω", "18 Ω", "4.5 Ω"],
+        ans: 0,
+        exp: "For parallel connection: 1/R = 1/R₁ + 1/R₂ = 1/6 + 1/3 = (1 + 2)/6 = 3/6 = 1/2. Therefore, R = 2 Ω."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "6. An electric bulb is rated 220 V and 100 W. What is the electrical resistance of its filament when operating at rated voltage?",
+        options: ["484 Ω", "220 Ω", "100 Ω", "2.2 Ω"],
+        ans: 0,
+        exp: "Power P = V² / R ⇒ R = V² / P = (220 × 220) / 100 = 48400 / 100 = 484 Ω."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "7. Which device is used in domestic electric circuits as a safety measure to prevent damage from overloading or short-circuiting?",
+        options: ["Electric Fuse wire", "Rheostat", "Galvanometer", "Voltmeter"],
+        ans: 0,
+        exp: "Electric fuse wire is made of a lead-tin alloy having a low melting point. Excess current melts the fuse, breaking the circuit instantly."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "8. In an electric motor, the direction of force acting on the current-carrying coil is determined by:",
+        options: ["Fleming's Left-Hand Rule", "Fleming's Right-Hand Rule", "Maxwell's Corkscrew Rule", "Ampere's Swimming Rule"],
+        ans: 0,
+        exp: "Fleming's Left-Hand Rule is used for Electric Motors (finding force). Fleming's Right-Hand Rule is used for Electric Generators (finding induced current)."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "9. The magnetic field lines inside a current-carrying long straight solenoid are:",
+        options: [
+          "Parallel straight lines (Uniform field)",
+          "Circular and non-uniform",
+          "Diverging outward towards the center",
+          "Zero everywhere inside"
+        ],
+        ans: 0,
+        exp: "Inside a solenoid, the magnetic field lines are parallel straight lines along its axis, showing that the magnetic field is uniform at all internal points."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "10. Electromagnetic Induction was discovered by which scientist?",
+        options: ["Michael Faraday", "James Prescott Joule", "Hans Christian Oersted", "Andre-Marie Ampere"],
+        ans: 0,
+        exp: "Michael Faraday discovered electromagnetic induction in 1831, showing that a changing magnetic flux induces an electromotive force (EMF)."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "11. If the speed of a moving car is doubled, its kinetic energy will become:",
+        options: ["4 times", "2 times", "8 times", "Half"],
+        ans: 0,
+        exp: "Kinetic energy is given by KE = ½ mv². Since KE ∝ v², doubling the speed (2v)² results in 4 times the original kinetic energy."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "12. What is the value of acceleration due to gravity (g) at the surface of Earth?",
+        options: ["9.8 m/s²", "6.67 × 10⁻¹¹ m/s²", "98 m/s²", "3.0 × 10⁸ m/s²"],
+        ans: 0,
+        exp: "Standard value of g at Earth's sea level is approximately 9.8 m/s² (or 32.2 ft/s²)."
+      },
+
+      // CHEMISTRY (13-20)
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "13. What is the common chemical name of Baking Soda used in cooking?",
+        options: ["Sodium hydrogen carbonate (NaHCO₃)", "Sodium carbonate decahydrate (Na₂CO₃·10H₂O)", "Calcium carbonate (CaCO₃)", "Sodium hydroxide (NaOH)"],
+        ans: 0,
+        exp: "Baking soda is Sodium hydrogen carbonate (NaHCO₃). Washing soda is Sodium carbonate decahydrate (Na₂CO₃·10H₂O)."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "14. What is the pH value of human blood under healthy normal conditions?",
+        options: ["7.35 to 7.45", "6.0 to 6.5", "8.5 to 9.0", "5.0 to 5.5"],
+        ans: 0,
+        exp: "Human blood is slightly alkaline, strictly maintained in the narrow range of 7.35 to 7.45 by physiological buffer systems."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "15. Which gas is evolved when an active metal (like Zinc) reacts with dilute sulphuric acid?",
+        options: ["Hydrogen gas (H₂)", "Oxygen gas (O₂)", "Sulphur dioxide (SO₂)", "Carbon dioxide (CO₂)"],
+        ans: 0,
+        exp: "Active metal + Acid → Metal Salt + Hydrogen gas: Zn + H₂SO₄ → ZnSO₄ + H₂↑. Hydrogen gas burns with a characteristic pop sound."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "16. Which of the following metals is liquid at room temperature?",
+        options: ["Mercury (Hg)", "Bromine (Br)", "Sodium (Na)", "Gallium (Ga)"],
+        ans: 0,
+        exp: "Mercury (Hg) is the only metal that remains in a liquid state at room temperature (25°C). Bromine is a liquid non-metal."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "17. An aqueous solution of blue vitriol turns into green when an iron nail is dipped into it. This is an example of:",
+        options: ["Displacement reaction", "Combination reaction", "Decomposition reaction", "Neutralization reaction"],
+        ans: 0,
+        exp: "Iron is more reactive than copper: Fe + CuSO₄ (blue) → FeSO₄ (light green) + Cu (reddish-brown deposit on nail). This is a single displacement reaction."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "18. What is the main component of Natural Gas and Compressed Natural Gas (CNG)?",
+        options: ["Methane (CH₄)", "Propane (C₃H₈)", "Butane (C₄H₁₀)", "Ethane (C₂H₆)"],
+        ans: 0,
+        exp: "Methane (CH₄) accounts for 85–95% of CNG and Natural Gas. Butane and propane are the main components of LPG (cooking gas)."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "19. Which element is placed in Group 18 of the Modern Periodic Table as a Noble Gas?",
+        options: ["Argon (Ar)", "Chlorine (Cl)", "Potassium (K)", "Phosphorus (P)"],
+        ans: 0,
+        exp: "Group 18 elements are inert or noble gases having a complete octet: Helium, Neon, Argon, Krypton, Xenon, and Radon."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "20. The chemical formula of rust on iron is:",
+        options: ["Fe₂O₃·xH₂O", "FeO", "Fe₃O₄", "FeSO₄·7H₂O"],
+        ans: 0,
+        exp: "Rust is hydrated iron(III) oxide with the general chemical formula Fe₂O₃·xH₂O."
+      },
+
+      // BIOLOGY (21-27)
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "21. How many chambers are there in a normal human heart?",
+        options: ["4 chambers", "2 chambers", "3 chambers", "5 chambers"],
+        ans: 0,
+        exp: "The human heart consists of 4 distinct chambers: two upper atria (left and right) and two lower ventricles (left and right)."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "22. In the human digestive system, bile juice is produced by which organ?",
+        options: ["Liver", "Gall bladder", "Pancreas", "Stomach"],
+        ans: 0,
+        exp: "Bile juice is synthesized and secreted by the Liver, and temporarily stored and concentrated in the Gall bladder."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "23. In plants, which tissue is responsible for the upward transport of water and dissolved minerals from roots to leaves?",
+        options: ["Xylem", "Phloem", "Parenchyma", "Collenchyma"],
+        ans: 0,
+        exp: "Xylem transports water and minerals upward. Phloem translocates prepared food (sugars) from leaves to other plant organs."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "24. Which gland in the human body is referred to as the 'Master Gland' of the endocrine system?",
+        options: ["Pituitary gland", "Thyroid gland", "Adrenal gland", "Pancreas"],
+        ans: 0,
+        exp: "The Pituitary gland is called the Master Gland because its trophic hormones regulate the activity of several other endocrine glands (thyroid, adrenals, gonads)."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "25. Which blood cells in the human body are primarily responsible for fighting infections and building immunity?",
+        options: ["White Blood Cells (WBCs)", "Red Blood Cells (RBCs)", "Platelets (Thrombocytes)", "Plasma proteins"],
+        ans: 0,
+        exp: "White Blood Cells (leukocytes) fight infections and protect against pathogens. RBCs carry oxygen, and Platelets aid in blood clotting."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "26. Goitre (swelling of the thyroid gland) is caused by the dietary deficiency of which mineral?",
+        options: ["Iodine", "Iron", "Calcium", "Zinc"],
+        ans: 0,
+        exp: "Iodine is essential for the synthesis of thyroid hormone (thyroxine). Its deficiency causes compensatory enlargement of the thyroid gland (simple goitre)."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "27. In living cells, chromosomes that carry genetic information (DNA) are located inside the:",
+        options: ["Nucleus", "Ribosome", "Endoplasmic Reticulum", "Vacuole"],
+        ans: 0,
+        exp: "In eukaryotic cells, hereditary material is packaged into chromosomes located within the cell Nucleus."
+      },
+
+      // ENVIRONMENTAL SCIENCE & POLLUTION (28-30)
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "28. Acid rain is primarily caused by atmospheric emissions of which two acidic gases?",
+        options: [
+          "Sulphur dioxide (SO₂) and Nitrogen oxides (NOx)",
+          "Carbon dioxide (CO₂) and Methane (CH₄)",
+          "Carbon monoxide (CO) and Chlorofluorocarbons (CFCs)",
+          "Ammonia (NH₃) and Ozone (O₃)"
+        ],
+        ans: 0,
+        exp: "SO₂ and NOx emitted from fossil fuel combustion react with water vapor in clouds to form dilute sulphuric acid (H₂SO₄) and nitric acid (HNO₃), causing acid rain."
+      },
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "29. The thinning/depletion of the stratospheric Ozone layer is primarily caused by:",
+        options: ["Chlorofluorocarbons (CFCs)", "Carbon dioxide (CO₂)", "Lead particulate matter", "Fly ash"],
+        ans: 0,
+        exp: "Chlorofluorocarbons (CFCs) release reactive free chlorine radicals under UV radiation in the stratosphere, which break down protective ozone (O₃) molecules."
+      },
+      {
+        sub: "Waste Management", badge: "badge-env",
+        q: "30. Which of the following is a non-biodegradable waste material that causes persistent environmental soil pollution?",
+        options: ["Plastic polythene bags", "Fruit and vegetable peels", "Dry leaves", "Paper cardboard"],
+        ans: 0,
+        exp: "Plastic and polythene materials are synthetic polymers that cannot be broken down by microbial decomposers, persisting in the environment for centuries."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Explanation:</strong> ${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submit
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1 for right, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
