@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE TEST 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 12px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      border-left: 4px solid var(--secondary);
+      color: #334155;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE TEST 1 | RRB JE CBT-1 (PYQ PATTERN)</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Total Questions: 30 (Physics: 12 | Chemistry: 10 | Biology: 8)</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-12)
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "1. One kilowatt-hour (1 kWh) of electrical energy is equal to how many Joules?",
+        options: ["3.6 × 10⁵ J", "3.6 × 10⁶ J", "3.6 × 10⁴ J", "746 J"],
+        ans: 1,
+        exp: "1 kWh = 1000 W × 3600 s = 3,600,000 J = 3.6 × 10⁶ Joules."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "2. A constant force of 10 N acts on an object of mass 2 kg for 3 seconds. What is the acceleration produced in the object?",
+        options: ["20 m/s²", "5 m/s²", "15 m/s²", "2 m/s²"],
+        ans: 1,
+        exp: "According to Newton's Second Law, F = m × a. Therefore, a = F / m = 10 / 2 = 5 m/s²."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "3. If the length of a uniform metallic conductor is doubled and its cross-sectional area is halved, its electrical resistance will become:",
+        options: ["Doubled (2 times)", "Halved (0.5 times)", "4 times", "Unchanged"],
+        ans: 2,
+        exp: "Resistance R = ρ(L/A). When L' = 2L and A' = A/2, R' = ρ(2L / (A/2)) = 4 × ρ(L/A) = 4R."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "4. Which type of mirror is commonly used as a rear-view mirror in automobiles?",
+        options: ["Concave Mirror", "Convex Mirror", "Plane Mirror", "Cylindrical Mirror"],
+        ans: 1,
+        exp: "Convex mirrors always form an erect, virtual, and diminished image, offering a much wider field of view."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "5. What is the minimum distance required between the source of sound and an obstacle to hear a distinct echo (taking speed of sound in air as 344 m/s at 22°C)?",
+        options: ["17.2 m", "34.4 m", "11.2 m", "25.0 m"],
+        ans: 0,
+        exp: "The persistence of hearing in human ears is 0.1 s. Total path = 2d = v × t ⇒ d = (344 × 0.1) / 2 = 17.2 m."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "6. An electric heater rated at 500 W operates for 4 hours daily. How many units (kWh) of electrical energy does it consume in a month of 30 days?",
+        options: ["60 units", "120 units", "30 units", "200 units"],
+        ans: 0,
+        exp: "Energy = Power (kW) × Time (hours) = (0.5 kW) × (4 h/day × 30 days) = 0.5 × 120 = 60 kWh (units)."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "7. What will be the weight of an object when placed at the exact center of the Earth?",
+        options: ["Infinite", "Zero", "Same as surface weight", "Minimum but non-zero"],
+        ans: 1,
+        exp: "Acceleration due to gravity at the center of the Earth is zero (g = 0), so W = m × g = 0."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "8. Optical fibers used in telecommunication transmit light signals based on which optical principle?",
+        options: ["Total Internal Reflection", "Refraction", "Diffraction", "Scattering"],
+        ans: 0,
+        exp: "Optical fibers transmit light across long distances with negligible loss via successive Total Internal Reflections (TIR)."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "9. What is the SI unit of the optical power of a lens?",
+        options: ["Watt", "Dioptre", "Lumen", "Candela"],
+        ans: 1,
+        exp: "Power of a lens is P = 1 / f (where focal length f is in meters). Its SI unit is Dioptre (D) or m⁻¹."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "10. Which among the following physical quantities is a scalar quantity?",
+        options: ["Velocity", "Force", "Work", "Displacement"],
+        ans: 2,
+        exp: "Work is the scalar product of force and displacement (W = F · d). It has magnitude but no directional component."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "11. The clear sky appears blue during daytime primarily due to which phenomenon of light?",
+        options: ["Dispersion", "Rayleigh Scattering", "Interference", "Atmospheric Refraction"],
+        ans: 1,
+        exp: "According to Rayleigh scattering, shorter wavelengths (blue light) scatter significantly more strongly than longer wavelengths."
+      },
+      {
+        sub: "Physics", badge: "badge-phy",
+        q: "12. Exactly how many Watts are equal to 1 imperial Horsepower (HP)?",
+        options: ["746 W", "1000 W", "550 W", "750 W"],
+        ans: 0,
+        exp: "Standard engineering conversion: 1 imperial Horsepower (HP) = 745.7 W ≈ 746 Watts."
+      },
+
+      // CHEMISTRY (13-22)
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "13. What is the chemical formula of Bleaching Powder?",
+        options: ["Ca(OH)₂", "CaOCl₂", "CaCl₂", "CaCO₃"],
+        ans: 1,
+        exp: "Bleaching powder is Calcium oxychloride (CaOCl₂), prepared by passing chlorine gas over dry slaked lime [Ca(OH)₂]."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "14. Which of the following represents the correct chemical formula of Plaster of Paris (POP)?",
+        options: ["CaSO₄ · 2H₂O", "CaSO₄ · ½H₂O", "MgSO₄ · 7H₂O", "FeSO₄ · 7H₂O"],
+        ans: 1,
+        exp: "Plaster of Paris is Calcium sulfate hemihydrate (CaSO₄ · ½H₂O). Gypsum is the dihydrate form (CaSO₄ · 2H₂O)."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "15. In the Modern Periodic Table, elements are arranged in increasing order of their:",
+        options: ["Atomic mass", "Atomic number", "Valency electrons", "Density"],
+        ans: 1,
+        exp: "Moseley's Modern Periodic Law states that physical and chemical properties of elements are periodic functions of their atomic numbers (Z)."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "16. Solder, an alloy widely used for joining electrical wires, consists of:",
+        options: ["Copper and Zinc", "Lead and Tin", "Copper and Tin", "Aluminium and Magnesium"],
+        ans: 1,
+        exp: "Solder is an alloy of Lead (Pb) and Tin (Sn), chosen specifically for its low melting point."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "17. What is the pH value of pure neutral water at standard room temperature (25°C)?",
+        options: ["0", "7", "14", "1"],
+        ans: 1,
+        exp: "In pure water at 25°C, [H⁺] = [OH⁻] = 1.0 × 10⁻⁷ M, which gives a neutral pH = -log(10⁻⁷) = 7."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "18. Which organic acid is predominantly present in commercial Vinegar?",
+        options: ["Formic acid", "Acetic acid", "Lactic acid", "Citric acid"],
+        ans: 1,
+        exp: "Vinegar is a 5% to 8% aqueous solution of Ethanoic acid, commonly known as Acetic acid (CH₃COOH)."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "19. The process of rusting of iron is a classic example of which type of reaction?",
+        options: ["Reduction only", "Redox reaction (Oxidation-Reduction)", "Physical change", "Displacement only"],
+        ans: 1,
+        exp: "Rusting is an electrochemical redox process where metallic iron is oxidized and atmospheric oxygen is reduced to form hydrated iron(III) oxide."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "20. What is the general chemical formula for the saturated aliphatic hydrocarbon group (Alkanes)?",
+        options: ["CnH2n", "CnH2n+2", "CnH2n-2", "CnHn"],
+        ans: 1,
+        exp: "Alkanes (saturated) follow CnH2n+2. Alkenes (one double bond) follow CnH2n, and Alkynes (one triple bond) follow CnH2n-2."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "21. Which non-metallic element exists in a liquid state at standard room temperature and pressure?",
+        options: ["Mercury", "Bromine", "Iodine", "Chlorine"],
+        ans: 1,
+        exp: "Bromine (Br) is the only non-metal that is liquid at standard room conditions. Mercury (Hg) is a liquid metal."
+      },
+      {
+        sub: "Chemistry", badge: "badge-chem",
+        q: "22. Galvanization is a protective method where a protective sacrificial layer of which metal is applied to iron or steel?",
+        options: ["Copper (Cu)", "Zinc (Zn)", "Tin (Sn)", "Nickel (Ni)"],
+        ans: 1,
+        exp: "Galvanization coats iron/steel with Zinc (Zn), which preferentially oxidizes to prevent corrosion of the substrate."
+      },
+
+      // BIOLOGY (23-30)
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "23. Which cellular organelle is universally referred to as the 'Powerhouse of the Cell'?",
+        options: ["Ribosome", "Mitochondria", "Golgi Apparatus", "Lysosome"],
+        ans: 1,
+        exp: "Mitochondria carry out cellular aerobic respiration and synthesize energy in the form of ATP molecules."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "24. In the ABO and Rh human blood group systems, which blood group is designated as the 'Universal Recipient'?",
+        options: ["O-negative", "AB-positive", "O-positive", "AB-negative"],
+        ans: 1,
+        exp: "AB+ individuals have both A and B antigens and Rh factor on red cells, with no anti-A or anti-B antibodies in plasma, making them universal recipients."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "25. In vascular plants, the unidirectional upward transport of water and dissolved minerals is conducted by:",
+        options: ["Phloem", "Xylem", "Parenchyma", "Collenchyma"],
+        ans: 1,
+        exp: "Xylem tissue conducts water and dissolved mineral nutrients upward from roots. Phloem translocates soluble organic products of photosynthesis."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "26. What is the fundamental microscopic structural and functional filtration unit of the mammalian kidney?",
+        options: ["Neuron", "Nephron", "Alveolus", "Hepatocyte"],
+        ans: 1,
+        exp: "The Nephron is the basic structural and functional filtration unit of the kidney. Neurons are functional units of the nervous system."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "27. Which fat-soluble vitamin plays an essential physiological role in blood coagulation (clotting)?",
+        options: ["Vitamin A", "Vitamin K", "Vitamin C", "Vitamin D"],
+        ans: 1,
+        exp: "Vitamin K is an indispensable co-factor required by hepatic cells to synthesize prothrombin and blood clotting factors VII, IX, and X."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "28. Insulin, a peptide hormone regulating glucose metabolism, is synthesized and secreted by which organ?",
+        options: ["Liver", "Pancreas", "Thyroid", "Pituitary"],
+        ans: 1,
+        exp: "Insulin is secreted by the beta cells of the Islets of Langerhans within the endocrine pancreas."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "29. During oxygenic photosynthesis, molecular oxygen (O₂) released into the atmosphere originates directly from:",
+        options: ["Carbon dioxide (CO₂)", "Water (H₂O)", "Glucose", "Chlorophyll pigments"],
+        ans: 1,
+        exp: "Oxygen released during the light-dependent reactions of photosynthesis originates from the photolysis (splitting) of water molecules."
+      },
+      {
+        sub: "Biology", badge: "badge-bio",
+        q: "30. Nyctalopia, commonly known as Night Blindness, is caused primarily by the dietary deficiency of which vitamin?",
+        options: ["Vitamin B1", "Vitamin C", "Vitamin A", "Vitamin E"],
+        ans: 2,
+        exp: "Vitamin A (Retinol) is essential for synthesizing rhodopsin (visual purple in retina rod cells). Its deficiency impairs vision in dim light."
+      }
+    ];
+
+    // Render questions
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Explanation:</strong> ${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Disable options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1 for right, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Disable submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
