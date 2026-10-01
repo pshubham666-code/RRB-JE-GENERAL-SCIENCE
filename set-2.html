@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE TEST 2</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE TEST 2 | RRB JE CBT-1 (CONCEPTUAL & HIGH YIELD)</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "1. A metallic wire of resistance R is stretched uniformly such that its length becomes twice its original length (2L). What will be its new electrical resistance?",
+        options: ["2R", "4R", "R / 2", "R / 4"],
+        ans: 1,
+        exp: "When a wire is stretched, its volume remains constant (V = A₁L₁ = A₂L₂). Doubling the length (L' = 2L) causes the cross-sectional area to be halved (A' = A/2). Since R = ρ(L/A), the new resistance R' = ρ(2L / (A/2)) = 4 × ρ(L/A) = 4R."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. When an object is placed at the principal focus (F) of a concave mirror, where is the image formed and what is its nature?",
+        options: [
+          "At the Center of Curvature (C), real and same size",
+          "At infinity, real, inverted and highly magnified",
+          "Behind the mirror, virtual, erect and magnified",
+          "Between Focus and Pole, virtual and diminished"
+        ],
+        ans: 1,
+        exp: "When an object is placed at the principal focus of a concave mirror, the reflected rays become parallel to each other. These parallel rays meet at infinity, forming a real, inverted, and infinitely enlarged image."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. When a ray of light travels from air into a denser medium like glass, which of the following physical characteristics remains completely UNCHANGED?",
+        options: ["Wave speed", "Wavelength", "Frequency", "Amplitude"],
+        ans: 2,
+        exp: "Frequency is an intrinsic property determined solely by the source of light. When entering an optically denser medium, speed (v) and wavelength (λ) both decrease proportionally (v = fλ), but frequency (f) remains invariant."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "4. An electric kettle draws a current of 5 A from a standard 220 V supply mains. How much electrical energy (in kWh / units) does it consume when operated for 2 hours?",
+        options: ["1.1 kWh", "2.2 kWh", "4.4 kWh", "0.55 kWh"],
+        ans: 1,
+        exp: "Electric Power P = V × I = 220 V × 5 A = 1100 W = 1.1 kW. Electrical energy consumed = Power (kW) × Time (hours) = 1.1 kW × 2 h = 2.2 kWh (commercial units)."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "5. According to Fleming's Left-Hand Rule, which physical quantity is represented by the Forefinger (Index finger)?",
+        options: [
+          "Direction of Magnetic Field",
+          "Direction of Induced Current",
+          "Direction of Mechanical Force / Motion",
+          "Direction of Electric Field"
+        ],
+        ans: 0,
+        exp: "In Fleming's Left-Hand Rule (used for electric motors): Thumb represents Force/Motion (F), Forefinger represents Magnetic Field (B), and Middle finger represents Electric Current (I)."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "6. If the linear momentum of a moving body is doubled, by what factor will its Kinetic Energy increase?",
+        options: ["2 times", "4 times", "Remains unchanged", "8 times"],
+        ans: 1,
+        exp: "The relation between Kinetic Energy (KE) and linear momentum (p) is KE = p² / (2m). If momentum is doubled (p' = 2p), KE' = (2p)² / (2m) = 4 × (p² / 2m) = 4 KE."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "7. A ball is projected vertically upward under gravity. At the topmost point of its trajectory, its velocity and acceleration are respectively:",
+        options: [
+          "Velocity is zero, Acceleration is zero",
+          "Velocity is zero, Acceleration is 9.8 m/s² directed downwards",
+          "Velocity is maximum, Acceleration is zero",
+          "Velocity is zero, Acceleration is 9.8 m/s² directed upwards"
+        ],
+        ans: 1,
+        exp: "At the highest point, the body momentarily comes to rest, hence instantaneous velocity v = 0. However, the downward gravitational pull continues to act uninterrupted, maintaining an acceleration of g = 9.8 m/s² directed vertically downwards."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "8. For a normal, healthy human eye, the near point (least distance of distinct vision) and far point are respectively:",
+        options: [
+          "25 cm and 100 m",
+          "0 cm and Infinity",
+          "25 cm and Infinity",
+          "2.5 cm and Infinity"
+        ],
+        ans: 2,
+        exp: "The least distance of distinct vision (near point) for a healthy young adult is 25 cm. The far point up to which the eye can see objects clearly without accommodation strain is infinity."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "9. How are an Ammeter and a Voltmeter connected with an electrical load in a standard circuit?",
+        options: [
+          "Both connected in series",
+          "Both connected in parallel",
+          "Ammeter in series, Voltmeter in parallel",
+          "Ammeter in parallel, Voltmeter in series"
+        ],
+        ans: 2,
+        exp: "An ammeter has very low internal resistance and is connected in series to measure total circuit current without causing potential drop. A voltmeter has very high internal resistance and is connected in parallel across the load to measure potential difference."
+      },
+      {
+        sub: "Physics - Waves", badge: "badge-phy",
+        q: "10. Why are sound waves unable to propagate across the surface of the Moon?",
+        options: [
+          "Surface temperature on the Moon is excessively low",
+          "Sound waves are mechanical waves requiring a material medium to propagate",
+          "The Moon has very weak gravitational acceleration",
+          "Sound waves are transverse electromagnetic waves"
+        ],
+        ans: 1,
+        exp: "Sound waves are longitudinal mechanical waves that propagate through elastic compressions and rarefactions of matter. Because the Moon lacks an atmosphere (vacuum), sound waves cannot travel."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Salts", badge: "badge-chem",
+        q: "11. What is the correct chemical formula and chemical name of commercial Washing Soda?",
+        options: [
+          "NaHCO₃ (Sodium hydrogen carbonate)",
+          "Na₂CO₃·10H₂O (Sodium carbonate decahydrate)",
+          "CaOCl₂ (Calcium oxychloride)",
+          "CaSO₄·2H₂O (Calcium sulfate dihydrate)"
+        ],
+        ans: 1,
+        exp: "Washing soda is Sodium carbonate decahydrate, with the formula Na₂CO₃·10H₂O. The 10 water molecules represent water of crystallization. NaHCO₃ is Baking soda."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "12. What happens to the color of dry blue litmus paper when exposed to dry hydrogen chloride (HCl) gas?",
+        options: [
+          "Turns bright red immediately",
+          "Turns completely colorless",
+          "No color change occurs (remains blue)",
+          "Turns pinkish white"
+        ],
+        ans: 2,
+        exp: "Acids dissociate into hydrogen ions (H⁺ or H₃O⁺) only in the presence of water or moisture. Since both HCl gas and litmus paper are dry, no H⁺ ions are generated, and no color change takes place."
+      },
+      {
+        sub: "Chemistry - Periodic Table", badge: "badge-chem",
+        q: "13. In Mendeleev's periodic table and the Modern periodic table, elements are arranged in increasing order of which atomic properties respectively?",
+        options: [
+          "Atomic Number, Atomic Mass",
+          "Atomic Mass, Atomic Number",
+          "Atomic Mass, Valency",
+          "Equivalent Weight, Atomic Mass"
+        ],
+        ans: 1,
+        exp: "Mendeleev arranged elements on the basis of increasing Atomic Mass. Henry Moseley showed that Atomic Number (Z) is a more fundamental property, establishing the Modern Periodic Table based on increasing Atomic Number."
+      },
+      {
+        sub: "Chemistry - Reactions", badge: "badge-chem",
+        q: "14. When a clean iron nail is immersed in a blue copper sulphate (CuSO₄) solution, the solution gradually turns pale green due to the formation of:",
+        options: [
+          "Ferrous sulphate (FeSO₄)",
+          "Precipitated copper metal (Cu)",
+          "Ferric oxide (Fe₂O₃)",
+          "Dilute sulphuric acid (H₂SO₄)"
+        ],
+        ans: 0,
+        exp: "Iron is more electropositive and reactive than copper. In a single displacement reaction, Fe displaces Cu: Fe + CuSO₄ (blue) → FeSO₄ (light green) + Cu (reddish-brown coating on the nail)."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "15. Tooth decay begins when the pH level inside the human oral cavity falls below:",
+        options: ["7.0", "6.5", "5.5", "8.0"],
+        ans: 2,
+        exp: "Tooth enamel is composed of calcium hydroxyapatite (a crystalline form of calcium phosphate), the hardest substance in the human body. When oral bacteria ferment leftover sugars, acids are produced; if the pH falls below 5.5, the enamel begins to demineralize (corrode)."
+      },
+      {
+        sub: "Chemistry - Elements", badge: "badge-chem",
+        q: "16. Which of the following pairs of elements are classified as Metalloids (semi-metals)?",
+        options: [
+          "Sodium (Na) and Potassium (K)",
+          "Silicon (Si) and Germanium (Ge)",
+          "Copper (Cu) and Zinc (Zn)",
+          "Carbon (C) and Nitrogen (N)"
+        ],
+        ans: 1,
+        exp: "Metalloids exhibit intermediate properties between metals and non-metals. Silicon (Si) and Germanium (Ge) are standard metalloids and fundamental semiconductor materials."
+      },
+      {
+        sub: "Chemistry - Reactions", badge: "badge-chem",
+        q: "17. The biochemical process of cellular respiration in living organisms is classified as which type of reaction?",
+        options: [
+          "Endothermic reaction",
+          "Exothermic reaction",
+          "Photochemical reaction",
+          "Electrolytic decomposition"
+        ],
+        ans: 1,
+        exp: "During respiration, glucose oxidizes in the presence of oxygen: C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energy (ATP + heat). Because heat energy is liberated, it is an exothermic reaction."
+      },
+      {
+        sub: "Chemistry - Bonding", badge: "badge-chem",
+        q: "18. Why do covalent compounds generally have low melting and boiling points compared to ionic compounds?",
+        options: [
+          "The covalent chemical bonds within molecules are extremely weak",
+          "Intermolecular forces between separate molecules are weak",
+          "They are composed of charged cations and anions",
+          "They are readily soluble in non-polar organic solvents"
+        ],
+        ans: 1,
+        exp: "Covalent bonds inside a molecule are strong, but the intermolecular forces (Van der Waals forces) holding adjacent molecules together are relatively weak, requiring minimal thermal energy to overcome during phase changes."
+      },
+      {
+        sub: "Chemistry - Carbon Compounds", badge: "badge-chem",
+        q: "19. While saturated hydrocarbons (alkanes) burn with a clean blue flame, unsaturated hydrocarbons (alkenes and alkynes) typically burn with a:",
+        options: [
+          "Completely non-luminous invisible flame",
+          "Bright green non-sooty flame",
+          "Yellow sooty flame with unburnt carbon particles",
+          "Dazzling white flame like magnesium ribbon"
+        ],
+        ans: 2,
+        exp: "Unsaturated hydrocarbons have a higher percentage of carbon compared to alkanes. In atmospheric air, complete combustion does not occur, and glowing unburnt carbon particles produce a characteristic yellow, smoky/sooty flame."
+      },
+      {
+        sub: "Chemistry - Metals & Corrosion", badge: "badge-chem",
+        q: "20. When copper metal is exposed to moist air over prolonged periods, it develops a characteristic green protective patina composed of:",
+        options: [
+          "Copper sulphate (CuSO₄)",
+          "Basic Copper Carbonate [CuCO₃·Cu(OH)₂]",
+          "Cupric oxide (CuO)",
+          "Cuprous chloride (Cu₂Cl₂)"
+        ],
+        ans: 1,
+        exp: "Copper reacts slowly with atmospheric carbon dioxide, oxygen, and water vapor: 2Cu + H₂O + CO₂ + O₂ → CuCO₃·Cu(OH)₂ (Basic copper carbonate), which forms a stable green surface layer."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Digestion", badge: "badge-bio",
+        q: "21. Upon complete digestion in the human alimentary canal, proteins, complex carbohydrates, and fats are hydrolyzed respectively into:",
+        options: [
+          "Amino acids, Simple Glucose, Fatty acids and Glycerol",
+          "Peptones, Maltose, Phospholipids",
+          "Glucose, Amino acids, Glycogen",
+          "Amino acids, Fructose, Cholesterol"
+        ],
+        ans: 0,
+        exp: "Terminal enzymatic digestion in the small intestine converts proteins into Amino acids, complex carbohydrates (starch) into simple monosaccharides like Glucose, and dietary fats into Fatty acids and Glycerol."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "22. What is the primary physiological function of valves (such as tricuspid and bicuspid) in the human heart?",
+        options: [
+          "To accelerate blood flow velocity inside coronary arteries",
+          "To strictly prevent backward flow of blood during cardiac cycles",
+          "To facilitate mixing of oxygenated and deoxygenated blood",
+          "To trigger electrical impulses across the Sinoatrial (SA) node"
+        ],
+        ans: 1,
+        exp: "Heart valves act as one-way non-return gates, opening to permit unidirectional blood flow from atria into ventricles and ventricles into pulmonary/aortic trunks, and closing tightly to prevent retrograde backflow during ventricular contraction."
+      },
+      {
+        sub: "Biology - Cytology", badge: "badge-bio",
+        q: "23. The rigid cell wall that provides structural protection to plant cells, and is entirely absent in animal cells, is composed of:",
+        options: ["Chitin", "Cellulose", "Peptidoglycan", "Glycogen"],
+        ans: 1,
+        exp: "Plant cell walls are made of Cellulose, an unbranched structural polysaccharide composed of β-glucose units. Chitin forms the fungal cell wall, and Peptidoglycan forms bacterial cell walls."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "24. Haemoglobin, the respiratory oxygen-transport metalloprotein in human erythrocytes, consists of:",
+        options: [
+          "Globin protein conjugated with an Iron (Fe) mineral core",
+          "Albumin protein conjugated with Copper (Cu)",
+          "Keratin protein conjugated with Calcium (Ca)",
+          "Fibrinogen conjugated with Magnesium (Mg)"
+        ],
+        ans: 0,
+        exp: "Haemoglobin is a tetrameric globular protein (globin) containing four iron-porphyrin complexes (heme). Each Fe²⁺ ion reversibly binds one molecule of O₂ to form oxyhaemoglobin."
+      },
+      {
+        sub: "Biology - Nervous System", badge: "badge-bio",
+        q: "25. Which specific region of the human brain is responsible for maintaining body equilibrium, posture, and coordination of voluntary movements?",
+        options: [
+          "Cerebrum",
+          "Cerebellum",
+          "Medulla Oblongata",
+          "Hypothalamus"
+        ],
+        ans: 1,
+        exp: "The Cerebellum (part of the hindbrain) coordinates skilled voluntary motor activity and maintains equilibrium and muscle tone. The Cerebrum manages conscious thought and sensory processing, while the Medulla controls involuntary autonomic reflexes."
+      },
+      {
+        sub: "Biology - Genetics", badge: "badge-bio",
+        q: "26. In classical genetics, the terms 'Phenotype' and 'Genotype' refer respectively to:",
+        options: [
+          "Internal biochemical pathway, Physical visible traits",
+          "Observable physical characteristics, Internal genetic makeup (alleles)",
+          "Total number of chromosomes, Physical length of DNA strands",
+          "Recessive traits only, Dominant traits only"
+        ],
+        ans: 1,
+        exp: "Phenotype represents the observable morphological or physiological traits of an organism (e.g., Tall or Dwarf). Genotype denotes the precise allelic composition responsible for those traits (e.g., homozygous TT or heterozygous Tt)."
+      },
+      {
+        sub: "Biology - Cellular Respiration", badge: "badge-bio",
+        q: "27. During sudden vigorous exercise when oxygen delivery to muscle tissue is insufficient, pyruvate is anaerobically converted into:",
+        options: [
+          "Ethanol and Carbon dioxide",
+          "Lactic acid, causing fatigue and cramps",
+          "Water and Carbon dioxide only",
+          "Glycogen directly"
+        ],
+        ans: 1,
+        exp: "When oxygen demand outstrips supply during heavy exertion, human skeletal muscles switch to lactic acid fermentation. Pyruvate is reduced to Lactic acid, whose cellular accumulation causes muscle fatigue and cramps."
+      },
+      {
+        sub: "Biology - Plant Physiology", badge: "badge-bio",
+        q: "28. The opening and closing of microscopic stomatal pores on plant leaves is regulated directly by turgor pressure changes in:",
+        options: [
+          "Guard cells",
+          "Epidermal cells",
+          "Xylem tracheids",
+          "Chloroplast stroma"
+        ],
+        ans: 0,
+        exp: "Stomatal pores are bordered by specialized paired Guard cells. When water flows into guard cells, they become turgid and bow outward, opening the pore. When they lose water, they become flaccid and the stomatal aperture closes."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "29. In a contaminated aquatic food chain, which group of organisms will exhibit the highest bioaccumulated concentration of fat-soluble chlorinated pesticides like DDT?",
+        options: [
+          "Phytoplankton (Primary producers)",
+          "Zooplankton (Primary consumers)",
+          "Small planktivorous fish (Secondary consumers)",
+          "Piscivorous birds / Top predators (Tertiary consumers)"
+        ],
+        ans: 3,
+        exp: "Due to Biomagnification, non-biodegradable and lipophilic toxins like DDT cannot be metabolized or excreted. As biomass decreases up trophic levels, the toxin concentration multiplies progressively, peaking in apex predators."
+      },
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "30. The landmark international treaty known as the 'Montreal Protocol' (1987) was negotiated and enacted specifically to:",
+        options: [
+          "Reduce greenhouse gas emissions linked to global warming",
+          "Phase out the production and consumption of Ozone-Depleting Substances (CFCs)",
+          "Regulate cross-border dumping of hazardous electronic e-waste",
+          "Control marine plastic pollution across international shipping routes"
+        ],
+        ans: 1,
+        exp: "The Montreal Protocol is an international environmental agreement designed to protect the stratospheric ozone layer by phasing out the global production and use of Ozone-Depleting Substances (ODS), primarily Chlorofluorocarbons (CFCs) and halons."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
