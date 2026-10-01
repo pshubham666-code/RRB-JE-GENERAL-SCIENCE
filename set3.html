@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE TEST 3</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE TEST 3 | RRB JE CBT-1 (CONCEPTUAL & ELEVATED)</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "1. An electric bulb designed for 220 V operates at 100 W. If the line voltage suddenly drops to 110 V, what will be the actual power consumed by the bulb (assuming its filament resistance remains constant)?",
+        options: ["50 W", "25 W", "75 W", "100 W"],
+        ans: 1,
+        exp: "Filament resistance R = V² / P = (220)² / 100 = 484 Ω. When operated at V' = 110 V: P' = (V')² / R = (110)² / 484 = 12100 / 484 = 25 W. Since P ∝ V², halving the voltage reduces power consumption to one-fourth (1/4)."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. Two thin lenses of focal lengths +20 cm and -50 cm are kept in axial contact. What is the equivalent optical power of this lens combination?",
+        options: ["+3.0 D", "+7.0 D", "-3.0 D", "+0.3 D"],
+        ans: 0,
+        exp: "Power of a lens P = 100 / f (in cm). For the convex lens: P₁ = +100 / 20 = +5.0 D. For the concave lens: P₂ = -100 / 50 = -2.0 D. Total combined power P_eq = P₁ + P₂ = +5.0 D + (-2.0 D) = +3.0 D."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. The absolute refractive index of a transparent medium is 1.5. If the speed of light in vacuum is 3 × 10⁸ m/s, how long does it take for light to travel a distance of 200 meters through this medium?",
+        options: ["1.0 × 10⁻⁶ s", "2.0 × 10⁻⁶ s", "1.5 × 10⁻⁶ s", "0.5 × 10⁻⁶ s"],
+        ans: 0,
+        exp: "Speed of light in the medium v = c / μ = (3 × 10⁸) / 1.5 = 2 × 10⁸ m/s. Time taken t = Distance / Speed = 200 m / (2 × 10⁸ m/s) = 100 × 10⁻⁸ s = 1.0 × 10⁻⁶ s (1 microsecond)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "4. A piece of uniform wire of resistance R is cut into five equal parts. These five identical parts are then connected in parallel. If the equivalent resistance of this parallel combination is R', what is the numerical ratio R / R'?",
+        options: ["5", "25", "1 / 25", "1 / 5"],
+        ans: 1,
+        exp: "Cutting the wire into 5 equal lengths gives each segment a resistance of r = R/5. Connecting five resistors of value (R/5) in parallel gives 1/R' = 5 × [1 / (R/5)] = 5 × (5/R) = 25/R ⇒ R' = R/25. Hence, R / R' = 25."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "5. A coolie carries a heavy load of 50 kg on his head and walks a horizontal distance of 100 m along a railway platform at a constant speed. What is the total work done by the coolie against the force of gravity?",
+        options: ["Zero", "49,000 J", "4,900 J", "500 J"],
+        ans: 0,
+        exp: "Work done is given by W = F · d · cos(θ). The force exerted by the coolie against gravity is directed vertically upwards, while the displacement is purely horizontal. Since the angle θ = 90°, cos(90°) = 0, meaning the work done against gravity is zero."
+      },
+      {
+        sub: "Physics - Waves & Sound", badge: "badge-phy",
+        q: "6. A sound wave has a frequency of 2 kHz and a wavelength of 35 cm. How long will it take for this sound wave to travel a distance of 1.4 km?",
+        options: ["2.0 s", "1.5 s", "4.0 s", "0.5 s"],
+        ans: 0,
+        exp: "Wavelength λ = 35 cm = 0.35 m, Frequency f = 2 kHz = 2000 Hz. Wave velocity v = f × λ = 2000 × 0.35 = 700 m/s. Total distance d = 1.4 km = 1400 m. Time t = d / v = 1400 / 700 = 2.0 seconds."
+      },
+      {
+        sub: "Physics - Gravitation", badge: "badge-phy",
+        q: "7. If the radius of the Earth were to shrink by 1% while its mass remained strictly constant, how would the acceleration due to gravity (g) at the Earth's surface change?",
+        options: [
+          "Increases by approximately 2%",
+          "Decreases by approximately 2%",
+          "Increases by 1%",
+          "Remains completely unchanged"
+        ],
+        ans: 0,
+        exp: "Acceleration due to gravity is g = GM / R². For small fractional variations, Δg/g ≈ -2(ΔR/R). If the radius shrinks by 1% (ΔR/R = -1%), then Δg/g ≈ -2(-1%) = +2%. Thus, surface gravity increases by approximately 2%."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "8. A positively charged alpha (α) particle projected towards the West is deflected towards the North by a uniform magnetic field. What is the direction of this magnetic field?",
+        options: ["Vertically upwards", "Vertically downwards", "Towards South", "Towards East"],
+        ans: 0,
+        exp: "Using Fleming's Left-Hand Rule: Current direction is West (since alpha particles are positively charged, conventional current aligns with their velocity). The deflecting force is North (Thumb points North, Middle finger points West). The Forefinger will point vertically upwards."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "9. When a heavy bus and a light passenger car collide head-on, which vehicle experiences a greater magnitude of impact force, and which undergoes greater acceleration during the collision?",
+        options: [
+          "Both experience equal impact force; the car undergoes greater acceleration",
+          "The bus exerts a greater force; both undergo equal acceleration",
+          "The car experiences greater force and greater acceleration",
+          "Both experience equal force and equal acceleration"
+        ],
+        ans: 0,
+        exp: "By Newton's Third Law (Action-Reaction), both vehicles experience equal and opposite contact forces (|F_bus| = |F_car|). However, by Newton's Second Law (a = F/m), the car, having much smaller mass, experiences far greater acceleration."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "10. In an optical medium experiment, critical angle for total internal reflection from medium A to air is 45°. What is the refractive index of medium A?",
+        options: ["√2 (≈ 1.414)", "1.5", "2.0", "1 / √2"],
+        ans: 0,
+        exp: "The relationship between critical angle (C) and refractive index (μ) is μ = 1 / sin(C). For C = 45°, sin(45°) = 1/√2. Therefore, μ = 1 / (1/√2) = √2 ≈ 1.414."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Salts", badge: "badge-chem",
+        q: "11. Plaster of Paris is produced commercially by heating Gypsum at what precise temperature, and what happens if it is overheated?",
+        options: [
+          "At 373 K (100°C); overheating forms dead burnt plaster (anhydrous CaSO₄)",
+          "At 273 K (0°C); overheating converts it into Calcium oxide",
+          "At 473 K (200°C); overheating produces quicklime",
+          "At 300 K (27°C); overheating evaporates combined sulphate"
+        ],
+        ans: 0,
+        exp: "Gypsum (CaSO₄·2H₂O) is carefully heated to 373 K (100°C) to yield Plaster of Paris (CaSO₄·½H₂O). Heating above 373 K drives off all water of crystallization, yielding anhydrous CaSO₄, termed 'dead burnt plaster', which loses the property of setting with water."
+      },
+      {
+        sub: "Chemistry - Electrochemistry", badge: "badge-chem",
+        q: "12. In the Chlor-alkali process, when electricity is passed through an aqueous solution of sodium chloride (brine), which three valuable industrial products are formed?",
+        options: [
+          "NaOH (solution), Cl₂ gas (at anode), H₂ gas (at cathode)",
+          "Na metal (at cathode), Cl₂ gas (at anode), O₂ gas",
+          "NaHCO₃, HCl, and Bleaching powder",
+          "NaOH, O₂ gas (at anode), Cl₂ gas (at cathode)"
+        ],
+        ans: 0,
+        exp: "Electrolysis of brine (2NaCl + 2H₂O → 2NaOH + Cl₂↑ + H₂↑) produces Chlorine gas at the anode (+), Hydrogen gas at the cathode (-), and Sodium hydroxide solution near the cathode."
+      },
+      {
+        sub: "Chemistry - Organic Chemistry", badge: "badge-chem",
+        q: "13. When ethanoic acid (acetic acid) reacts with absolute ethanol in the presence of concentrated H₂SO₄ as a catalyst, which sweet-smelling organic compound is formed?",
+        options: ["Ethyl ethanoate (an ester)", "Ethanal (an aldehyde)", "Diethyl ether", "Methane gas"],
+        ans: 0,
+        exp: "This is the classic Esterification reaction: CH₃COOH + C₂H₅OH (in presence of conc. H₂SO₄) → CH₃COOC₂H₅ (Ethyl ethanoate) + H₂O. Esters possess pleasant, fruity fragrances and are widely used in perfumes and artificial flavorings."
+      },
+      {
+        sub: "Chemistry - Metals & Non-Metals", badge: "badge-chem",
+        q: "14. Which metal is placed at the top of the electrochemical reactivity series and reacts vigorously even with cold water to release H₂ gas catch fire?",
+        options: ["Potassium (K)", "Aluminium (Al)", "Iron (Fe)", "Copper (Cu)"],
+        ans: 0,
+        exp: "Potassium (K) and Sodium (Na) reside at the apex of the metal reactivity series. They react violently and exothermically with cold water, igniting the liberated hydrogen gas immediately: 2K + 2H₂O → 2KOH + H₂↑ + Heat."
+      },
+      {
+        sub: "Chemistry - Periodic Properties", badge: "badge-chem",
+        q: "15. Which element in the Modern Periodic Table possesses the highest electronegativity value on the Pauling scale?",
+        options: ["Fluorine (F)", "Chlorine (Cl)", "Oxygen (O)", "Cesium (Cs)"],
+        ans: 0,
+        exp: "Fluorine (F, Group 17, Period 2) has the highest electronegativity (value 4.0 on the Pauling scale) due to its small atomic radius and high effective nuclear charge. Chlorine has the highest electron affinity."
+      },
+      {
+        sub: "Chemistry - Chemical Reactions", badge: "badge-chem",
+        q: "16. In the chemical reaction: CuO + H₂ → Cu + H₂O, which substance is being oxidized and which is acting as the oxidizing agent?",
+        options: [
+          "H₂ is oxidized; CuO is the oxidizing agent",
+          "CuO is oxidized; H₂ is the oxidizing agent",
+          "Cu is oxidized; H₂O is the oxidizing agent",
+          "H₂ is reduced; CuO is the reducing agent"
+        ],
+        ans: 0,
+        exp: "H₂ gains oxygen to form H₂O (oxidation). CuO loses oxygen to become metallic Cu (reduction). Since CuO supplies oxygen for the oxidation of H₂, CuO acts as the oxidizing agent."
+      },
+      {
+        sub: "Chemistry - Carbon Compounds", badge: "badge-chem",
+        q: "17. Saponification is the alkaline hydrolysis of vegetable oils or animal fats using sodium hydroxide (NaOH). What is the major commercial byproduct formed alongside soap?",
+        options: ["Glycerol", "Methanol", "Ethanoic acid", "Glucose"],
+        ans: 0,
+        exp: "Triglycerides (fatty acid esters) react with NaOH to produce carboxylate salts of fatty acids (soap) and Glycerol (propane-1,2,3-triol), an important commercial trihydric alcohol byproduct."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "18. What happens to the pH of pure water when solid ammonium chloride (NH₄Cl), a salt of a strong acid and a weak base, is dissolved in it?",
+        options: [
+          "pH drops below 7 (solution becomes acidic)",
+          "pH rises above 7 (solution becomes basic)",
+          "pH remains exactly 7.0 (neutral)",
+          "pH becomes 14 immediately"
+        ],
+        ans: 0,
+        exp: "NH₄Cl is derived from strong acid HCl and weak base NH₄OH. In water, cation hydrolysis (NH₄⁺ + H₂O ⇌ NH₄OH + H⁺) releases excess H⁺ ions, yielding an acidic solution with pH < 7."
+      },
+      {
+        sub: "Chemistry - Metals", badge: "badge-chem",
+        q: "19. Which of the following pairs of oxides are both amphoteric in nature (react with both acids and bases)?",
+        options: [
+          "Al₂O₃ and ZnO",
+          "Na₂O and K₂O",
+          "SO₂ and CO₂",
+          "CaO and MgO"
+        ],
+        ans: 0,
+        exp: "Aluminium oxide (Al₂O₃) and Zinc oxide (ZnO) are notable amphoteric oxides. They react with acids (forming salts like AlCl₃, ZnCl₂) and strong alkalis (forming aluminates and zincates like NaAlO₂, Na₂ZnO₂)."
+      },
+      {
+        sub: "Chemistry - Solutions", badge: "badge-chem",
+        q: "20. When anhydrous Copper(II) Sulphate (white powder) absorbs water, it turns deep blue. What is the number of molecules of water of crystallization present in Blue Vitriol?",
+        options: ["5", "7", "2", "10"],
+        ans: 0,
+        exp: "Hydrated copper sulphate (Blue Vitriol) has the chemical formula CuSO₄·5H₂O. The presence of five coordinated water molecules gives copper sulphate crystals their deep blue color."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Excretion", badge: "badge-bio",
+        q: "21. In the human nephron, high hydrostatic pressure in the glomerulus forces blood plasma through the filtration membrane into Bowman's capsule. Which blood component is normally NOT filtered out?",
+        options: [
+          "Plasma proteins and blood cells (RBCs/WBCs)",
+          "Glucose and amino acids",
+          "Urea and uric acid",
+          "Inorganic mineral ions (Na⁺, K⁺)"
+        ],
+        ans: 0,
+        exp: "Ultrafiltration filters small solutes (water, glucose, amino acids, urea, ions) through the slit pores. Large high-molecular-weight plasma proteins (like albumin) and cellular components (RBCs, WBCs, platelets) cannot pass through the podocyte filtration slits."
+      },
+      {
+        sub: "Biology - Nervous System", badge: "badge-bio",
+        q: "22. The microscopic junction between the axon terminal of one neuron and the dendrite of the next is called a Synapse. How is a nerve impulse transmitted across this synaptic cleft?",
+        options: [
+          "Via chemical neurotransmitters (e.g., Acetylcholine)",
+          "Via direct flow of electric spark",
+          "By physical contraction of the axonal membrane",
+          "By active transport of haemoglobin molecules"
+        ],
+        ans: 0,
+        exp: "When an action potential arrives at an axon terminal, voltage-gated Ca²⁺ channels open, triggering synaptic vesicles to exocytose neurotransmitters (such as acetylcholine) across the synaptic cleft to bind specific receptors on the post-synaptic membrane."
+      },
+      {
+        sub: "Biology - Digestion", badge: "badge-bio",
+        q: "23. Bile juice produced by the liver contains no digestive enzymes. How does it actively aid in the chemical digestion of fats?",
+        options: [
+          "By emulsifying large fat globules into tiny micelles, increasing surface area for lipase",
+          "By hydrolyzing starch into disaccharides directly",
+          "By converting proteins directly into amino acids",
+          "By creating a strongly acidic pH inside the duodenum"
+        ],
+        ans: 0,
+        exp: "Bile salts (sodium taurocholate and glycocholate) act as biological detergents, breaking down large dietary fat globules into sub-microscopic droplets (emulsification). This increases the surface area for pancreatic lipase to hydrolyze lipids."
+      },
+      {
+        sub: "Biology - Respiration", badge: "badge-bio",
+        q: "24. During anaerobic fermentation in Yeast cells, glucose is incompletely broken down into which end-products?",
+        options: [
+          "Ethanol, Carbon dioxide, and 2 ATP molecules",
+          "Lactic acid and 36 ATP molecules",
+          "Carbon dioxide and Water only",
+          "Pyruvate and Oxygen"
+        ],
+        ans: 0,
+        exp: "In yeast, anaerobic glycolysis leads to alcoholic fermentation: Glucose → 2 Pyruvate → 2 Ethanol (C₂H₅OH) + 2 CO₂ + 2 ATP. This process forms the biological basis of brewing and commercial bread-making."
+      },
+      {
+        sub: "Biology - Genetics", badge: "badge-bio",
+        q: "25. In human genetics, what is the chromosomal composition of a normal male zygote, and what determines the biological sex of the offspring?",
+        options: [
+          "44 + XY; determined exclusively by the father's sperm carrying an X or Y chromosome",
+          "44 + XX; determined exclusively by the mother's ovum",
+          "44 + YY; determined equally by both parents",
+          "46 + XY; determined by environmental womb temperature"
+        ],
+        ans: 0,
+        exp: "Human somatic cells have 44 autosomes and 2 sex chromosomes. Females produce only X-bearing ova (22+X), whereas males produce two distinct populations of sperm in equal proportions: 50% carrying X (22+X) and 50% carrying Y (22+Y). Hence, the male gamete determines the child's genetic sex."
+      },
+      {
+        sub: "Biology - Plant Physiology", badge: "badge-bio",
+        q: "26. The directional growth of a pollen tube through the style towards the plant ovule during fertilization is a classic example of:",
+        options: ["Chemotropism", "Phototropism", "Hydrotropism", "Thigmotropism"],
+        ans: 0,
+        exp: "Chemotropism is directional plant growth in response to a chemical stimulus. Pollen tubes grow towards the ovule guided by a chemical concentration gradient secreted by the ovary and synergid cells."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "27. In the human double circulatory system, deoxygenated blood from the right ventricle is pumped to the lungs via the:",
+        options: [
+          "Pulmonary Artery",
+          "Pulmonary Vein",
+          "Aorta",
+          "Inferior Vena Cava"
+        ],
+        ans: 0,
+        exp: "The right ventricle pumps deoxygenated blood into the Pulmonary Artery, which bifurcates to both lungs for alveolar gas exchange. Freshly oxygenated blood returns to the left atrium through the Pulmonary Veins."
+      },
+      {
+        sub: "Biology - Cell Division", badge: "badge-bio",
+        q: "28. Which type of cell division reduces the chromosome number by half to produce haploid gametes (sperm and ova)?",
+        options: ["Meiosis", "Mitosis", "Amitosis", "Binary Fission"],
+        ans: 0,
+        exp: "Meiosis is a reductional division involving two successive nuclear divisions that reduces a diploid (2n) germ cell into four genetically distinct haploid (n) daughter gametes, ensuring constant chromosome count across generations upon fertilization."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "29. According to Lindeman's 10% Ecological Law of energy transfer, if green plants (primary producers) trap 20,000 Joules of light energy, how much energy is transferred to secondary consumers (carnivores)?",
+        options: ["200 J", "2,000 J", "20 J", "2 J"],
+        ans: 0,
+        exp: "According to the 10% law: Producers (20,000 J) → Primary consumers/Herbivores receive 10% = 2,000 J → Secondary consumers/Carnivores receive 10% of 2,000 J = 200 J."
+      },
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "30. Particulate Matter designated as PM2.5 is considered far more hazardous to human respiratory health than PM10 primarily because:",
+        options: [
+          "Its aerodynamic diameter is ≤ 2.5 micrometers, penetrating deep into alveoli and the bloodstream",
+          "It is composed exclusively of radioactive heavy elements",
+          "It reacts spontaneously with atmospheric nitrogen to deplete ozone",
+          "It dissolves instantly in rainwater to form strong sulphuric acid"
+        ],
+        ans: 0,
+        exp: "PM2.5 particles have an aerodynamic diameter of 2.5 microns or less. Because of their tiny size, they bypass upper nasal cilia filtration, lodging deep inside alveolar gas exchange spaces and penetrating into capillary blood circulation."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
