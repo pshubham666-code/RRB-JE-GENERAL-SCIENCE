@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE SET 3 FOR RRB JE CBT 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE SET 3 | FOR RRB JE CBT 1</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "1. An electric bulb designed for 220 V operates at 100 W. If the line voltage suddenly drops to 110 V, what will be the actual power consumed by the bulb (assuming filament resistance remains constant)?",
+        options: ["50 W", "25 W", "75 W", "100 W"],
+        ans: 1,
+        exp: "Filament resistance R = V² / P = (220)² / 100 = 484 Ω. At V' = 110 V, new power P' = (V')² / R = (110)² / 484 = 25 W. Since P ∝ V², halving the voltage reduces power consumption to one-fourth."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. Two thin lenses of focal lengths +20 cm and -50 cm are placed in axial contact. What is the equivalent optical power of this combination?",
+        options: ["+3.0 D", "+7.0 D", "-3.0 D", "+0.3 D"],
+        ans: 0,
+        exp: "Power P = 100 / f (in cm). For convex lens P₁ = +100/20 = +5.0 D, and for concave lens P₂ = -100/50 = -2.0 D. Equivalent power P = P₁ + P₂ = +5.0 - 2.0 = +3.0 D."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. The absolute refractive index of a transparent medium is 1.5. If the speed of light in vacuum is 3 × 10⁸ m/s, how long does it take for light to travel a distance of 200 meters through this medium?",
+        options: ["1.5 × 10⁻⁶ s", "0.5 × 10⁻⁶ s", "2.0 × 10⁻⁶ s", "1.0 × 10⁻⁶ s"],
+        ans: 3,
+        exp: "Velocity in the medium v = c / μ = (3 × 10⁸) / 1.5 = 2 × 10⁸ m/s. Time t = Distance / v = 200 / (2 × 10⁸) = 1.0 × 10⁻⁶ s (1 microsecond)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "4. A piece of uniform wire of resistance R is cut into five equal parts. These five identical parts are then connected in parallel. If the equivalent resistance of this parallel combination is R', what is the numerical ratio R / R'?",
+        options: ["5", "1 / 25", "25", "1 / 5"],
+        ans: 2,
+        exp: "Each segment has resistance r = R/5. In parallel, 1/R' = 5 × [1 / (R/5)] = 25/R ⇒ R' = R/25. Therefore, R / R' = 25."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "5. A coolie carries a heavy load of 50 kg on his head and walks a horizontal distance of 100 m along a railway platform at a constant speed. What is the total work done by the coolie against the force of gravity?",
+        options: ["Zero", "49,000 J", "4,900 J", "500 J"],
+        ans: 0,
+        exp: "Work done W = F · d · cos(θ). The force applied against gravity is vertically upward while displacement is horizontal (θ = 90°). Because cos(90°) = 0, work done against gravity is zero."
+      },
+      {
+        sub: "Physics - Waves & Sound", badge: "badge-phy",
+        q: "6. A sound wave has a frequency of 2 kHz and a wavelength of 35 cm. How long will it take for this sound wave to travel a distance of 1.4 km?",
+        options: ["1.5 s", "2.0 s", "4.0 s", "0.5 s"],
+        ans: 1,
+        exp: "Velocity v = f × λ = 2000 Hz × 0.35 m = 700 m/s. Distance d = 1.4 km = 1400 m. Time t = d / v = 1400 / 700 = 2.0 seconds."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "7. When a moving bus brakes suddenly, the passengers tend to fall forward. This common observation is explained by:",
+        options: [
+          "Newton's Third Law of Motion",
+          "Conservation of Momentum",
+          "Inertia of Motion (Newton's First Law)",
+          "Gravitational Attraction"
+        ],
+        ans: 2,
+        exp: "Due to inertia of motion, the upper part of the passenger's body tends to remain in forward motion even when the lower part comes to rest along with the braking bus floor."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "8. The apparent flattening of the Sun's disc at sunrise and sunset is primarily a consequence of:",
+        options: [
+          "Atmospheric Refraction",
+          "Total Internal Reflection",
+          "Rayleigh Scattering",
+          "Optical Dispersion"
+        ],
+        ans: 0,
+        exp: "Light rays coming from the lower edge of the Sun's disc are refracted more than rays from the upper edge because they pass through denser atmospheric layers, causing vertical compression and apparent flattening."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "9. When a heavy bus and a light passenger car collide head-on, which vehicle experiences a greater magnitude of impact force, and which undergoes greater acceleration during the collision?",
+        options: [
+          "The bus exerts a greater force; both undergo equal acceleration",
+          "The car experiences greater force and greater acceleration",
+          "Both experience equal impact force; the car undergoes greater acceleration",
+          "Both experience equal force and equal acceleration"
+        ],
+        ans: 2,
+        exp: "By Newton's Third Law, both experience equal and opposite contact forces (|F_bus| = |F_car|). However, by a = F/m, the lighter car undergoes a far greater acceleration."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "10. The critical angle for total internal reflection from a denser medium A into air is 45°. What is the absolute refractive index of medium A?",
+        options: ["1.5", "2.0", "1 / √2", "√2 (≈ 1.414)"],
+        ans: 3,
+        exp: "The relation between refractive index and critical angle is μ = 1 / sin(C). For C = 45°, sin(45°) = 1/√2 ⇒ μ = √2 ≈ 1.414."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Acids, Bases & Salts", badge: "badge-chem",
+        q: "11. Commercial Baking Powder is a mixture of Sodium Hydrogen Carbonate (Baking Soda) and which mild edible organic acid?",
+        options: ["Oxalic acid", "Tartaric acid", "Acetic acid", "Hydrochloric acid"],
+        ans: 1,
+        exp: "Baking powder contains baking soda (NaHCO₃) mixed with tartaric acid. When heated with water, tartaric acid neutralizes the sodium carbonate produced, preventing bitterness and releasing CO₂ to make baked items soft and spongy."
+      },
+      {
+        sub: "Chemistry - Industrial Chemistry", badge: "badge-chem",
+        q: "12. In the Chlor-alkali process, when electricity is passed through an aqueous solution of sodium chloride (brine), which three valuable industrial products are formed?",
+        options: [
+          "NaOH (solution), Cl₂ gas (at anode), H₂ gas (at cathode)",
+          "Na metal (at cathode), Cl₂ gas (at anode), O₂ gas",
+          "NaHCO₃, HCl, and Bleaching powder",
+          "NaOH, O₂ gas (at anode), Cl₂ gas (at cathode)"
+        ],
+        ans: 0,
+        exp: "Electrolysis of brine yields Chlorine gas (Cl₂) at the positive anode, Hydrogen gas (H₂) at the negative cathode, and Sodium hydroxide (NaOH) solution near the cathode."
+      },
+      {
+        sub: "Chemistry - Organic Chemistry", badge: "badge-chem",
+        q: "13. When ethanoic acid (acetic acid) reacts with absolute ethanol in the presence of concentrated H₂SO₄ as a catalyst, which sweet-smelling organic compound is formed?",
+        options: ["Ethanal (an aldehyde)", "Diethyl ether", "Ethyl ethanoate (an ester)", "Methane gas"],
+        ans: 2,
+        exp: "This is an esterification reaction: CH₃COOH + C₂H₅OH (in conc. H₂SO₄) → CH₃COOC₂H₅ + H₂O. Esters give characteristic sweet, fruity odors."
+      },
+      {
+        sub: "Chemistry - Metals & Non-Metals", badge: "badge-chem",
+        q: "14. Which metal is placed at the top of the electrochemical reactivity series and reacts vigorously even with cold water to release H₂ gas that immediately catches fire?",
+        options: ["Aluminium (Al)", "Potassium (K)", "Iron (Fe)", "Copper (Cu)"],
+        ans: 1,
+        exp: "Potassium (K) reacts violently and exothermically with cold water (2K + 2H₂O → 2KOH + H₂↑), instantly igniting the liberated hydrogen gas."
+      },
+      {
+        sub: "Chemistry - Periodic Properties", badge: "badge-chem",
+        q: "15. Which element in the Modern Periodic Table possesses the highest electronegativity value on the Pauling scale?",
+        options: ["Fluorine (F)", "Chlorine (Cl)", "Oxygen (O)", "Cesium (Cs)"],
+        ans: 0,
+        exp: "Fluorine has the highest electronegativity (4.0 on the Pauling scale) due to its small atomic size and high effective nuclear charge."
+      },
+      {
+        sub: "Chemistry - Reactions", badge: "badge-chem",
+        q: "16. In the chemical reaction: CuO + H₂ → Cu + H₂O, which substance is being oxidized and which is acting as the oxidizing agent?",
+        options: [
+          "CuO is oxidized; H₂ is the oxidizing agent",
+          "H₂ is oxidized; CuO is the oxidizing agent",
+          "Cu is oxidized; H₂O is the oxidizing agent",
+          "H₂ is reduced; CuO is the reducing agent"
+        ],
+        ans: 1,
+        exp: "H₂ gains oxygen to become H₂O (oxidation). CuO supplies oxygen and gets reduced to Cu; therefore, CuO acts as the oxidizing agent."
+      },
+      {
+        sub: "Chemistry - Carbon Compounds", badge: "badge-chem",
+        q: "17. Saponification is the alkaline hydrolysis of fats or oils using NaOH. What is the major commercial byproduct formed alongside soap?",
+        options: ["Methanol", "Ethanoic acid", "Glucose", "Glycerol"],
+        ans: 3,
+        exp: "Triglycerides react with NaOH to yield carboxylate salts of fatty acids (soap) and Glycerol (propane-1,2,3-triol) as a commercially valuable trihydric alcohol byproduct."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "18. What happens to the pH of pure water when solid ammonium chloride (NH₄Cl), a salt of a strong acid and a weak base, is dissolved in it?",
+        options: [
+          "pH drops below 7 (solution becomes acidic)",
+          "pH rises above 7 (solution becomes basic)",
+          "pH remains exactly 7.0 (neutral)",
+          "pH becomes 14 immediately"
+        ],
+        ans: 0,
+        exp: "NH₄Cl is derived from strong acid HCl and weak base NH₄OH. Cationic hydrolysis releases excess H⁺ ions into solution, making it acidic (pH < 7)."
+      },
+      {
+        sub: "Chemistry - Metals", badge: "badge-chem",
+        q: "19. Which of the following pairs of oxides are both amphoteric in nature (react with both strong acids and strong alkalis)?",
+        options: [
+          "Na₂O and K₂O",
+          "SO₂ and CO₂",
+          "Al₂O₃ and ZnO",
+          "CaO and MgO"
+        ],
+        ans: 2,
+        exp: "Al₂O₃ and ZnO react with acids to form normal salts and with alkalis to form soluble aluminates and zincates (NaAlO₂ and Na₂ZnO₂)."
+      },
+      {
+        sub: "Chemistry - Salts", badge: "badge-chem",
+        q: "20. When anhydrous Copper(II) Sulphate (white powder) absorbs water, it turns deep blue. What is the number of molecules of water of crystallization present in Blue Vitriol?",
+        options: ["7", "2", "5", "10"],
+        ans: 2,
+        exp: "Blue Vitriol is copper sulphate pentahydrate (CuSO₄·5H₂O), containing 5 water molecules of crystallization."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Human Anatomy", badge: "badge-bio",
+        q: "21. In the human body, which structure is the appendix attached to?",
+        options: [
+          "The small intestine",
+          "The large intestine",
+          "The Gall Bladder",
+          "The stomach"
+        ],
+        ans: 1,
+        exp: "The vermiform appendix is a blind-ended, vestigial tubular pouch attached directly to the caecum, which forms the beginning of the large intestine."
+      },
+      {
+        sub: "Biology - Cytology", badge: "badge-bio",
+        q: "22. Which organelle in the cell, other than the nucleus, contains DNA?",
+        options: ["Mitochondria", "Centriole", "Golgi Apparatus", "Lysosome"],
+        ans: 0,
+        exp: "Mitochondria (and chloroplasts in plants) are semi-autonomous organelles possessing their own circular DNA and 70S ribosomes, enabling autonomous protein synthesis."
+      },
+      {
+        sub: "Biology - Cytology", badge: "badge-bio",
+        q: "23. The cellular and molecular control of programmed cell death are known as:",
+        options: ["Necrosis", "Ageing", "Apoptosis", "Degeneration"],
+        ans: 2,
+        exp: "Apoptosis is the genetically programmed, controlled suicide mechanism of cells required for tissue remodeling and eliminating damaged cells without inflammation."
+      },
+      {
+        sub: "Biology - Genetics", badge: "badge-bio",
+        q: "24. Which of the following features of DNA makes it uniquely suited to store and transmit genetic information from generation to generation?",
+        options: [
+          "Number of base-pairs per turn",
+          "Double helix shape only",
+          "Sugar-phosphate backbone",
+          "Complementarity of the two strands"
+        ],
+        ans: 3,
+        exp: "Complementarity of base pairing (Adenine with Thymine, Guanine with Cytosine) ensures that each strand acts as an exact template during semi-conservative replication."
+      },
+      {
+        sub: "Biology - Genetics", badge: "badge-bio",
+        q: "25. In human genetics, what is the chromosomal composition of a normal male zygote, and what determines the biological sex of the offspring?",
+        options: [
+          "44 + XY; determined exclusively by the father's sperm carrying an X or Y chromosome",
+          "44 + XX; determined exclusively by the mother's ovum",
+          "44 + YY; determined equally by both parents",
+          "46 + XY; determined by environmental womb temperature"
+        ],
+        ans: 0,
+        exp: "Female ova always carry an X chromosome (22+X). Sperm carry either X (22+X) or Y (22+Y). Fertilization by a Y-bearing sperm yields a male (44+XY), so paternal gametes determine biological sex."
+      },
+      {
+        sub: "Biology - Biochemistry", badge: "badge-bio",
+        q: "26. Alpha-keratin is a protein, present in:",
+        options: ["Blood", "Lymph", "Skin", "Eggs"],
+        ans: 2,
+        exp: "Alpha-keratin is a tough, insoluble fibrous structural protein abundant in the epidermal layer of mammalian skin, hair, and nails."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "27. In the human double circulatory system, deoxygenated blood from the right ventricle is pumped towards the lungs via the:",
+        options: [
+          "Pulmonary Vein",
+          "Aorta",
+          "Pulmonary Artery",
+          "Inferior Vena Cava"
+        ],
+        ans: 2,
+        exp: "The right ventricle pumps deoxygenated blood through the Pulmonary Artery to the lungs for gaseous exchange."
+      },
+      {
+        sub: "Biology - Cell Division", badge: "badge-bio",
+        q: "28. Which type of cell division reduces the chromosome number by half to produce haploid gametes (sperms and ova)?",
+        options: ["Mitosis", "Amitosis", "Binary Fission", "Meiosis"],
+        ans: 3,
+        exp: "Meiosis is a reductional division converting a diploid (2n) germ cell into four non-identical haploid (n) gametes."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "29. According to Lindeman's 10% Ecological Law of energy transfer, if green plants (primary producers) trap 20,000 Joules of light energy, how much energy is transferred to secondary consumers (carnivores)?",
+        options: ["200 J", "2,000 J", "20 J", "2 J"],
+        ans: 0,
+        exp: "Producers (20,000 J) → Primary Consumers (10% = 2,000 J) → Secondary Consumers (10% of 2,000 = 200 J)."
+      },
+      {
+        sub: "Environmental Science", badge: "badge-env",
+        q: "30. Particulate Matter designated as PM2.5 is considered far more hazardous to human respiratory health than PM10 primarily because:",
+        options: [
+          "It is composed exclusively of radioactive heavy elements",
+          "Its aerodynamic diameter is ≤ 2.5 micrometers, penetrating deep into alveoli and the bloodstream",
+          "It reacts spontaneously with atmospheric nitrogen to deplete ozone",
+          "It dissolves instantly in rainwater to form strong sulphuric acid"
+        ],
+        ans: 1,
+        exp: "Particles with an aerodynamic diameter ≤ 2.5 μm bypass upper respiratory mucosal barriers, penetrating deep into alveolar gas sacs and systemic circulation."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
