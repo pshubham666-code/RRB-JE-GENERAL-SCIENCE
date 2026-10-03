@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE SET 4 FOR RRB JE CBT 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE SET 4 | FOR RRB JE CBT 1</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "1. An object of mass 5 kg is accelerated uniformly from a velocity of 4 m/s to 8 m/s along a straight horizontal path. What is the net work done on the object?",
+        options: ["60 J", "120 J", "240 J", "160 J"],
+        ans: 1,
+        exp: "According to the Work-Energy Theorem, net work done equals the change in kinetic energy: W = ΔKE = 0.5 × m × (v² - u²) = 0.5 × 5 × (8² - 4²) = 2.5 × (64 - 16) = 2.5 × 48 = 120 Joules."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. Which optical phenomenon is primarily responsible for the brilliant sparkle and glitter observed in a finely cut diamond?",
+        options: [
+          "Multiple surface refractions",
+          "Total Internal Reflection",
+          "Polarization of light",
+          "Dispersion into spectral bands"
+        ],
+        ans: 1,
+        exp: "Diamond has a very high refractive index (≈ 2.42) and a small critical angle (≈ 24.4°). Light entering the diamond suffers multiple internal reflections at its precisely cut facets before emerging, causing brilliant scintillation."
+      },
+      {
+        sub: "Physics - Gravitation & Energy", badge: "badge-phy",
+        q: "3. A body of mass 2 kg is dropped freely from a height of 20 m above the ground. Taking g = 10 m/s², what will be its kinetic energy just before striking the ground?",
+        options: ["400 J", "200 J", "100 J", "800 J"],
+        ans: 0,
+        exp: "By the law of conservation of mechanical energy, loss of potential energy equals gain in kinetic energy: KE = mgh = 2 kg × 10 m/s² × 20 m = 400 Joules."
+      },
+      {
+        sub: "Physics - Sound & Waves", badge: "badge-phy",
+        q: "4. The pitch (shrillness or gravity) of a sound note depends primarily upon which physical characteristic of the sound wave?",
+        options: ["Amplitude", "Wave speed", "Frequency", "Waveform / Quality"],
+        ans: 2,
+        exp: "Pitch is the sensory perception that correlates directly with frequency. A wave with a higher frequency produces a high-pitched, shrill sound, whereas amplitude governs loudness."
+      },
+      {
+        sub: "Physics - Hydrostatics", badge: "badge-phy",
+        q: "5. According to Archimedes' principle, when an object is partially or wholly immersed in a fluid, the buoyant force acting vertically upwards on it is equal to the:",
+        options: [
+          "Volume of the submerged object",
+          "Density of the solid object",
+          "Total weight of the liquid container",
+          "Weight of the fluid displaced by the object"
+        ],
+        ans: 3,
+        exp: "Archimedes' principle states that the upward buoyant force exerted on an object immersed in a fluid equals the weight of the displaced fluid (F_b = ρ_fluid · V_displaced · g)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "6. In a laboratory experiment, an Ohm's law graph is plotted between Potential Difference (V on Y-axis) and Current (I on X-axis) for a metallic conductor. What does the slope of this straight line represent?",
+        options: [
+          "Electrical Conductivity",
+          "Electrical Resistivity",
+          "Electrical Resistance",
+          "Electric Power"
+        ],
+        ans: 2,
+        exp: "Slope of the V-I curve = ΔV / ΔI. By Ohm's Law (V = IR), the ratio V/I directly yields the Electrical Resistance (R) of the conductor."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "7. Which type of lens always forms a virtual, erect, and diminished image of a real object, irrespective of the object's position?",
+        options: ["Concave lens", "Convex lens", "Cylindrical lens", "Plano-convex lens"],
+        ans: 0,
+        exp: "A concave (diverging) lens bends rays outward so they appear to diverge from a point between the optical center and the focus, consistently producing a virtual, erect, and diminished image."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "8. When viewed from one end of a current-carrying solenoid, if the electric current is observed to flow in a clockwise direction, what magnetic polarity does that specific face acquire?",
+        options: [
+          "North Pole",
+          "South Pole",
+          "No polarity (neutral face)",
+          "Alternating North and South"
+        ],
+        ans: 1,
+        exp: "By the Clock Face Rule, if the current viewed at a face circulates in a clockwise direction, that face behaves as a South magnetic pole. An anticlockwise circulating current behaves as a North magnetic pole."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "9. Two electric lamps rated 40 W, 220 V and 60 W, 220 V are connected in series across a 220 V power supply. Which lamp will glow brighter?",
+        options: [
+          "The 40 W lamp",
+          "The 60 W lamp",
+          "Both will glow with equal brightness",
+          "Neither will glow"
+        ],
+        ans: 0,
+        exp: "Since R = V² / P, the 40 W lamp has higher filament resistance than the 60 W lamp. Connected in series, both draw the same current I. Power dissipated is P = I²R; hence, the 40 W lamp with higher resistance dissipates more heat and glows brighter."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "10. An object is placed at a distance of 30 cm in front of a convex lens having a focal length of +20 cm. What will be the position and nature of the image formed?",
+        options: [
+          "At 12 cm behind the lens, virtual and erect",
+          "At 60 cm in front of the lens, virtual and magnified",
+          "At 60 cm behind the lens, real and inverted",
+          "At 30 cm behind the lens, real and same size"
+        ],
+        ans: 2,
+        exp: "Given: f = +20 cm, u = -30 cm. Using 1/f = 1/v - 1/u ⇒ 1/v = 1/20 + 1/(-30) = (3 - 2)/60 = 1/60 ⇒ v = +60 cm. The positive sign indicates a real and inverted image formed 60 cm behind the lens (m = v/u = 60/(-30) = -2)."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Metallurgy", badge: "badge-chem",
+        q: "11. Moderately reactive metals like Zinc (Zn) and Iron (Fe) are commercially extracted from their roasted/calcined oxide ores using which common industrial reducing agent?",
+        options: [
+          "Carbon (Coke / Coal)",
+          "Sodium metal",
+          "Liquid Nitrogen",
+          "Dilute Hydrochloric acid"
+        ],
+        ans: 0,
+        exp: "Oxides of moderately reactive metals are reduced to elemental metals by heating with carbon (coke): ZnO + C → Zn + CO. Highly electropositive metals (Na, Al) require electrolytic reduction instead."
+      },
+      {
+        sub: "Chemistry - Hydrocarbons", badge: "badge-chem",
+        q: "12. What is the general molecular formula for the homologous series of Alkenes (hydrocarbons containing a carbon-carbon double bond)?",
+        options: ["CnH2n+2", "CnH2n", "CnH2n-2", "CnH2n-6"],
+        ans: 1,
+        exp: "Alkanes follow CnH2n+2, Alkenes (with one double bond) follow CnH2n, and Alkynes (with one triple bond) follow CnH2n-2."
+      },
+      {
+        sub: "Chemistry - Acids & Bases", badge: "badge-chem",
+        q: "13. When concentrated sulphuric acid is diluted with water, what is the mandatory safety precaution to be followed?",
+        options: [
+          "Pour water rapidly into acid with continuous heating",
+          "Always add acid slowly to water with constant stirring",
+          "Add equal volumes of both simultaneously",
+          "Add water dropwise into the acid container"
+        ],
+        ans: 1,
+        exp: "Diluting concentrated H₂SO₄ is highly exothermic. Adding water to acid can cause localized steam explosions that splash concentrated acid. Hence, acid must always be added slowly into water with continuous stirring to dissipate heat safely."
+      },
+      {
+        sub: "Chemistry - Carbon Allotropes", badge: "badge-chem",
+        q: "14. Which allotrope of carbon has a layered hexagonal structure held by weak Van der Waals forces, making it soft, slippery, and a good electrical conductor?",
+        options: ["Diamond", "Fullerene (C60)", "Carbon nanotubes", "Graphite"],
+        ans: 3,
+        exp: "Graphite is composed of parallel planar sheets of hexagonally bonded carbon atoms. Delocalized pi-electrons permit electrical conduction, and the weakly bonded layers easily slide over each other, making graphite a solid lubricant."
+      },
+      {
+        sub: "Chemistry - Indicators", badge: "badge-chem",
+        q: "15. What is the color change observed when synthetic Methyl Orange indicator is added to a sample of dilute hydrochloric acid (HCl)?",
+        options: ["Yellow", "Red", "Colorless", "Blue"],
+        ans: 1,
+        exp: "Methyl Orange exhibits a sharp red color in acidic solutions (pH < 3.1) and turns yellow in basic or neutral media (pH > 4.4)."
+      },
+      {
+        sub: "Chemistry - Reactivity Series", badge: "badge-chem",
+        q: "16. In four separate test tubes containing aqueous solutions of metal nitrates, clean metal strips are immersed. In which of the following combinations will a spontaneous single displacement reaction occur?",
+        options: [
+          "Copper strip in Zinc sulphate solution",
+          "Silver wire in Copper sulphate solution",
+          "Zinc strip in Iron(II) sulphate solution",
+          "Iron nail in Aluminium sulphate solution"
+        ],
+        ans: 2,
+        exp: "In the electrochemical activity series: Al > Zn > Fe > Cu > Ag. Zinc is more reactive than iron, displacing Fe²⁺ from solution: Zn + FeSO₄ → ZnSO₄ + Fe. Less reactive metals cannot displace more reactive ones."
+      },
+      {
+        sub: "Chemistry - Chemical Bonding", badge: "badge-chem",
+        q: "17. What type of chemical bond is formed by the mutual sharing of electron pairs between two non-metallic atoms?",
+        options: ["Electrovalent bond", "Metallic bond", "Covalent bond", "Hydrogen bond"],
+        ans: 2,
+        exp: "A covalent bond forms when two non-metallic atoms share one or more pairs of valence electrons to attain a stable octet (as in H₂, O₂, CH₄)."
+      },
+      {
+        sub: "Chemistry - Corrosion", badge: "badge-chem",
+        q: "18. Which of the following conditions is strictly necessary for the rusting of iron metal to occur?",
+        options: [
+          "Presence of dry Oxygen only",
+          "Presence of moisture (water) only",
+          "Presence of both Oxygen and Moisture",
+          "Presence of Carbon dioxide only"
+        ],
+        ans: 2,
+        exp: "Rusting is an electrochemical oxidation process: 4Fe + 3O₂ + 2xH₂O → 2Fe₂O₃·xH₂O. It requires both atmospheric oxygen and liquid water/moisture simultaneously."
+      },
+      {
+        sub: "Chemistry - Everyday Acids", badge: "badge-chem",
+        q: "19. Which acid is naturally present in stinging nettle leaves and the sting of red ants, causing a burning painful sensation?",
+        options: [
+          "Methanoic acid (Formic acid)",
+          "Citric acid",
+          "Tartaric acid",
+          "Lactic acid"
+        ],
+        ans: 0,
+        exp: "Ant stings and stinging nettle trichomes inject Methanoic acid (HCOOH, commonly formic acid), which can be neutralized by applying mild bases like baking soda or calamine lotion."
+      },
+      {
+        sub: "Chemistry - Compounds", badge: "badge-chem",
+        q: "20. Quicklime, used in manufacturing cement and white-washing, has the chemical formula:",
+        options: ["Ca(OH)₂", "CaCO₃", "CaCl₂", "CaO"],
+        ans: 3,
+        exp: "Quicklime is Calcium Oxide (CaO). When treated with water, it vigorously slakes to form Calcium Hydroxide [Ca(OH)₂] with the release of significant heat."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Digestion", badge: "badge-bio",
+        q: "21. Which biological digestive juice contains no digestive enzymes whatsoever, yet is indispensable for lipid digestion and vitamin absorption?",
+        options: ["Gastric juice", "Bile juice", "Pancreatic juice", "Saliva"],
+        ans: 1,
+        exp: "Bile juice (synthesized by the liver) contains no hydrolytic enzymes. It supplies bile salts that mechanically emulsify large dietary lipids into microscopic micelles, greatly expanding surface area for pancreatic lipase."
+      },
+      {
+        sub: "Biology - Respiration", badge: "badge-bio",
+        q: "22. In the human respiratory tract, microscopic balloon-like structures where the actual exchange of O₂ and CO₂ with blood capillaries takes place are called:",
+        options: ["Bronchi", "Bronchioles", "Alveoli", "Tracheids"],
+        ans: 2,
+        exp: "Alveoli are millions of thin-walled, highly vascularized microscopic air sacs that provide a massive surface area (≈ 80 m²) for passive respiratory gas diffusion."
+      },
+      {
+        sub: "Biology - Endocrine System", badge: "badge-bio",
+        q: "23. Which specialized cells located in the Islets of Langerhans of the human pancreas secrete the peptide hormone Insulin to lower elevated blood glucose levels?",
+        options: [
+          "Alpha (α) cells",
+          "Beta (β) cells",
+          "Delta (δ) cells",
+          "Acinar cells"
+        ],
+        ans: 1,
+        exp: "Beta (β) cells of pancreatic islets secrete Insulin, which facilitates cellular glucose uptake and hepatic glycogen synthesis. Alpha (α) cells secrete Glucagon to elevate blood sugar."
+      },
+      {
+        sub: "Biology - Plant Tissues", badge: "badge-bio",
+        q: "24. Which simple permanent plant tissue is characterized by cells with localized pectin and cellulose thickenings at the corners, providing mechanical flexibility and tensile strength to growing stems and petioles?",
+        options: ["Collenchyma", "Parenchyma", "Sclerenchyma", "Xylem vessels"],
+        ans: 0,
+        exp: "Collenchyma consists of living elongated cells with unevenly thickened cellulosic and pectic corners. It provides flexible mechanical support without restraining plant elongation."
+      },
+      {
+        sub: "Biology - Nervous System", badge: "badge-bio",
+        q: "25. In the human brain, which anatomical region serves as the reflex center controlling involuntary vital autonomic activities like heartbeat, breathing rate, and swallowing?",
+        options: ["Cerebrum", "Medulla Oblongata", "Cerebellum", "Hypothalamus"],
+        ans: 1,
+        exp: "The Medulla Oblongata (part of the brainstem) houses vital reflex centers regulating cardiac contraction, vasomotor tone, respiratory rhythm, and swallowing reflexes."
+      },
+      {
+        sub: "Biology - Photosynthesis", badge: "badge-bio",
+        q: "26. In green plants during photosynthesis, the 'Light-dependent reactions' (photolysis of water and generation of ATP/NADPH) take place specifically inside the:",
+        options: [
+          "Stroma of the chloroplast",
+          "Thylakoids / Grana",
+          "Mitochondrial matrix",
+          "Cytoplasm"
+        ],
+        ans: 1,
+        exp: "Light-dependent reactions occur within the thylakoid membranes (grana) containing chlorophyll photopigments. Dark reactions (Calvin cycle) take place in the stroma."
+      },
+      {
+        sub: "Biology - Ecology / Microbes", badge: "badge-bio",
+        q: "27. Which symbiotic nitrogen-fixing bacterium resides in the root nodules of leguminous plants to convert inert atmospheric nitrogen into bioavailable ammonium compounds?",
+        options: ["Rhizobium", "Azotobacter", "Clostridium", "Nitrosomonas"],
+        ans: 0,
+        exp: "Rhizobium species enter mutualistic symbiosis with leguminous roots, reducing atmospheric N₂ into bioavailable nitrogenous compounds using the enzyme nitrogenase."
+      },
+      {
+        sub: "Biology - Sensory Organs", badge: "badge-bio",
+        q: "28. In the human optical system, which anatomical aperture regulates and controls the amount of light entering the eye by adjusting its diameter?",
+        options: ["Cornea", "Retina", "Pupil", "Ciliary muscles"],
+        ans: 2,
+        exp: "The Pupil is the central aperture bordered by the pigmented Iris. Involuntary smooth muscle contractions of the iris dilate or constrict the pupil to regulate light admission to the retina."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Pollution", badge: "badge-env",
+        q: "29. Photochemical smog (often referred to as 'brown smog' or Los Angeles-type smog) is primarily formed on warm sunny days through the chemical interaction of sunlight with:",
+        options: [
+          "Sulphur dioxide (SO₂) and condensed water mists",
+          "Nitrogen oxides (NOx) and Volatile Organic Compounds (VOCs)",
+          "Carbon monoxide (CO) and Chlorofluorocarbons (CFCs)",
+          "Carbon dioxide (CO₂) and alkaline fly ash"
+        ],
+        ans: 1,
+        exp: "Solar UV radiation initiates photochemical reactions between vehicular Nitrogen Oxides (NOx) and Volatile Organic Compounds (VOCs), generating ozone (O₃), PAN, and secondary photochemical oxidants."
+      },
+      {
+        sub: "Environmental Science - E-Waste", badge: "badge-env",
+        q: "30. Under international and national E-waste (Management) Rules, the hazardous practice of open-burning computer circuit boards and electronic scrap is strictly banned because it releases extremely toxic carcinogenic:",
+        options: [
+          "Dioxins and Furans",
+          "Carbon monoxide and Argon",
+          "Nitrogen and Helium",
+          "Water vapor and Methane"
+        ],
+        ans: 0,
+        exp: "Low-temperature open burning of electronic printed circuit boards and halogenated plastics produces persistent, highly bioaccumulative carcinogenic dioxins and furans."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
