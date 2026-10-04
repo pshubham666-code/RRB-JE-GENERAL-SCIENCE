@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE SET 5 FOR RRB JE CBT 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE SET 5 | FOR RRB JE CBT 1</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Gravitation", badge: "badge-phy",
+        q: "1. The mass of a body on the Earth is 100 kg (acceleration due to gravity, ge = 10 m/s²). If the acceleration due to gravity on the Moon is ge / 6, what will be the mass of the body on the Moon?",
+        options: ["100 / 6 kg", "60 kg", "100 kg", "600 kg"],
+        ans: 2,
+        exp: "Mass is a scalar, fundamental intrinsic property of matter that remains strictly constant across all locations in the universe. While the weight of the object decreases to one-sixth on the Moon (W = mg), its mass remains unchanged at 100 kg."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "2. What is the minimum vertical height of a plane mirror required for a person of height 1.50 meters to view their complete upright image?",
+        options: ["0.75 meter", "1.00 meter", "1.50 meter", "0.50 meter"],
+        ans: 0,
+        exp: "By the laws of reflection and geometry of similar triangles, a person requires a plane mirror of at least half their standing height (H / 2) to see their entire reflection from head to toe: 1.50 m / 2 = 0.75 meter."
+      },
+      {
+        sub: "Physics - Optics", badge: "badge-phy",
+        q: "3. The radius of curvature of an optically flat plane mirror is:",
+        options: ["Zero", "One", "Infinity", "Dependent on the angle of incidence"],
+        ans: 2,
+        exp: "A plane mirror can be mathematically considered as a spherical mirror of an infinitely large radius of curvature (R = ∞). Consequently, its focal length is also infinity (f = R / 2 = ∞) and its optical power is zero (P = 0)."
+      },
+      {
+        sub: "Physics - Sound & Waves", badge: "badge-phy",
+        q: "4. Bats can fly and navigate safely through absolute darkness because they:",
+        options: [
+          "Can see infrared rays in darkness",
+          "Generate flashes of light",
+          "Possess weak legs vulnerable to nocturnal predators",
+          "Generate and detect ultrasonic sound waves"
+        ],
+        ans: 3,
+        exp: "Bats use echolocation to navigate and locate prey in total darkness. They emit high-frequency ultrasonic clicks (> 20 kHz) that bounce off surrounding obstacles and return to their sensitive ears, giving them a detailed acoustic map of their environment."
+      },
+      {
+        sub: "Physics - Simple Harmonic Motion", badge: "badge-phy",
+        q: "5. The time period of oscillation of a simple pendulum when transported from Earth to the Moon will:",
+        options: [
+          "Increase",
+          "Decrease",
+          "Remain exactly the same",
+          "First increase and then drop to zero"
+        ],
+        ans: 0,
+        exp: "The time period of a simple pendulum is T = 2π√(L / g). Since the gravitational acceleration on the Moon is roughly one-sixth that of Earth (g_m ≈ g_e / 6), the decreased denominator causes the oscillation time period T to increase (meaning the pendulum swings slower)."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "6. 'The total electric current entering an electrical junction is equal to the total current leaving the junction.' This fundamental law is known as:",
+        options: [
+          "Lenz's Law",
+          "Kirchhoff's First Law (Junction Rule)",
+          "Hooke's Law",
+          "Ohm's Law"
+        ],
+        ans: 1,
+        exp: "Kirchhoff's First Law (Current Law or Junction Rule) states that the algebraic sum of currents meeting at any circuit junction is zero (ΣI = 0). This is a direct consequence of the principle of conservation of electric charge."
+      },
+      {
+        sub: "Physics - Mechanics", badge: "badge-phy",
+        q: "7. In starting a loaded handcart from rest, one has to push significantly harder than to keep it in continuous motion. Which physical principle explains this?",
+        options: [
+          "Rolling friction is greater than sliding friction",
+          "Gravitational attraction decreases during motion",
+          "Limiting static friction is greater than kinetic friction",
+          "Inertia disappears once velocity is established"
+        ],
+        ans: 2,
+        exp: "Microscopic surface irregularities interlock deeply when two contact surfaces are at relative rest, establishing a high threshold of limiting static friction. Once relative motion begins, the contact points do not have sufficient time to interlock fully, making kinetic friction lower than limiting static friction (μ_k < μ_s)."
+      },
+      {
+        sub: "Physics - Hydrostatics", badge: "badge-phy",
+        q: "8. A hydraulic press used in automotive service stations works on the fundamental principle of:",
+        options: [
+          "Pascal's Law",
+          "Bernoulli's Principle",
+          "Archimedes' Principle",
+          "Torricelli's Law"
+        ],
+        ans: 0,
+        exp: "Pascal's Law states that pressure applied to an enclosed, incompressible fluid is transmitted undiminished in all directions throughout the liquid. Applying a modest force over a small piston generates equivalent pressure that produces a much larger lifting force over a broader piston (F₂ = F₁ × A₂ / A₁)."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "9. If a metallic bar magnet is carefully sliced into two halves perpendicular to its magnetic axis (lengthwise center), what happens to its poles?",
+        options: [
+          "The magnetic field is destroyed, leaving two unmagnetized iron pieces",
+          "One piece becomes an isolated North pole, the other an isolated South pole",
+          "Two separate, complete magnets are formed, each with its own North and South poles",
+          "Both pieces become North poles"
+        ],
+        ans: 2,
+        exp: "Isolated magnetic monopoles do not exist in nature. Slicing a bar magnet creates two new, complete dipole magnets, with opposing magnetic poles instantly induced at the freshly cut surfaces."
+      },
+      {
+        sub: "Physics - Electromagnetism", badge: "badge-phy",
+        q: "10. The velocity of electromagnetic light waves in vacuum is equal to:",
+        options: [
+          "1 / √(μ₀ ε₀)",
+          "√(μ₀ ε₀)",
+          "μ₀ / ε₀",
+          "μ₀ ε₀²"
+        ],
+        ans: 0,
+        exp: "From Maxwell's fundamental electromagnetic equations, the speed of light in free space is governed by vacuum permeability (μ₀) and vacuum permittivity (ε₀) as c = 1 / √(μ₀ ε₀) ≈ 3.0 × 10⁸ m/s."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Solutions & Gases", badge: "badge-chem",
+        q: "11. Helium gas is added to the oxygen supply of deep-sea scuba divers primarily because it:",
+        options: [
+          "Is much less soluble in blood than nitrogen at high hydrostatic pressures",
+          "Is lighter and less dense than nitrogen",
+          "Reacts chemically with nitrogen to prevent gas formation",
+          "Acts as an active stimulant for cardiac muscles"
+        ],
+        ans: 0,
+        exp: "Under elevated ambient pressure at deep ocean depths, nitrogen readily dissolves into blood plasma. During a rapid ascent, this dissolved nitrogen forms gaseous bubbles in blood vessels, causing severe decompression sickness ('the bends'). Helium has an exceptionally low solubility in blood, making Heliox breathing mixtures much safer for deep-sea divers."
+      },
+      {
+        sub: "Chemistry - Non-Metals", badge: "badge-chem",
+        q: "12. White Phosphorus is stored submerged under water in laboratories because:",
+        options: [
+          "It dissolves in water to form phosphoric acid",
+          "Its ignition temperature is very low (around 30°C) and it spontaneously catches fire in air",
+          "It reacts vigorously with water to release inert protective gases",
+          "Its critical temperature is exceptionally high"
+        ],
+        ans: 1,
+        exp: "White phosphorus has an exceptionally low ignition temperature (≈ 30°C) and undergoes spontaneous combustion upon contact with atmospheric oxygen, emitting dense white fumes of P₄O₁₀. Because it is completely insoluble in and unreactive with cold water, it is safely stored submerged."
+      },
+      {
+        sub: "Chemistry - Polymers", badge: "badge-chem",
+        q: "13. The synthetic condensation polymer obtained by the step-growth polymerization of hexamethylenediamine and adipic acid is:",
+        options: ["Bakelite", "Teflon (PTFE)", "Nylon 6,6", "Terylene (Dacron)"],
+        ans: 2,
+        exp: "Nylon 6,6 is a synthetic polyamide produced by the condensation polymerization of hexamethylenediamine [H₂N-(CH₂)₆-NH₂] and adipic acid [HOOC-(CH₂)₄-COOH] at elevated temperature, eliminating water molecules as a byproduct."
+      },
+      {
+        sub: "Chemistry - Redox Reactions", badge: "badge-chem",
+        q: "14. What visible physical phenomenon is observed when a drop of glycerol is added to crushed potassium permanganate (KMnO₄) crystals spread on paper?",
+        options: [
+          "A dense blue precipitate forms with zero heat",
+          "Rapid vigorous oxidation occurs and the paper bursts into flame / violent explosion",
+          "The crystals dissolve into a colorless solution",
+          "Only an endothermic freezing reaction is observed"
+        ],
+        ans: 1,
+        exp: "Potassium permanganate (KMnO₄) is a potent chemical oxidizing agent, while glycerol is an easily oxidizable polyhydric alcohol. Their direct contact triggers a rapid, violently exothermic redox reaction: 14KMnO₄ + 4C₃H₅(OH)₃ → 7K₂CO₃ + 7Mn₂O₃ + 5CO₂ + 16H₂O + Heat, causing spontaneous ignition and bursts of flame."
+      },
+      {
+        sub: "Chemistry - Water Treatment", badge: "badge-chem",
+        q: "15. The temporary hardness of water is caused by the dissolved bicarbonates of calcium and magnesium. It can be easily removed by:",
+        options: [
+          "Simple boiling",
+          "Adding common salt (NaCl)",
+          "Treating with dilute hydrochloric acid",
+          "Bubbling carbon dioxide through it"
+        ],
+        ans: 0,
+        exp: "Temporary hardness caused by Ca(HCO₃)₂ and Mg(HCO₃)₂ is readily removed by boiling. Thermal decomposition converts soluble bicarbonates into insoluble carbonates and hydroxides [Ca(HCO₃)₂ → CaCO₃↓ + H₂O + CO₂↑], which precipitate out and can be filtered away."
+      },
+      {
+        sub: "Chemistry - Electrochemistry", badge: "badge-chem",
+        q: "16. Which gas is commercially produced at the anode during the electrolysis of acidified water?",
+        options: [
+          "Hydrogen gas (H₂)",
+          "Oxygen gas (O₂)",
+          "Ozone gas (O₃)",
+          "Sulphur dioxide (SO₂)"
+        ],
+        ans: 1,
+        exp: "During the electrolysis of acidified water, oxidation occurs at the positive anode: 2H₂O → O₂↑ + 4H⁺ + 4e⁻, liberating oxygen gas. Reduction occurs at the negative cathode: 4H⁺ + 4e⁻ → 2H₂↑, liberating twice the volume of hydrogen gas."
+      },
+      {
+        sub: "Chemistry - Atomic Structure", badge: "badge-chem",
+        q: "17. What is the maximum number of electrons that can be accommodated in the M-shell (principal quantum number n = 3) of an atom?",
+        options: ["8", "2", "18", "32"],
+        ans: 2,
+        exp: "According to the Bohr-Bury electronic scheme, the maximum capacity of any shell is 2n². For the M-shell (n = 3), maximum capacity = 2(3)² = 2 × 9 = 18 electrons."
+      },
+      {
+        sub: "Chemistry - Industrial Chemistry", badge: "badge-chem",
+        q: "18. In the Haber process for the industrial synthesis of Ammonia (N₂ + 3H₂ ⇌ 2NH₃), which substance is commonly used as a catalyst promoter?",
+        options: [
+          "Finely divided Iron (Fe)",
+          "Platinum wire gauze",
+          "Molybdenum (Mo) or Al₂O₃ / K₂O",
+          "Nickel metal (Ni)"
+        ],
+        ans: 2,
+        exp: "In the Haber process, finely divided Iron (Fe) functions as the primary catalyst, while Molybdenum (Mo) or a mixture of Al₂O₃ and K₂O serves as a promoter to enhance the surface catalytic activity of iron."
+      },
+      {
+        sub: "Chemistry - Everyday Chemistry", badge: "badge-chem",
+        q: "19. Which of the following organic acids is present in sour milk or curd?",
+        options: ["Lactic acid", "Oxalic acid", "Malic acid", "Formic acid"],
+        ans: 0,
+        exp: "Lactobacillus bacteria ferment the lactose sugar present in milk into Lactic acid. This acidification denatures and coagulates the milk protein casein, turning liquid milk into semi-solid curd."
+      },
+      {
+        sub: "Chemistry - Chemical Bonding", badge: "badge-chem",
+        q: "20. What type of chemical bond is present in a molecule of Nitrogen gas (N₂)?",
+        options: [
+          "Single covalent bond",
+          "Double covalent bond",
+          "Triple covalent bond",
+          "Ionic electrovalent bond"
+        ],
+        ans: 2,
+        exp: "A nitrogen atom has 5 valence electrons (atomic number 7). To attain a stable noble gas configuration, two nitrogen atoms share three pairs of valence electrons, forming a strong triple covalent bond (:N≡N:)."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Cytology", badge: "badge-bio",
+        q: "21. Which cell organelles play the most significant role in protein synthesis within eukaryotic cells?",
+        options: [
+          "Lysosome and Centrosome",
+          "Endoplasmic Reticulum (Rough ER) and Ribosomes",
+          "Golgi apparatus and Mitochondria",
+          "Vacuole and Peroxisome"
+        ],
+        ans: 1,
+        exp: "Ribosomes serve as the cellular ribonucleoprotein translation complexes that assemble amino acids into polypeptide chains. The Rough Endoplasmic Reticulum (RER), studded with surface ribosomes, provides the membrane machinery for folding and post-translational transport of synthesized proteins."
+      },
+      {
+        sub: "Biology - Molecular Genetics", badge: "badge-bio",
+        q: "22. The repeating monomeric sub-units that polymerize to form DNA macromolecules are known as:",
+        options: ["Nucleosomes", "Nucleosides", "Nucleotides", "Polypeptides"],
+        ans: 2,
+        exp: "DNA is a biopolymer composed of repeating nucleotide units. Each complete nucleotide is made of three linked components: a nitrogenous base (Adenine, Thymine, Guanine, or Cytosine), a five-carbon deoxyribose sugar, and a phosphate group."
+      },
+      {
+        sub: "Biology - Molecular Biology", badge: "badge-bio",
+        q: "23. During protein synthesis (translation), specific amino acids in the cytoplasm are recognized and transported to the ribosome by:",
+        options: [
+          "mRNA (messenger RNA)",
+          "tRNA (transfer RNA)",
+          "rRNA (ribosomal RNA)",
+          "snRNA (small nuclear RNA)"
+        ],
+        ans: 1,
+        exp: "Transfer RNA (tRNA) acts as an adapter molecule during translation. Its 3' amino acid attachment site covalently binds a specific activated amino acid, while its three-base anticodon loop binds the complementary codon on the mRNA strand at the ribosome."
+      },
+      {
+        sub: "Biology - Excretion & Metabolism", badge: "badge-bio",
+        q: "24. In the human body, Urea is primarily produced as an end-product of the metabolic breakdown of:",
+        options: [
+          "Fatty acids",
+          "Amino acids (Proteins)",
+          "Complex carbohydrates",
+          "Vitamins and Minerals"
+        ],
+        ans: 1,
+        exp: "Surplus amino acids from dietary protein digestion undergo oxidative deamination in the liver, yielding toxic free ammonia. The liver converts ammonia into less toxic, water-soluble urea via the hepatic Urea Cycle (Ornithine cycle) for safe renal excretion."
+      },
+      {
+        sub: "Biology - Plant Physiology", badge: "badge-bio",
+        q: "25. Which plant hormone (phytohormone) is primarily responsible for promoting cell elongation, apical dominance, and phototropic bending towards light?",
+        options: ["Auxin", "Abscisic Acid (ABA)", "Ethylene", "Gibberellin"],
+        ans: 0,
+        exp: "Auxin (such as Indole-3-acetic acid / IAA) is synthesized at shoot tips and root apical meristems. Under unilateral illumination, auxin migrates to the shaded side of the stem, stimulating cellular elongation there and causing the stem to curve toward light (positive phototropism)."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "26. Which chamber of the human heart has the thickest and most muscular myocardium wall?",
+        options: [
+          "Right Atrium",
+          "Right Ventricle",
+          "Left Atrium",
+          "Left Ventricle"
+        ],
+        ans: 3,
+        exp: "The Left Ventricle has the thickest muscular wall (roughly three times thicker than the right ventricle) because it must generate high hydrostatic pressure to eject oxygenated blood through the aorta into high-resistance systemic circulation throughout the entire body."
+      },
+      {
+        sub: "Biology - Nutrition & Health", badge: "badge-bio",
+        q: "27. The deficiency of which mineral in the human diet causes nutritional Anemia due to impaired hemoglobin production?",
+        options: ["Calcium", "Iron", "Phosphorus", "Potassium"],
+        ans: 1,
+        exp: "Iron (Fe²⁺) is the central coordinating mineral inside the heme group of hemoglobin in erythrocytes. Dietary iron deficiency restricts hemoglobin biosynthesis, resulting in microcytic, hypochromic anemia and decreased oxygen-carrying capacity."
+      },
+      {
+        sub: "Biology - Skeletal System", badge: "badge-bio",
+        q: "28. Which type of joint connects the human skull bones (cranium sutures) together?",
+        options: [
+          "Ball and socket joint",
+          "Hinge joint",
+          "Fixed / Immovable fibrous joint",
+          "Pivot joint"
+        ],
+        ans: 2,
+        exp: "Cranial sutures connecting the flat bones of the skull are immovable fibrous joints (synarthroses). They are interlocked by dense collagenous connective tissue to provide rigid, structural protection for the brain."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Ecology", badge: "badge-env",
+        q: "29. In environmental ecology, the phenomenon wherein nutrient enrichment (excess nitrates and phosphates from agricultural runoff) in a water body leads to dense algal blooms and severe oxygen depletion is termed:",
+        options: [
+          "Biomagnification",
+          "Eutrophication",
+          "Bioaccumulation",
+          "Salinization"
+        ],
+        ans: 1,
+        exp: "Eutrophication occurs when excess agricultural fertilizers or untreated domestic effluents enter aquatic reservoirs. The resulting spike in nitrates and phosphates causes rapid surface algal blooms. When these algae die and decompose, aerobic microbial activity consumes dissolved oxygen, creating hypoxic conditions that kill aquatic life."
+      },
+      {
+        sub: "Environmental Pollution", badge: "badge-env",
+        q: "30. The Minamata disease tragedy, which caused severe neurological poisoning in Japan, was triggered by industrial pollution and bioaccumulation of which toxic heavy metal in fish?",
+        options: ["Cadmium", "Lead", "Methylmercury", "Arsenic"],
+        ans: 2,
+        exp: "Minamata disease was caused by the bioaccumulation of methylmercury in coastal fish and shellfish from industrial chemical plant discharges into Minamata Bay, Japan. Consumption of contaminated seafood caused mercury poisoning characterized by sensory ataxia, tremors, and severe neurological damage. (Itai-Itai disease is caused by Cadmium)."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
