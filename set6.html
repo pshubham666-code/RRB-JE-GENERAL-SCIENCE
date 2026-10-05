@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE SET 6 FOR RRB JE CBT 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE SET 6 | FOR RRB JE CBT 1</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Work & Energy", badge: "badge-phy",
+        q: "1. A force of 20 N acts on a body of mass 4 kg and displaces it by a distance of 2 meters along a direction inclined at 60° to the line of action of the force. What is the net work done on the body?",
+        options: ["40 J", "20 J", "10 J", "20√3 J"],
+        ans: 1,
+        exp: "Work done W = F × d × cos(θ). Given: F = 20 N, d = 2 m, and θ = 60°. Therefore, W = 20 × 2 × cos(60°) = 40 × 0.5 = 20 Joules."
+      },
+      {
+        sub: "Physics - Units & Dimensions", badge: "badge-phy",
+        q: "2. Which of the following physical quantities has the same dimensional formula as that of Impulse?",
+        options: ["Work", "Force", "Linear Momentum", "Power"],
+        ans: 2,
+        exp: "Impulse = Force × Time = (N·s) = (kg·m/s). Linear Momentum = Mass × Velocity = (kg·m/s). Both quantities possess the identical SI unit (kg·m/s) and dimensional formula [M L T⁻¹]."
+      },
+      {
+        sub: "Physics - Kinematics", badge: "badge-phy",
+        q: "3. An object is projected vertically upward with an initial velocity of 20 m/s from the ground. Taking g = 10 m/s², what is the maximum height reached by the object?",
+        options: ["20 m", "40 m", "10 m", "2 m"],
+        ans: 0,
+        exp: "At the highest point, final velocity v = 0. Using the linear motion equation v² = u² - 2gh: 0 = (20)² - 2 × 10 × h ⇒ 20h = 400 ⇒ h = 20 meters."
+      },
+      {
+        sub: "Physics - Momentum Conservation", badge: "badge-phy",
+        q: "4. A bullet of mass 20 g is fired horizontally with a velocity of 150 m/s from a pistol of mass 2 kg. What is the recoil velocity of the pistol?",
+        options: ["-3.0 m/s", "-1.5 m/s", "+1.5 m/s", "-0.75 m/s"],
+        ans: 1,
+        exp: "By conservation of linear momentum: Total initial momentum = Total final momentum = 0. Therefore, (M_pistol × V_pistol) + (m_bullet × v_bullet) = 0 ⇒ (2 × V) + (0.02 × 150) = 0 ⇒ 2V + 3 = 0 ⇒ V = -1.5 m/s (the negative sign indicates recoil in the backward direction)."
+      },
+      {
+        sub: "Physics - Properties of Matter", badge: "badge-phy",
+        q: "5. In liquid physics, the spherical shape acquired by a freely falling raindrop or oil droplet is primarily due to:",
+        options: [
+          "Viscous drag of the medium",
+          "Atmospheric pressure",
+          "Surface Tension",
+          "Capillary action"
+        ],
+        ans: 2,
+        exp: "Surface tension is the cohesive force pulling liquid molecules inward to minimize free surface area. A sphere possesses the minimum surface-area-to-volume ratio, causing free falling droplets to naturally assume spherical geometry."
+      },
+      {
+        sub: "Physics - Heat & Thermometry", badge: "badge-phy",
+        q: "6. The temperature at which the readings on both the Celsius scale and the Fahrenheit scale are numerically equal is:",
+        options: ["-40°", "0°", "+40°", "-273°"],
+        ans: 0,
+        exp: "Using the standard conversion formula: C / 5 = (F - 32) / 9. Setting C = F = x: x / 5 = (x - 32) / 9 ⇒ 9x = 5x - 160 ⇒ 4x = -160 ⇒ x = -40°."
+      },
+      {
+        sub: "Physics - Optics / Dispersion", badge: "badge-phy",
+        q: "7. When white light passes through a glass triangular prism, which spectral color deviates (bends) the most from its original path?",
+        options: ["Red", "Yellow", "Violet", "Green"],
+        ans: 2,
+        exp: "By Cauchy's relation, the refractive index of glass is inversely related to wavelength. Violet light has the shortest visible wavelength, travels slowest in glass, experiences the highest refractive index, and therefore suffers the greatest deviation. Red light deviates the least."
+      },
+      {
+        sub: "Physics - Sound & Echo", badge: "badge-phy",
+        q: "8. A submarine transmits a SONAR pulse into seawater which reflects from an underwater rock cliff and returns to the detector in 1.6 seconds. If the speed of sound in seawater is 1500 m/s, what is the distance to the underwater cliff?",
+        options: ["2400 m", "1200 m", "1800 m", "600 m"],
+        ans: 1,
+        exp: "For reflected sound waves: Total two-way travel distance 2d = v × t. Therefore, d = (v × t) / 2 = (1500 × 1.6) / 2 = 2400 / 2 = 1200 meters."
+      },
+      {
+        sub: "Physics - Electromagnetism", badge: "badge-phy",
+        q: "9. According to Fleming's Right-Hand Rule (used in electromagnetic induction and generators), what does the Thumb represent?",
+        options: [
+          "Direction of Magnetic Field",
+          "Direction of Induced Electric Current",
+          "Direction of Motion / Force on the Conductor",
+          "Direction of Electrostatic Potential"
+        ],
+        ans: 2,
+        exp: "In Fleming's Right-Hand Rule: Forefinger points along the Magnetic Field, Middle finger represents the direction of Induced Current, and the Thumb points along the Motion of the conductor relative to the magnetic field."
+      },
+      {
+        sub: "Physics - Electricity", badge: "badge-phy",
+        q: "10. A uniform metallic wire of resistance 16 Ω is bent into the form of a closed circular ring. What is the effective electrical resistance between two diametrically opposite points on the circle?",
+        options: ["8 Ω", "16 Ω", "4 Ω", "2 Ω"],
+        ans: 2,
+        exp: "Diametrically opposite points partition the closed ring into two semicircular branches, each having half the total resistance: 16 / 2 = 8 Ω. These two 8 Ω sections act in parallel: R_eff = (8 × 8) / (8 + 8) = 64 / 16 = 4 Ω."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Mole Concept", badge: "badge-chem",
+        q: "11. How many moles are present in 44 grams of Carbon Dioxide (CO₂ gas)? (Atomic masses: C = 12 u, O = 16 u)",
+        options: ["0.5 mole", "1.0 mole", "2.0 moles", "4.4 moles"],
+        ans: 1,
+        exp: "Molar mass of CO₂ = 12 + (2 × 16) = 44 g/mol. Number of moles = Given mass / Molar mass = 44 g / 44 g/mol = 1.0 mole."
+      },
+      {
+        sub: "Chemistry - Periodic Properties", badge: "badge-chem",
+        q: "12. Across a period from left to right in the Modern Periodic Table, the atomic radius of representative elements generally:",
+        options: [
+          "Increases steadily",
+          "Decreases steadily",
+          "Remains completely unchanged",
+          "First decreases then increases sharply"
+        ],
+        ans: 1,
+        exp: "Across a period from left to right, electrons are added to the same principal energy shell while nuclear charge (number of protons) increases consecutively. The increasing effective nuclear charge pulls the electron cloud closer, causing atomic radius to decrease."
+      },
+      {
+        sub: "Chemistry - Metals & Non-Metals", badge: "badge-chem",
+        q: "13. Which metal reacts vigorously with steam (water vapor), but does not react with cold or hot liquid water?",
+        options: ["Potassium (K)", "Calcium (Ca)", "Iron (Fe)", "Copper (Cu)"],
+        ans: 2,
+        exp: "Potassium and Sodium react vigorously with cold water. Calcium reacts with room temperature water. Iron (Fe) does not react with liquid water but reacts with steam at red heat to form magnetic iron oxide and hydrogen gas: 3Fe + 4H₂O (steam) → Fe₃O₄ + 4H₂↑. Copper does not react with water or steam."
+      },
+      {
+        sub: "Chemistry - Oxidation Numbers", badge: "badge-chem",
+        q: "14. What is the oxidation state of Sulphur (S) in Sulphuric Acid (H₂SO₄)?",
+        options: ["+4", "+6", "-2", "+2"],
+        ans: 1,
+        exp: "In H₂SO₄, hydrogen has an oxidation number of +1 and oxygen has -2. For a neutral molecule: 2(+1) + x + 4(-2) = 0 ⇒ 2 + x - 8 = 0 ⇒ x - 6 = 0 ⇒ x = +6."
+      },
+      {
+        sub: "Chemistry - Inorganic Salts", badge: "badge-chem",
+        q: "15. When Plaster of Paris (CaSO₄·½H₂O) is mixed with water, it hardens into a solid mass with slight expansion due to its conversion back into:",
+        options: [
+          "Quicklime",
+          "Slaked lime",
+          "Gypsum (CaSO₄·2H₂O)",
+          "Bleaching powder"
+        ],
+        ans: 2,
+        exp: "Setting of Plaster of Paris involves hydration: CaSO₄·½H₂O + 1½H₂O → CaSO₄·2H₂O (Gypsum). This exothermic hydration produces an interlocking crystalline framework of monoclinic gypsum needles."
+      },
+      {
+        sub: "Chemistry - Periodic Trends", badge: "badge-chem",
+        q: "16. Which of the following elements has the lowest first ionization energy in the periodic table?",
+        options: ["Helium (He)", "Cesium (Cs)", "Fluorine (F)", "Chlorine (Cl)"],
+        ans: 1,
+        exp: "Cesium (Cs) has a very large atomic radius with heavy inner-shell shielding, holding its single 6s valence electron loosely. It requires the least energy to remove an electron (lowest ionization enthalpy among stable elements). Helium has the highest ionization energy."
+      },
+      {
+        sub: "Chemistry - Alloys & Metallurgy", badge: "badge-chem",
+        q: "17. Solder alloy, widely used in electrical printed circuit assembly, consists of which two metals?",
+        options: [
+          "Copper and Zinc",
+          "Copper and Tin",
+          "Lead (Pb) and Tin (Sn)",
+          "Aluminium and Magnesium"
+        ],
+        ans: 2,
+        exp: "Solder is an alloy composed of Lead (Pb ≈ 40-50%) and Tin (Sn ≈ 50-60%) designed for a low eutectic melting point. Brass is Cu + Zn, and Bronze is Cu + Sn."
+      },
+      {
+        sub: "Chemistry - Organic Functional Groups", badge: "badge-chem",
+        q: "18. In organic chemistry, the functional group present in aldehydes (-CHO) consists of a carbonyl carbon bonded to:",
+        options: [
+          "A hydroxyl group (-OH)",
+          "At least one Hydrogen atom",
+          "An alkoxy group (-OR)",
+          "Two alkyl groups"
+        ],
+        ans: 1,
+        exp: "Aldehydes possess a carbonyl group (C=O) bonded to at least one terminal hydrogen atom (R-CH=O). Ketones have the carbonyl carbon bonded to two carbon groups (R-CO-R'), and carboxylic acids contain a carbonyl carbon attached to a hydroxyl group (-COOH)."
+      },
+      {
+        sub: "Chemistry - Salt Hydrolysis", badge: "badge-chem",
+        q: "19. An aqueous solution of Copper Sulphate (CuSO₄) turns blue litmus paper red because it is:",
+        options: [
+          "A salt of a strong acid and a weak base",
+          "A salt of a weak acid and a strong base",
+          "A salt of a strong acid and a strong base",
+          "A neutral amphoteric solution"
+        ],
+        ans: 0,
+        exp: "CuSO₄ is formed by the neutralization of a strong acid (H₂SO₄) with a weak base [Cu(OH)₂]. In aqueous solution, cationic hydrolysis releases free hydronium ions: Cu²⁺ + 2H₂O ⇌ Cu(OH)₂ + 2H⁺, lowering the pH below 7 and turning blue litmus red."
+      },
+      {
+        sub: "Chemistry - Carbon Allotropes", badge: "badge-chem",
+        q: "20. Which of the following elements shows allotropy and forms buckyballs having 60 carbon atoms arranged in pentagons and hexagons?",
+        options: ["Silicon", "Boron", "Carbon (Fullerene C₆₀)", "Phosphorus"],
+        ans: 2,
+        exp: "Buckminsterfullerene (C₆₀) is an allotrope of carbon consisting of 60 carbon atoms arranged as a truncated icosahedron (cage resembling a soccer ball) composed of 20 six-membered rings and 12 five-membered rings."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Human Digestion", badge: "badge-bio",
+        q: "21. Which organ in the human digestive system secretes the enzyme Pepsin for initiating protein breakdown in an acidic medium?",
+        options: [
+          "Liver",
+          "Pancreas",
+          "Stomach (Gastric mucosa)",
+          "Small Intestine (Duodenum)"
+        ],
+        ans: 2,
+        exp: "Peptic (chief) cells in the gastric mucosa of the stomach secrete inactive pepsinogen. Gastric hydrochloric acid (HCl, pH 1.5–2.0) activates pepsinogen into Pepsin, which cleaves dietary proteins into smaller peptones and proteoses."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "22. Which blood vessel carries freshly oxygenated blood from the lungs directly into the left atrium of the human heart?",
+        options: [
+          "Superior Vena Cava",
+          "Pulmonary Artery",
+          "Pulmonary Vein",
+          "Aorta"
+        ],
+        ans: 2,
+        exp: "Pulmonary veins are the only veins in the adult human body that transport oxygen-rich blood, delivering it from alveolar lung capillaries directly into the left atrium. The Pulmonary Artery conversely carries deoxygenated blood to the lungs."
+      },
+      {
+        sub: "Biology - Excretory System", badge: "badge-bio",
+        q: "23. In the human excretory system, the structural cup-shaped sac that encloses the knot of filtration capillaries (glomerulus) in a nephron is called:",
+        options: [
+          "Henle's Loop",
+          "Bowman's Capsule",
+          "Collecting Duct",
+          "Renal Pelvis"
+        ],
+        ans: 1,
+        exp: "Bowman's capsule is the double-walled, blind epithelial cup enclosing the glomerulus at the proximal end of each nephron. Together, Bowman's capsule and the glomerulus form the Malpighian corpuscle responsible for plasma ultrafiltration."
+      },
+      {
+        sub: "Biology - Endocrine System", badge: "badge-bio",
+        q: "24. In human cranial anatomy, which endocrine master gland is attached to the base of the brain via the infundibulum stalk and resides inside the sella turcica cavity?",
+        options: [
+          "Thyroid gland",
+          "Adrenal gland",
+          "Pituitary gland (Hypophysis)",
+          "Pineal gland"
+        ],
+        ans: 2,
+        exp: "The Pituitary gland (Hypophysis) is seated within the hypophyseal fossa of the sphenoid bone (sella turcica) and connected to the hypothalamus by the infundibulum stalk. It regulates other endocrine organs by releasing trophic hormones (TSH, ACTH, GH, LH, FSH)."
+      },
+      {
+        sub: "Biology - Plant Tissues", badge: "badge-bio",
+        q: "25. Which specialized plant vascular tissue consists of non-living, hollow tracheary elements (tracheids and vessels) that conduct water and dissolved minerals from roots upward to leaves?",
+        options: [
+          "Phloem sieve tubes",
+          "Parenchyma",
+          "Collenchyma",
+          "Xylem"
+        ],
+        ans: 3,
+        exp: "Xylem is the vascular conducting tissue responsible for the unidirectional transport of water and inorganic minerals from roots to aerial parts driven by transpirational pull. Mature vessel elements and tracheids lose their living protoplasts and become hollow, lignified conduits."
+      },
+      {
+        sub: "Biology - Genetics & Inheritance", badge: "badge-bio",
+        q: "26. According to Gregor Mendel's law of independent assortment, the phenotypic ratio obtained in the F₂ generation of a typical dihybrid cross is:",
+        options: ["3 : 1", "9 : 3 : 3 : 1", "1 : 2 : 1", "9 : 7"],
+        ans: 1,
+        exp: "In a Mendelian dihybrid cross (such as yellow-round vs green-wrinkled pea seeds), independent assortment of the two allele pairs during gametogenesis produces a classic phenotypic distribution of 9 : 3 : 3 : 1 in the F₂ generation."
+      },
+      {
+        sub: "Biology - Cell Organelles", badge: "badge-bio",
+        q: "27. Which cellular organelle contains digestive hydrolytic enzymes capable of digesting cellular debris and foreign pathogens, earning it the title 'Suicide Bag of the Cell'?",
+        options: ["Ribosome", "Lysosome", "Peroxisome", "Centrosome"],
+        ans: 1,
+        exp: "Lysosomes are membrane-bound organelles containing acid hydrolases (proteases, nucleases, lipases). Under severe cellular stress, damage, or necrosis, lysosomes rupture, causing autolysis and degradation of cellular contents."
+      },
+      {
+        sub: "Biology - Human Nutrition", badge: "badge-bio",
+        q: "28. Which disease is caused by an acute dietary deficiency of Protein in young infants and children, marked by abdominal edema, thinning limbs, and stunted growth?",
+        options: ["Marasmus", "Kwashiorkor", "Rickets", "Pellagra"],
+        ans: 1,
+        exp: "Kwashiorkor is severe protein malnutrition occurring despite adequate or borderline caloric intake. It is clinically characterized by severe hypoalbuminemic edema ('pot belly'), muscle wasting, and cutaneous pigmentary changes. Marasmus is caused by general starvation of both calories and proteins."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Ecology", badge: "badge-env",
+        q: "29. In ecological food webs and trophic energy dynamics, which type of ecological pyramid is ALWAYS upright and can never be inverted in any natural terrestrial or aquatic ecosystem?",
+        options: [
+          "Pyramid of Numbers",
+          "Pyramid of Biomass",
+          "Pyramid of Energy",
+          "Pyramid of Volume"
+        ],
+        ans: 2,
+        exp: "By Lindeman's 10% thermodynamic efficiency rule, energy is dissipatively lost as metabolic heat during every trophic level transfer. Since available energy strictly diminishes from producers to primary and secondary consumers, the Pyramid of Energy is always unconditionally upright."
+      },
+      {
+        sub: "Environmental Pollution", badge: "badge-env",
+        q: "30. Under the National Air Quality Index (AQI), which criteria pollutant is monitored because its high affinity for blood hemoglobin forms carboxyhemoglobin, impairing oxygen delivery?",
+        options: [
+          "Sulphur Dioxide (SO₂)",
+          "Carbon Monoxide (CO)",
+          "Nitrogen Dioxide (NO₂)",
+          "Ground-level Ozone (O₃)"
+        ],
+        ans: 1,
+        exp: "Carbon Monoxide (CO) binds to the ferrous heme of hemoglobin with an affinity roughly 200–250 times stronger than oxygen, forming carboxyhemoglobin (COHb). This shifts the oxygen dissociation curve, causing tissue hypoxia and carbon monoxide toxicity."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
