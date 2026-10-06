@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE EXAM ENGINEER - GENERAL SCIENCE SET 7 FOR RRB JE CBT 1</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0284c7;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --warning: #f59e0b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    .instructions-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-left: 5px solid var(--secondary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      font-size: 0.9rem;
+    }
+    .instructions-card ul {
+      margin-left: 20px;
+      margin-top: 6px;
+      color: var(--text-muted);
+    }
+    .question-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+      border: 1px solid var(--border);
+    }
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .q-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+    .badge-phy { background: #e0f2fe; color: #0369a1; }
+    .badge-chem { background: #fef3c7; color: #b45309; }
+    .badge-bio { background: #dcfce7; color: #15803d; }
+    .badge-env { background: #f3e8ff; color: #7e22ce; }
+    .q-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .option-label {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: all 0.15s ease-in-out;
+    }
+    .option-label:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+    .option-label input[type="radio"] {
+      margin-right: 12px;
+      accent-color: var(--secondary);
+      transform: scale(1.15);
+    }
+    .action-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .btn-submit {
+      background: var(--primary);
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 14px 40px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(30, 58, 138, 0.25);
+      transition: 0.2s;
+    }
+    .btn-submit:hover {
+      background: #172554;
+    }
+    #result-box {
+      display: none;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 2px solid var(--secondary);
+    }
+    .score-circle {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 12px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+    .stat-item {
+      padding: 10px;
+      border-radius: 8px;
+      background: var(--bg);
+    }
+    .stat-num { font-weight: 700; font-size: 1.1rem; }
+    .text-green { color: var(--success); }
+    .text-red { color: var(--danger); }
+    .text-gray { color: var(--text-muted); }
+    .explanation {
+      display: none;
+      margin-top: 14px;
+      padding: 14px;
+      background: #f8fafc;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      border-left: 4px solid var(--secondary);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .correct-ans-highlight {
+      background-color: #dcfce7 !important;
+      border-color: #86efac !important;
+      font-weight: 600;
+    }
+    .wrong-ans-highlight {
+      background-color: #fee2e2 !important;
+      border-color: #fca5a5 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>THE EXAM ENGINEER</h1>
+    <p>GENERAL SCIENCE SET 7 | FOR RRB JE CBT 1</p>
+  </header>
+
+  <div class="container">
+    <div class="instructions-card">
+      <strong>Exam Pattern & Instructions:</strong>
+      <ul>
+        <li>Distribution: Physics: 10 | Chemistry: 10 | Biology: 8 | Environment: 2</li>
+        <li>Marking Scheme: +1.00 for Correct Answer | -0.33 for Incorrect Answer</li>
+      </ul>
+    </div>
+
+    <div id="result-box">
+      <h2>Test Performance Summary</h2>
+      <div class="score-circle" id="final-score">0.00 / 30</div>
+      <div class="stats-grid">
+        <div class="stat-item"><div class="stat-num text-green" id="stat-correct">0</div>Correct (+1)</div>
+        <div class="stat-item"><div class="stat-num text-red" id="stat-wrong">0</div>Incorrect (-0.33)</div>
+        <div class="stat-item"><div class="stat-num text-gray" id="stat-skipped">0</div>Unattempted</div>
+      </div>
+    </div>
+
+    <form id="quiz-form">
+      <div id="questions-wrapper"></div>
+      <div class="action-container">
+        <button type="button" class="btn-submit" id="btn-submit" onclick="submitTest()">Submit Test</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      // PHYSICS (1-10)
+      {
+        sub: "Physics - Work & Energy", badge: "badge-phy",
+        q: "1. A constant force of 15 N acts on an object of mass 3 kg initially at rest. What is the kinetic energy acquired by the object at the end of 4 seconds?",
+        options: ["300 J", "600 J", "150 J", "450 J"],
+        ans: 1,
+        exp: "Acceleration a = F / m = 15 / 3 = 5 m/s². Starting from rest (u = 0), final velocity after t = 4 s is v = u + at = 0 + (5 × 4) = 20 m/s. Acquired Kinetic Energy KE = 0.5 × m × v² = 0.5 × 3 × (20)² = 1.5 × 400 = 600 Joules."
+      },
+      {
+        sub: "Physics - Gas Laws", badge: "badge-phy",
+        q: "2. Which law of physics states that at constant temperature, the volume of a given mass of dry gas is inversely proportional to its pressure (V ∝ 1/P)?",
+        options: ["Charles's Law", "Gay-Lussac's Law", "Boyle's Law", "Avogadro's Law"],
+        ans: 2,
+        exp: "Boyle's Law states that for a fixed mass of gas maintained at constant temperature, pressure and volume are inversely proportional (P₁V₁ = P₂V₂). Charles's Law relates volume and absolute temperature at constant pressure."
+      },
+      {
+        sub: "Physics - Optics / Human Eye", badge: "badge-phy",
+        q: "3. A person suffering from hypermetropia (farsightedness) has a near point of 75 cm. What is the power of the corrective convex lens required to read comfortably at the normal near point of 25 cm?",
+        options: ["+2.67 D", "+1.33 D", "-2.67 D", "+4.00 D"],
+        ans: 0,
+        exp: "Object distance u = -25 cm, virtual image distance v = -75 cm. Lens formula: 1/f = 1/v - 1/u = 1/(-75) - 1/(-25) = -1/75 + 3/75 = 2/75 cm⁻¹ ⇒ f = +37.5 cm = +0.375 m. Optical power P = 1 / f (in m) = 100 / 37.5 ≈ +2.67 Dioptres."
+      },
+      {
+        sub: "Physics - Magnetism", badge: "badge-phy",
+        q: "4. A current-carrying straight conductor is held vertically in front of an observer with electric current flowing downwards. According to Maxwell's Right-Hand Thumb Rule, what is the direction of the concentric magnetic field lines when viewed from above?",
+        options: ["Clockwise", "Anticlockwise", "Radially outwards", "Parallel to the wire"],
+        ans: 0,
+        exp: "According to Maxwell's Right-Hand Thumb Rule, pointing the right thumb downwards along the conventional current causes the curled fingers to encircle the wire in a clockwise direction when observed from above."
+      },
+      {
+        sub: "Physics - Gravitation", badge: "badge-phy",
+        q: "5. If the distance between two spherical masses is reduced to one-third of its original separation, by what factor does the mutual gravitational attraction force between them change?",
+        options: ["Increases by 3 times", "Decreases to 1/9th", "Increases by 9 times", "Remains unchanged"],
+        ans: 2,
+        exp: "By Newton's Law of Universal Gravitation, F ∝ 1 / r². If separation distance is changed to r' = r / 3, the new gravitational force becomes F' ∝ 1 / (r/3)² = 9 / r² = 9F."
+      },
+      {
+        sub: "Physics - Heat & Thermodynamics", badge: "badge-phy",
+        q: "6. The SI unit of specific heat capacity of a substance is:",
+        options: ["J / (kg·K)", "J / s", "cal / °C", "W / (m·K)"],
+        ans: 0,
+        exp: "Specific heat capacity c = Q / (m · ΔT). Heat energy Q is in Joules (J), mass m is in kilograms (kg), and temperature change ΔT is in Kelvin (K), giving the SI unit J / (kg·K) or J·kg⁻¹·K⁻¹."
+      },
+      {
+        sub: "Physics - Electromagnetic Waves", badge: "badge-phy",
+        q: "7. Which of the following electromagnetic radiations has the shortest wavelength and the highest penetrating power?",
+        options: ["Microwaves", "Ultraviolet rays", "X-rays", "Gamma rays"],
+        ans: 3,
+        exp: "In the electromagnetic spectrum, Gamma (γ) rays possess the highest frequency (> 10¹⁹ Hz), highest photon energy, and shortest wavelength (< 10⁻¹¹ m), giving them maximum ionizing and penetrating power."
+      },
+      {
+        sub: "Physics - Motion Under Gravity", badge: "badge-phy",
+        q: "8. A stone is dropped into a 45-meter deep dry well. Taking g = 10 m/s² and neglecting air resistance, how long will it take for the stone to reach the bottom of the well?",
+        options: ["4.5 s", "3.0 s", "9.0 s", "2.5 s"],
+        ans: 1,
+        exp: "For a freely falling body dropped from rest (u = 0): s = ut + 0.5gt² ⇒ 45 = 0 + 0.5 × 10 × t² ⇒ 5t² = 45 ⇒ t² = 9 ⇒ t = 3.0 seconds."
+      },
+      {
+        sub: "Physics - Current Electricity", badge: "badge-phy",
+        q: "9. Three identical resistors, each of resistance R, are first connected in series and then in parallel. What is the ratio of their equivalent series resistance to their equivalent parallel resistance (Rs / Rp)?",
+        options: ["3", "1 / 9", "9", "1 / 3"],
+        ans: 2,
+        exp: "In series: Rs = R + R + R = 3R. In parallel: 1 / Rp = 1/R + 1/R + 1/R = 3/R ⇒ Rp = R / 3. The ratio Rs / Rp = (3R) / (R / 3) = 9."
+      },
+      {
+        sub: "Physics - Electricity / Resistance", badge: "badge-phy",
+        q: "10. How is the electrical resistance (R) of a uniform cylindrical metallic conductor related to its cross-sectional area (A)?",
+        options: [
+          "Directly proportional to A",
+          "Inversely proportional to A (R ∝ 1/A)",
+          "Independent of A",
+          "Inversely proportional to A²"
+        ],
+        ans: 1,
+        exp: "According to the resistance formula R = ρ(L / A), the resistance of a conductor is directly proportional to its length (L) and inversely proportional to its cross-sectional area (A). A thicker conductor provides more parallel conducting pathways, resulting in lower resistance."
+      },
+
+      // CHEMISTRY (11-20)
+      {
+        sub: "Chemistry - Stoichiometry", badge: "badge-chem",
+        q: "11. What volume of dry Hydrogen gas (H₂) is liberated at STP (273 K, 1 atm) when 1 mole of solid Zinc reacts completely with excess dilute sulphuric acid?",
+        options: ["11.2 Litres", "44.8 Litres", "22.4 Litres", "2.24 Litres"],
+        ans: 2,
+        exp: "The stoichiometric equation is Zn + H₂SO₄ → ZnSO₄ + H₂↑. 1 mole of Zn yields 1 mole of H₂ gas. By Avogadro's hypothesis, 1 mole of any ideal gas occupies 22.4 Litres at standard temperature and pressure (STP)."
+      },
+      {
+        sub: "Chemistry - Chemical Reactions", badge: "badge-chem",
+        q: "12. What type of chemical reaction is represented when quicklime reacts vigorously with water to form slaked lime: CaO(s) + H₂O(l) → Ca(OH)₂(aq) + Heat?",
+        options: [
+          "Decomposition reaction",
+          "Combination and Exothermic reaction",
+          "Displacement and Endothermic reaction",
+          "Double displacement reaction"
+        ],
+        ans: 1,
+        exp: "Two single reactants (CaO and H₂O) combine to form a single chemical product [Ca(OH)₂], classifying it as a Combination reaction. Furthermore, because a large quantity of thermal energy is liberated, it is an Exothermic reaction."
+      },
+      {
+        sub: "Chemistry - Inorganic Compounds", badge: "badge-chem",
+        q: "13. Which of the following compounds is chemically known as 'Chile Saltpetre' and used in manufacturing fertilizers and explosives?",
+        options: [
+          "Potassium Nitrate (KNO₃)",
+          "Sodium Nitrate (NaNO₃)",
+          "Ammonium Chloride (NH₄Cl)",
+          "Calcium Nitrate [Ca(NO₃)₂]"
+        ],
+        ans: 1,
+        exp: "Sodium Nitrate (NaNO₃) is commonly called Chile Saltpetre due to historical deposits found in Chile. Potassium Nitrate (KNO₃) is referred to as Indian Saltpetre or nitre."
+      },
+      {
+        sub: "Chemistry - Metallurgy", badge: "badge-chem",
+        q: "14. In the blast furnace extraction of Iron from Haematite ore (Fe₂O₃), Limestone (CaCO₃) is added primarily to act as a:",
+        options: [
+          "Reducing agent",
+          "Basic flux to remove silica gangue",
+          "Fuel for thermal combustion",
+          "Catalyst for carbon monoxide synthesis"
+        ],
+        ans: 1,
+        exp: "Limestone thermally decomposes into calcium oxide (CaCO₃ → CaO + CO₂). CaO acts as a basic flux that chemically binds with acidic silica gangue (SiO₂) to form fusible calcium silicate slag (CaO + SiO₂ → CaSiO₃), which floats on the molten iron."
+      },
+      {
+        sub: "Chemistry - Periodic Classification", badge: "badge-chem",
+        q: "15. The atomic numbers of four elements are 9, 11, 17, and 19. Which pair of elements belongs to the same group in the Modern Periodic Table?",
+        options: ["9 and 19", "11 and 17", "9 and 17", "11 and 19"],
+        ans: 2,
+        exp: "Element Z = 9 is Fluorine (electronic configuration 2, 7) and Z = 17 is Chlorine (2, 8, 7). Both possess 7 valence electrons and belong to Group 17 (Halogens). Z = 11 (Na) and Z = 19 (K) belong to Group 1."
+      },
+      {
+        sub: "Chemistry - Acids & Indicators", badge: "badge-chem",
+        q: "16. Which synthetic indicator turns pink in basic solutions (such as aqueous NaOH) and remains colorless in acidic solutions?",
+        options: ["Methyl Orange", "Litmus solution", "Phenolphthalein", "Universal Indicator"],
+        ans: 2,
+        exp: "Phenolphthalein has a pH transition range between 8.2 and 10.0. It remains colorless in acidic and neutral solutions (pH < 8.2) and turns vivid magenta-pink in basic/alkaline conditions (pH > 8.2)."
+      },
+      {
+        sub: "Chemistry - Hydrocarbons", badge: "badge-chem",
+        q: "17. How many structural isomers are possible for the saturated alkane Butane (C₄H₁₀)?",
+        options: ["2", "3", "4", "5"],
+        ans: 0,
+        exp: "Butane (C₄H₁₀) exhibits 2 chain isomers: unbranched n-butane (CH₃-CH₂-CH₂-CH₃) and branched isobutane or 2-methylpropane [CH₃-CH(CH₃)-CH₃]."
+      },
+      {
+        sub: "Chemistry - Non-Metals & Compounds", badge: "badge-chem",
+        q: "18. Which of the following gases is primarily responsible for the distinctive pungent smell of rotten eggs observed in sewer lines and sulfur hot springs?",
+        options: [
+          "Sulphur Dioxide (SO₂)",
+          "Hydrogen Sulphide (H₂S)",
+          "Nitrogen Dioxide (NO₂)",
+          "Carbon Disulphide (CS₂)"
+        ],
+        ans: 1,
+        exp: "Hydrogen Sulphide (H₂S) is a colorless, highly toxic, flammable gas with a characteristic foul rotten-egg odor produced by the anaerobic bacterial decomposition of organic sulfur compounds."
+      },
+      {
+        sub: "Chemistry - Valency & Formulas", badge: "badge-chem",
+        q: "19. An element X forms an oxide with the formula X₂O₃ which dissolves in water to form a basic solution. What is the valency of element X?",
+        options: ["Monovalent (+1)", "Divalent (+2)", "Trivalent (+3)", "Tetravalent (+4)"],
+        ans: 2,
+        exp: "Oxygen has a valency of 2 (oxidation state -2). In the neutral oxide X₂O₃: 2(x) + 3(-2) = 0 ⇒ 2x = 6 ⇒ x = +3. Hence, element X is trivalent."
+      },
+      {
+        sub: "Chemistry - Hydrated Salts", badge: "badge-chem",
+        q: "20. What is the common chemical name and formula of 'Epsom Salt' used in baths and medicine?",
+        options: [
+          "Copper Sulphate Heptahydrate (CuSO₄·7H₂O)",
+          "Ferrous Sulphate Heptahydrate (FeSO₄·7H₂O)",
+          "Magnesium Sulphate Heptahydrate (MgSO₄·7H₂O)",
+          "Calcium Sulphate Dihydrate (CaSO₄·2H₂O)"
+        ],
+        ans: 2,
+        exp: "Epsom salt is Magnesium Sulphate Heptahydrate (MgSO₄·7H₂O). FeSO₄·7H₂O is Green Vitriol, and CaSO₄·2H₂O is Gypsum."
+      },
+
+      // BIOLOGY (21-28)
+      {
+        sub: "Biology - Nervous System", badge: "badge-bio",
+        q: "21. Which cranial or spinal nerve fibers transmit electrical sensory impulses from peripheral sensory receptors towards the central nervous system (CNS)?",
+        options: [
+          "Motor (Efferent) neurons",
+          "Sensory (Afferent) neurons",
+          "Interneurons",
+          "Neuroglial cells"
+        ],
+        ans: 1,
+        exp: "Afferent (sensory) neurons convey action potentials from sensory receptors towards the brain and spinal cord. Efferent (motor) neurons conduct response impulses away from the CNS to effector muscles and glands."
+      },
+      {
+        sub: "Biology - Circulatory System", badge: "badge-bio",
+        q: "22. Which component of human blood plasma is primarily responsible for maintaining intravascular colloidal osmotic pressure and preventing fluid leakage into interstitial tissues?",
+        options: ["Fibrinogen", "Albumin", "Immunoglobulin G", "Heparin"],
+        ans: 1,
+        exp: "Serum Albumin constitutes approximately 55-60% of total plasma proteins and generates roughly 80% of plasma oncotic (colloidal osmotic) pressure, retaining water inside the vascular compartment."
+      },
+      {
+        sub: "Biology - Human Reproduction", badge: "badge-bio",
+        q: "23. In the female human reproductive system, the physiological process of fertilization (fusion of sperm and ovum) typically takes place in which anatomical region?",
+        options: [
+          "Uterine cavity (Endometrium)",
+          "Cervix",
+          "Fallopian tube (Ampulla)",
+          "Ovary"
+        ],
+        ans: 2,
+        exp: "Fertilization normally takes place in the ampullary region of the Fallopian tube (oviduct). The fertilized diploid zygote then travels into the uterine cavity for endometrial implantation."
+      },
+      {
+        sub: "Biology - Cell Biology", badge: "badge-bio",
+        q: "24. Which organelle in eukaryotic cells is rich in acid phosphatase and hydrolytic enzymes, functioning primarily in intracellular digestion and autophagy?",
+        options: ["Lysosome", "Golgi apparatus", "Endoplasmic reticulum", "Glyoxysome"],
+        ans: 0,
+        exp: "Lysosomes are vesicular organelles packed with acid hydrolases (active at acidic pH 4.5–5.0). They degrade phagocytosed pathogens and digest damaged cellular organelles through autophagy."
+      },
+      {
+        sub: "Biology - Plant Tissues", badge: "badge-bio",
+        q: "25. Which permanent plant tissue is composed of narrow, elongated dead cells with heavily lignified walls, providing rigid mechanical strength and stiffness to structures such as the husk of a coconut?",
+        options: ["Parenchyma", "Sclerenchyma", "Aerenchyma", "Collenchyma"],
+        ans: 1,
+        exp: "Sclerenchyma tissue consists of dead, thick-walled cells reinforced with lignin and devoid of protoplasts. It provides mechanical rigidity and tensile strength, notably forming the fibers of coconut husk (coir) and hard nut shells."
+      },
+      {
+        sub: "Biology - Vitamins & Health", badge: "badge-bio",
+        q: "26. Which water-soluble vitamin is chemically known as Pyridoxine and acts as an essential coenzyme in amino acid transamination metabolism?",
+        options: ["Vitamin B1", "Vitamin B2", "Vitamin B6", "Vitamin B12"],
+        ans: 2,
+        exp: "Vitamin B6 (Pyridoxine) is converted into pyridoxal phosphate (PLP), an indispensable coenzyme involved in the transamination, decarboxylation, and racemization of amino acids."
+      },
+      {
+        sub: "Biology - Blood Physiology", badge: "badge-bio",
+        q: "27. Which formed elements present in human blood lack a cell nucleus at maturity and are primarily responsible for initiating blood clot formation at the site of vascular injury?",
+        options: [
+          "Erythrocytes (RBCs)",
+          "Blood Platelets (Thrombocytes)",
+          "Monocytes",
+          "Lymphocytes"
+        ],
+        ans: 1,
+        exp: "Blood Platelets (Thrombocytes) are enucleated cytoplasmic fragments shed from bone marrow megakaryocytes. Upon vascular injury, they aggregate at the lesion and secrete thromboplastin to trigger the coagulation cascade."
+      },
+      {
+        sub: "Biology - Genetics", badge: "badge-bio",
+        q: "28. The genetic disorder Down Syndrome (Trisomy 21) in humans is characterized by which chromosomal karyotype?",
+        options: [
+          "45 autosomes + XX",
+          "47 chromosomes (an extra chromosome 21)",
+          "45 chromosomes (loss of an X chromosome)",
+          "47 chromosomes (XXY male)"
+        ],
+        ans: 1,
+        exp: "Down syndrome is an autosomal aneuploidy resulting from nondisjunction during gametogenesis, leaving the individual with 47 chromosomes (three copies of chromosome 21, karyotype 47, +21)."
+      },
+
+      // ENVIRONMENTAL SCIENCE (29-30)
+      {
+        sub: "Environmental Ecology", badge: "badge-env",
+        q: "29. In ecological food webs and trophic energy dynamics, which type of ecological pyramid is ALWAYS upright and can never be inverted in any natural terrestrial or aquatic ecosystem?",
+        options: [
+          "Pyramid of Numbers",
+          "Pyramid of Biomass",
+          "Pyramid of Energy",
+          "Pyramid of Volume"
+        ],
+        ans: 2,
+        exp: "By the second law of thermodynamics and Lindeman's 10% energy efficiency law, energy is irreversibly dissipated as metabolic heat at each trophic step. Since energy available decreases progressively from producers upward, the Pyramid of Energy is unconditionally upright."
+      },
+      {
+        sub: "Environmental Conservation", badge: "badge-env",
+        q: "30. The landmark international convention known as the 'Ramsar Convention' (1971) was signed to promote global conservation and sustainable utilization of:",
+        options: [
+          "Tropical rainforests",
+          "Polar ice caps",
+          "Wetlands",
+          "Endangered coral reefs"
+        ],
+        ans: 2,
+        exp: "The Ramsar Convention (signed in Ramsar, Iran in 1971) is an intergovernmental environmental treaty dedicated to the national and international conservation and sustainable use of designated Wetlands of International Importance."
+      }
+    ];
+
+    // Render questions dynamically
+    const container = document.getElementById("questions-wrapper");
+    questions.forEach((item, index) => {
+      const qDiv = document.createElement("div");
+      qDiv.className = "question-card";
+      qDiv.id = `q-card-${index}`;
+
+      let optionsHtml = "";
+      item.options.forEach((opt, optIndex) => {
+        optionsHtml += `
+          <label class="option-label" id="label-${index}-${optIndex}">
+            <input type="radio" name="q${index}" value="${optIndex}">
+            ${opt}
+          </label>
+        `;
+      });
+
+      qDiv.innerHTML = `
+        <div class="q-meta">
+          <span class="q-badge ${item.badge}">${item.sub}</span>
+          <span style="font-size: 0.8rem; color: #64748b;">Q${index + 1} of 30</span>
+        </div>
+        <div class="q-title">${item.q}</div>
+        <div class="options">${optionsHtml}</div>
+        <div class="explanation" id="exp-${index}">
+          <strong>Detailed Engineering Explanation:</strong><br>${item.exp}
+        </div>
+      `;
+      container.appendChild(qDiv);
+    });
+
+    function submitTest() {
+      let correct = 0;
+      let wrong = 0;
+      let skipped = 0;
+
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const correctLabel = document.getElementById(`label-${index}-${item.ans}`);
+        const expBox = document.getElementById(`exp-${index}`);
+
+        // Reveal explanation
+        expBox.style.display = "block";
+
+        // Highlight correct option
+        correctLabel.classList.add("correct-ans-highlight");
+
+        if (selected) {
+          const userAns = parseInt(selected.value);
+          if (userAns === item.ans) {
+            correct++;
+          } else {
+            wrong++;
+            const wrongLabel = document.getElementById(`label-${index}-${userAns}`);
+            wrongLabel.classList.add("wrong-ans-highlight");
+          }
+        } else {
+          skipped++;
+        }
+
+        // Lock options after submission
+        const allRadios = document.querySelectorAll(`input[name="q${index}"]`);
+        allRadios.forEach(r => r.disabled = true);
+      });
+
+      // Score calculation: +1.00 for correct, -0.33 for wrong
+      const totalScore = (correct * 1.0) - (wrong * 0.33);
+      const formattedScore = Math.max(0, totalScore).toFixed(2);
+
+      // Display Scoreboard
+      document.getElementById("final-score").innerText = `${formattedScore} / 30.00`;
+      document.getElementById("stat-correct").innerText = correct;
+      document.getElementById("stat-wrong").innerText = wrong;
+      document.getElementById("stat-skipped").innerText = skipped;
+
+      const resultBox = document.getElementById("result-box");
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: 'smooth' });
+
+      // Lock submit button
+      const submitBtn = document.getElementById("btn-submit");
+      submitBtn.disabled = true;
+      submitBtn.innerText = "Test Submitted";
+      submitBtn.style.background = "#64748b";
+    }
+  </script>
+</body>
+</html>
