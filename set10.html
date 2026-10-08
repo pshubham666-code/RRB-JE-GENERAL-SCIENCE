@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>General Science Set 10 | RRB JE CBT-1 2026 | THE EXAM ENGINEER</title>
+<meta name="description" content="General Science Set 10: 30-question mock test for RRB JE CBT-1 2026 with 1/3 negative marking and full solutions. By THE EXAM ENGINEER.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12284a;--navy2:#1d3b6a;--orange:#ff922b;--paper:#f3f5f9;--card:#fff;--line:#d8dfeb;--ink:#17233a;--muted:#5b6880;--ok:#1b7f3b;--okbg:#e6f4ea;--bad:#c92a2a;--badbg:#fdeaea;--rev:#6741d9;--r:10px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 Mukta,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+sub,sup{font-size:.72em;line-height:0}
+
+/* buttons */
+.btn{border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:11px 16px;font-weight:600;min-height:48px}
+.btn.main{background:var(--orange);border-color:var(--orange);color:#1c1300}
+.btn.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+
+/* start */
+.hero{background:var(--navy);color:#fff;padding:26px 0 30px}
+.brand{font-weight:800;color:var(--orange);text-decoration:none;letter-spacing:.02em}
+.hero h1{font-size:clamp(34px,9vw,54px);line-height:1.02;font-weight:800;margin:14px 0 10px;letter-spacing:-.01em}
+.hero p{margin:0;color:#c9d5ea;max-width:34em}
+.route{display:flex;gap:6px;margin-top:26px}
+.route div{min-width:38px}
+.route i{display:block;height:8px;border-radius:4px;background:var(--c)}
+.route b{display:block;font-size:22px;line-height:1.1;margin-top:8px}
+.route span{font-size:14px;color:#c9d5ea;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:16px 0}
+.panel h2{font-size:18px;margin:0 0 10px;color:var(--navy)}
+.terms{margin:0;padding:0;list-style:none}
+.terms li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
+.terms li:first-child{border-top:0}
+.terms b{white-space:nowrap}
+.mode{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:var(--r);margin-top:8px;cursor:pointer}
+.mode:has(input:checked){border-color:var(--navy);background:#eef3fb}
+.mode input{margin-top:6px;accent-color:var(--navy);width:18px;height:18px;flex:none}
+.mode b{display:block}
+.mode span span{color:var(--muted);font-size:15.5px}
+#startBtn{width:100%;font-size:19px;margin:4px 0 14px}
+.foot{color:var(--muted);font-size:15px;text-align:center;padding:6px 0 34px}
+.foot a{color:var(--navy);font-weight:600}
+
+/* test */
+.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;padding:10px 0 12px}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.toprow b{font-weight:800;white-space:nowrap}
+.clock{font-variant-numeric:tabular-nums;font-weight:800;font-size:19px;background:var(--navy2);border-radius:8px;padding:2px 12px}
+.clock.low{background:var(--bad)}
+.allq{background:transparent;border:1px solid #5d76a1;color:#fff;border-radius:8px;padding:3px 12px;font-weight:600;font-size:15.5px;min-height:34px;white-space:nowrap}
+.line{display:flex;gap:8px;margin-top:10px}
+.seg{min-width:38px}
+.seg button.name{display:block;width:100%;background:none;border:0;padding:0 0 4px;text-align:left;color:#c9d5ea;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.on button.name{color:#fff}
+.ticks{display:flex;gap:2px}
+.ticks i{flex:1;height:9px;border-radius:2px;background:#3a5383}
+.ticks i.done{background:var(--c)}
+.ticks i.rev{background:#b197fc}
+.ticks i.cur{box-shadow:0 0 0 2px #fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0 110px}
+.qmeta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;margin-bottom:8px}
+.chip{background:var(--c);color:#fff;border-radius:6px;padding:0 9px;font-weight:600}
+.stem{font-size:18.5px;line-height:1.45;font-weight:600}
+.stem .st{font-weight:400;margin:8px 0;padding:0;list-style:none}
+.stem .st li{padding:2px 0 2px 2.1em;text-indent:-2.1em}
+.stem table{border-collapse:collapse;width:100%;margin:10px 0;font-weight:400;font-size:16.5px}
+.stem th,.stem td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.stem th{background:#eef3fb;color:var(--navy)}
+.opts{display:grid;gap:9px;margin-top:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:11px 12px;min-height:50px;color:var(--ink)}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:15px;line-height:1}
+.opt.sel{border-color:var(--navy);background:#eef3fb}
+.opt.sel b{background:var(--navy);border-color:var(--navy);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--okbg)}
+.opt.right b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.wrong b{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default;opacity:1}
+.clear{background:none;border:0;color:var(--navy);text-decoration:underline;padding:10px 0 0;font-size:15.5px}
+.sol{margin-top:14px;border-left:4px solid var(--orange);background:#fff7ec;border-radius:0 var(--r) var(--r) 0;padding:10px 12px;font-size:16.5px}
+.sol b.h{color:var(--navy)}
+.sol .tip{margin-top:6px;color:#7a4a00}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
+.bar .wrap{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:8px}
+.bar .btn{padding:8px 6px;font-size:15.5px;line-height:1.2}
+.btn.marked{border-color:var(--rev);color:var(--rev);background:#f3effe}
+
+/* sheet + dialog */
+.shade{position:fixed;inset:0;background:rgba(18,40,74,.55);z-index:10;display:grid;align-items:end}
+.shade.mid{align-items:center;padding:16px}
+.sheet{background:#fff;border-radius:16px 16px 0 0;padding:16px;max-height:86vh;overflow:auto;width:100%;max-width:760px;margin:0 auto}
+.shade.mid .sheet{border-radius:16px;max-width:420px}
+.sheet h2{margin:0 0 4px;font-size:20px;color:var(--navy)}
+.sheet p{margin:0 0 12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 12px}
+.grid h3{grid-column:1/-1;margin:8px 0 0;font-size:15px;color:var(--muted);font-weight:600}
+.grid button{height:44px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:600}
+.grid button.done{background:var(--navy);border-color:var(--navy);color:#fff}
+.grid button.rev{border-color:var(--rev);box-shadow:inset 0 -5px 0 var(--rev)}
+.grid button.cur{outline:3px solid var(--orange);outline-offset:1px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted);margin-bottom:12px}
+.key i{display:inline-block;width:14px;height:14px;border-radius:4px;border:1.5px solid var(--line);vertical-align:-2px;margin-right:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* result */
+.score{background:var(--navy);color:#fff;padding:24px 0 26px}
+.score p{margin:0;color:#c9d5ea}
+.score .big{font-size:clamp(52px,16vw,84px);font-weight:800;line-height:1;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.score .big small{font-size:.32em;font-weight:600;color:#c9d5ea}
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.tally div{background:var(--navy2);border-radius:var(--r);padding:8px 10px}
+.tally b{display:block;font-size:24px;line-height:1.15}
+.tally span{font-size:14px;color:#c9d5ea}
+.secrow{display:grid;grid-template-columns:104px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.secrow:first-of-type{border-top:0}
+.meter{height:10px;border-radius:5px;background:#e6ebf3;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--c)}
+.secrow b{font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.filters button{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:4px 14px;font-weight:600;font-size:15.5px;min-height:38px}
+.filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.rq{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.rq .stem{font-size:17px}
+.rq .opt{min-height:0;padding:7px 10px;font-size:16px}
+.rq .opt b{width:24px;height:24px;font-size:13.5px}
+.status{margin-left:auto;font-weight:600;border-radius:6px;padding:0 9px}
+.status.c{background:var(--okbg);color:var(--ok)}
+.status.w{background:var(--badbg);color:var(--bad)}
+.status.s{background:#e9edf4;color:var(--muted)}
+.end{display:grid;gap:8px;margin:18px 0 14px}
+.end a{text-align:center;text-decoration:none;display:block}
+h2.sec{font-size:20px;color:var(--navy);margin:22px 0 4px}
+
+@media (min-width:620px){
+  .bar .btn{font-size:17px}
+  .end{grid-template-columns:1fr 1fr}
+  .tally{grid-template-columns:repeat(5,1fr)}
+  .grid{grid-template-columns:repeat(10,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){.opt,.btn{transition:background .12s,border-color .12s}}
+@media print{.top,.bar,.filters,.end{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ Start ============ -->
+<main id="start">
+  <div class="hero"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <h1>General Science<br>Set 10</h1>
+    <p>A 30-question mock for RRB JE CBT-1 2026, framed on the topics asked in the RRB Technician shifts of 6 and 7 October 2026.</p>
+    <div class="route" id="route"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="panel">
+      <h2>Marking and time</h2>
+      <ul class="terms">
+        <li><span>Correct answer</span><b>+1</b></li>
+        <li><span>Wrong answer</span><b>&minus;1/3</b></li>
+        <li><span>Left blank</span><b>0</b></li>
+        <li><span>Time in exam mode</span><b id="tMin">25 minutes</b></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>How do you want to attempt?</h2>
+      <label class="mode"><input type="radio" name="mode" value="exam" checked>
+        <span><b>Exam mode</b><span id="mExam">Timer runs. Answers and solutions open after you submit.</span></span></label>
+      <label class="mode"><input type="radio" name="mode" value="practice">
+        <span><b>Practice mode</b><span>No timer. The answer and solution open as soon as you pick an option.</span></span></label>
+    </div>
+    <button class="btn main" id="startBtn">Start test</button>
+    <p class="foot">By THE EXAM ENGINEER (SSC JE AIR 14, RRB JE 2025 DMS)<br>
+      <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join on Telegram: t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<!-- ============ Test ============ -->
+<main id="test" hidden>
+  <div class="top"><div class="wrap">
+    <div class="toprow">
+      <b>GS Set 10</b>
+      <span class="clock" id="clock" role="timer">25:00</span>
+      <button class="allq" id="allBtn">All questions</button>
+    </div>
+    <div class="line" id="line"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="qmeta" id="qmeta"></div>
+      <div class="stem" id="stem"></div>
+      <div class="opts" id="opts"></div>
+      <button class="clear" id="clear">Clear my answer</button>
+      <div class="sol" id="sol" hidden></div>
+    </div>
+  </div>
+  <div class="bar"><div class="wrap">
+    <button class="btn" id="prev">Previous</button>
+    <button class="btn" id="markBtn" aria-pressed="false">Mark for review</button>
+    <button class="btn dark" id="next">Next</button>
+  </div></div>
+</main>
+
+<!-- question sheet -->
+<div class="shade" id="pal" hidden>
+  <div class="sheet" role="dialog" aria-label="All questions">
+    <h2>All questions</h2>
+    <div class="key"><span><i style="background:var(--navy);border-color:var(--navy)"></i>Answered</span><span><i></i>Not answered</span><span><i style="border-color:var(--rev);box-shadow:inset 0 -4px 0 var(--rev)"></i>Marked for review</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="two">
+      <button class="btn" id="palClose">Back to question</button>
+      <button class="btn main" id="palSubmit">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- submit dialog -->
+<div class="shade mid" id="dlg" hidden>
+  <div class="sheet" role="alertdialog" aria-labelledby="dlgT">
+    <h2 id="dlgT">Submit the test?</h2>
+    <p id="dlgP"></p>
+    <div class="two">
+      <button class="btn" id="dlgNo">Keep going</button>
+      <button class="btn main" id="dlgYes">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Result ============ -->
+<main id="result" hidden>
+  <div class="score"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <p style="margin-top:12px" id="rNote">General Science Set 10: your score</p>
+    <div class="big"><span id="rScore">0</span> <small>out of 30</small></div>
+    <p id="rLine"></p>
+    <div class="tally" id="tally"></div>
+  </div></div>
+  <div class="wrap">
+    <h2 class="sec">Subject-wise</h2>
+    <div class="panel" id="secs" style="margin-top:8px"></div>
+    <h2 class="sec">Answers and solutions</h2>
+    <div class="filters" id="filters"></div>
+    <div id="review"></div>
+    <div class="end">
+      <button class="btn" id="again">Take the test again</button>
+      <a class="btn main" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join THE EXAM ENGINEER on Telegram</a>
+    </div>
+    <p class="foot">More sets and notes: <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<script>
+/* ---------- settings: change the timer or marking here ---------- */
+const CFG = { minutes: 25, right: 1, wrong: 1/3 };
+
+const SEC = {
+  P: ['Physics',     '#4dabf7'],
+  C: ['Chemistry',   '#ff922b'],
+  B: ['Biology',     '#51cf66'],
+  E: ['Environment', '#22b8cf']
+};
+const DARK = { P:'#1864ab', C:'#c2540a', B:'#2b8a3e', E:'#0b7285' };
+
+/* helpers for statement lists and match tables */
+const st = a => '<ul class="st">' + a.map((x,i)=>'<li>'+['I','II','III','IV'][i]+'. &nbsp;'+x+'</li>').join('') + '</ul>';
+const mt = (h1,l,h2,r) => '<table><tr><th>'+h1+'</th><th>'+h2+'</th></tr>' +
+  l.map((x,i)=>'<tr><td>'+'ABCD'[i]+'. '+x+'</td><td>'+(i+1)+'. '+r[i]+'</td></tr>').join('') + '</table>';
+
+/* ---------- questions: s = subject, a = index of correct option (0 = A) ---------- */
+const Q = [
+/* ===== Physics (10) ===== */
+{s:'P', q:'A 4 &Omega; resistor and a 12 &Omega; resistor are joined in parallel, and this pair is connected in series with a 3 &Omega; resistor across a 12 V battery. What is the current through the 12 &Omega; resistor?',
+ o:['0.5 A','1 A','1.5 A','2 A'], a:0,
+ e:'4 &Omega; and 12 &Omega; in parallel = (4 &times; 12)/(4 + 12) = 3 &Omega;. Total resistance = 3 + 3 = 6 &Omega;, so the battery current = 12/6 = 2 A. Voltage across the parallel pair = 2 &times; 3 = 6 V. Current in 12 &Omega; = 6/12 = 0.5 A.',
+ t:'In a parallel pair the bigger resistor carries the smaller current. Here the 4 &Omega; branch takes 1.5 A.'},
+
+{s:'P', q:'A train starts from rest and speeds up uniformly to 30 m/s in 10 s. It runs at this velocity for the next 20 s and then brakes uniformly to rest in 5 s. What total distance does it cover?',
+ o:['750 m','825 m','900 m','1050 m'], a:1,
+ e:'Distance = area under the velocity&ndash;time graph. The graph is a trapezium with parallel sides 35 s and 20 s and height 30 m/s: &frac12; &times; (35 + 20) &times; 30 = 825 m. Part by part: 150 + 600 + 75 = 825 m.',
+ t:'Area under a v&ndash;t graph gives distance; its slope gives acceleration.'},
+
+{s:'P', q:'A satellite moves around the Earth in a circular orbit at constant speed. Consider these statements:' +
+ st(['Its speed stays constant.','Its velocity stays constant.','Its acceleration points towards the centre of the orbit.','The work done on it by gravity in one revolution is zero.']) + 'Which statements are correct?',
+ o:['I and II only','I, II and III only','I, III and IV only','I, II, III and IV'], a:2,
+ e:'In uniform circular motion the speed is constant, but the direction of motion changes at every point, so the velocity changes. This needs an acceleration towards the centre (centripetal). The force is always at 90&deg; to the displacement, so the work done is zero.',
+ t:'Constant speed does not mean constant velocity. Uniform circular motion is an accelerated motion.'},
+
+{s:'P', q:'A pump lifts 300 kg of water to a tank 12 m above the ground in 1 minute. Taking g = 10 m/s<sup>2</sup>, the power delivered by the pump is',
+ o:['36 W','60 W','360 W','600 W'], a:3,
+ e:'Work = mgh = 300 &times; 10 &times; 12 = 36,000 J. Power = work/time = 36,000/60 = 600 W.',
+ t:'Convert the time to seconds first. The same work done in less time means more power.'},
+
+{s:'P', q:'An object is placed 30 cm in front of a concave mirror whose radius of curvature is 40 cm. The image is formed',
+ o:['60 cm in front of the mirror; real, inverted and enlarged','60 cm behind the mirror; virtual, erect and enlarged','12 cm in front of the mirror; real, inverted and diminished','12 cm behind the mirror; virtual, erect and diminished'], a:0,
+ e:'f = R/2 = 20 cm. With u = &minus;30 cm and f = &minus;20 cm: 1/v = 1/f &minus; 1/u = &minus;1/20 + 1/30 = &minus;1/60, so v = &minus;60 cm (in front of the mirror). Magnification = &minus;v/u = &minus;2: real, inverted, twice the size.',
+ t:'Object between F and C of a concave mirror gives an image beyond C. You can pick the answer without calculating.'},
+
+{s:'P', q:'A student can see objects clearly only up to a distance of 2 m. Which lens will correct this defect, and of what power?',
+ o:['Convex lens, +0.5 D','Concave lens, &minus;0.5 D','Concave lens, &minus;2 D','Convex lens, +2 D'], a:1,
+ e:'Distant objects are blurred, so the defect is myopia and a concave lens is needed. Its focal length equals the far point: f = &minus;2 m. Power = 1/f = 1/(&minus;2) = &minus;0.5 D.',
+ t:'Power = 1/f only when f is in metres. &minus;2 D would mean f = 0.5 m. Hypermetropia needs a convex lens.'},
+
+{s:'P', q:'A circular loop carries a steady current. If the current is doubled and the radius of the loop is halved, the magnetic field at the centre of the loop becomes',
+ o:['half','the same as before','two times','four times'], a:3,
+ e:'Field at the centre of a circular loop: B = &mu;<sub>0</sub>I/2r, so B is proportional to I/r. New field = (2I)/(r/2) = 4 times the old value.',
+ t:'More current, more turns or a smaller radius all make the field at the centre stronger.'},
+
+{s:'P', q:'A current of 1.6 A flows through a wire for 10 s. About how many electrons pass through any cross-section of the wire? (charge on an electron = 1.6 &times; 10<sup>&minus;19</sup> C)',
+ o:['10<sup>18</sup>','10<sup>19</sup>','10<sup>20</sup>','1.6 &times; 10<sup>20</sup>'], a:2,
+ e:'Charge Q = I &times; t = 1.6 &times; 10 = 16 C. Number of electrons n = Q/e = 16/(1.6 &times; 10<sup>&minus;19</sup>) = 10<sup>20</sup>.',
+ t:'1 coulomb is the charge of about 6.25 &times; 10<sup>18</sup> electrons.'},
+
+{s:'P', q:'The reverberation in a large hall is too high. Which of these changes will <u>not</u> help to reduce it?',
+ o:['Finishing the walls with hard, polished tiles','Hanging heavy curtains on the windows','Fixing compressed fibreboard on the ceiling','Using cushioned seats'], a:0,
+ e:'Reverberation is the persistence of sound caused by repeated reflections. Soft and porous materials (curtains, fibreboard, rough plaster, cushioned seats) absorb sound and reduce it. Hard, smooth surfaces reflect sound well and make it worse.',
+ t:'A distinct echo needs a gap of at least 0.1 s, that is a reflector at least about 17 m away.'},
+
+{s:'P', q:'Two horizontal forces of 15 N and 9 N act in opposite directions on a 3 kg block lying on a smooth floor. The acceleration of the block is',
+ o:['8 m/s<sup>2</sup> along the 15 N force','2 m/s<sup>2</sup> along the 15 N force','2 m/s<sup>2</sup> along the 9 N force','zero, because the forces balance each other'], a:1,
+ e:'Net force = 15 &minus; 9 = 6 N in the direction of the larger force. a = F/m = 6/3 = 2 m/s<sup>2</sup>.',
+ t:'Forces are balanced only when they are equal and opposite. Then the net force is zero and the state of motion does not change.'},
+
+/* ===== Chemistry (10) ===== */
+{s:'C', q:'When carbon dioxide is passed through lime water, it turns milky. On passing excess carbon dioxide, the milkiness disappears. The milkiness disappears because of the formation of',
+ o:['calcium oxide','calcium hydroxide','calcium hydrogencarbonate','calcium carbide'], a:2,
+ e:'Ca(OH)<sub>2</sub> + CO<sub>2</sub> &rarr; CaCO<sub>3</sub> (insoluble, milky) + H<sub>2</sub>O. With excess gas: CaCO<sub>3</sub> + H<sub>2</sub>O + CO<sub>2</sub> &rarr; Ca(HCO<sub>3</sub>)<sub>2</sub>, which is soluble, so the solution clears.',
+ t:'Acid + metal carbonate or hydrogencarbonate gives salt + water + CO<sub>2</sub>. The lime water test identifies CO<sub>2</sub>.'},
+
+{s:'C', q:'Which of these metals does not react with cold or hot water, but reacts with steam?',
+ o:['Potassium','Calcium','Magnesium','Iron'], a:3,
+ e:'Potassium and sodium react violently with cold water, calcium reacts with cold water less violently, and magnesium reacts with hot water. Aluminium, zinc and iron react only with steam: 3Fe + 4H<sub>2</sub>O &rarr; Fe<sub>3</sub>O<sub>4</sub> + 4H<sub>2</sub>.',
+ t:'Lead, copper, silver and gold do not react with water at all.'},
+
+{s:'C', q:'An iron nail is kept in copper sulphate solution for about 20 minutes. Which option gives the correct observation and the type of reaction?',
+ o:['The blue solution turns pale green and a reddish-brown coating forms on the nail; displacement reaction','The blue solution turns colourless and a white precipitate settles; double displacement reaction','The solution stays blue and the nail dissolves completely; combination reaction','The blue solution turns pale green and a gas is given off; decomposition reaction'], a:0,
+ e:'Iron is more reactive than copper, so it pushes copper out of the solution: Fe + CuSO<sub>4</sub> &rarr; FeSO<sub>4</sub> + Cu. Blue CuSO<sub>4</sub> changes to pale green FeSO<sub>4</sub>, and copper deposits on the nail.',
+ t:'A more reactive metal displaces a less reactive metal from its salt solution, never the other way round.'},
+
+{s:'C', q:'Match the mixture with the method used to separate it:' +
+ mt('Mixture',['Cream from milk','Camphor from common salt','Dyes in black ink','Kerosene from water'],'Method',['Sublimation','Separating funnel','Centrifugation','Chromatography']),
+ o:['A-3, B-4, C-1, D-2','A-3, B-1, C-4, D-2','A-2, B-1, C-4, D-3','A-4, B-3, C-2, D-1'], a:1,
+ e:'Cream is lighter and separates on spinning (centrifugation). Camphor changes directly to vapour on heating (sublimation). Dyes move at different speeds on paper (chromatography). Kerosene and water do not mix and form two layers (separating funnel).',
+ t:'Fine suspended particles in muddy water are settled by adding alum (coagulation), then removed by sedimentation and filtration.'},
+
+{s:'C', q:'Packets of potato chips are flushed with a gas before sealing so that the oil in the chips does not turn rancid. Which gas is used?',
+ o:['Oxygen','Hydrogen','Nitrogen','Chlorine'], a:2,
+ e:'Rancidity is the oxidation of fats and oils, which changes their smell and taste. Nitrogen is unreactive and keeps oxygen away from the food.',
+ t:'Other ways to slow rancidity: adding antioxidants, airtight containers, and storing in a refrigerator.'},
+
+{s:'C', q:'A galvanised iron sheet does not rust even where its zinc coating gets scratched. This is because',
+ o:['zinc is less reactive than iron, so it never reacts','zinc and iron form a rust-proof alloy at the scratch','zinc does not react with air or moisture at all','zinc is more reactive than iron, so it gets oxidised in place of iron'], a:3,
+ e:'Zinc lies above iron in the reactivity series. It loses electrons more easily, so it corrodes first and the iron stays protected (sacrificial protection).',
+ t:'Zinc or magnesium blocks fixed on ship hulls and buried pipelines work in the same way (cathodic protection).'},
+
+{s:'C', q:'An ion X<sup>2+</sup> has 10 electrons and 12 neutrons. The atomic number and mass number of X are',
+ o:['10 and 22','12 and 24','8 and 20','12 and 22'], a:1,
+ e:'A 2+ ion has lost two electrons, so the neutral atom has 10 + 2 = 12 electrons = 12 protons. Atomic number = 12 (magnesium). Mass number = protons + neutrons = 12 + 12 = 24.',
+ t:'Adding or removing neutrons gives an isotope of the same element. Changing the number of protons changes the element.'},
+
+{s:'C', q:'How many atoms are there in one formula unit of aluminium sulphate?',
+ o:['17','15','14','9'], a:0,
+ e:'Al<sup>3+</sup> and SO<sub>4</sub><sup>2&minus;</sup> criss-cross to give Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>. Atoms: 2 Al + 3 S + 12 O = 17.',
+ t:'Write the valencies and cross them over. The subscript outside a bracket multiplies everything inside it.'},
+
+{s:'C', q:'How many hydrogen atoms are present in 9 g of water? (H = 1 u, O = 16 u, Avogadro number = 6.022 &times; 10<sup>23</sup>)',
+ o:['3.011 &times; 10<sup>23</sup>','6.022 &times; 10<sup>23</sup>','9.033 &times; 10<sup>23</sup>','1.204 &times; 10<sup>24</sup>'], a:1,
+ e:'Molar mass of H<sub>2</sub>O = 18 g, so 9 g = 0.5 mol = 3.011 &times; 10<sup>23</sup> molecules. Each molecule has 2 hydrogen atoms: 2 &times; 3.011 &times; 10<sup>23</sup> = 6.022 &times; 10<sup>23</sup> atoms.',
+ t:'3.011 &times; 10<sup>23</sup> is the number of molecules. Read whether the question asks for molecules or atoms.'},
+
+{s:'C', q:'The aqueous solution of which of these salts has a pH greater than 7?',
+ o:['Sodium carbonate','Sodium chloride','Ammonium chloride','Potassium nitrate'], a:0,
+ e:'Sodium carbonate is the salt of a strong base (NaOH) and a weak acid (H<sub>2</sub>CO<sub>3</sub>), so its solution is basic. NaCl and KNO<sub>3</sub> (strong acid + strong base) are neutral. NH<sub>4</sub>Cl (strong acid + weak base) is acidic.',
+ t:'The stronger parent decides: strong base + weak acid gives a basic salt, strong acid + weak base gives an acidic salt.'},
+
+/* ===== Biology (8) ===== */
+{s:'B', q:'A cell with 46 chromosomes divides by meiosis. How many daughter cells are formed, and how many chromosomes does each one have?',
+ o:['2 cells with 46 chromosomes each','4 cells with 46 chromosomes each','2 cells with 23 chromosomes each','4 cells with 23 chromosomes each'], a:3,
+ e:'Meiosis is the reduction division that forms gametes. One parent cell gives four daughter cells, each with half the chromosome number (haploid): 46/2 = 23.',
+ t:'Mitosis: 2 identical cells, same chromosome number, for growth and repair. Meiosis: 4 different cells, half the number, for gametes.'},
+
+{s:'B', q:'Bile has no digestive enzyme, yet it is essential for digestion in the small intestine. This is because bile',
+ o:['converts proteins into amino acids','kills the bacteria that enter with food','emulsifies fats and makes the acidic food alkaline','converts starch into maltose'], a:2,
+ e:'Bile salts break large fat globules into small droplets (emulsification) so that lipase can act on them. Bile also makes the acidic food coming from the stomach alkaline, which the pancreatic enzymes need.',
+ t:'Bile is made in the liver and stored in the gall bladder. Killing bacteria and activating pepsin is the job of HCl in the stomach.'},
+
+{s:'B', q:'Match the organism with its method of asexual reproduction:' +
+ mt('Organism',['<i>Plasmodium</i>','<i>Planaria</i>','<i>Rhizopus</i>','<i>Bryophyllum</i>'],'Method',['Regeneration','Buds on leaf margins','Multiple fission','Spore formation']),
+ o:['A-3, B-1, C-4, D-2','A-1, B-3, C-4, D-2','A-3, B-4, C-1, D-2','A-4, B-1, C-2, D-3'], a:0,
+ e:'<i>Plasmodium</i> (malarial parasite) divides into many cells at once. <i>Planaria</i> regrows from cut pieces. <i>Rhizopus</i> (bread mould) forms spores in sporangia. <i>Bryophyllum</i> grows new plants from buds on its leaf margins.',
+ t:'Budding: Hydra and yeast. Binary fission: Amoeba, Leishmania and bacteria. Fragmentation: Spirogyra.'},
+
+{s:'B', q:'The cell wall of bacteria is mainly made of',
+ o:['cellulose','peptidoglycan','chitin','pectin'], a:1,
+ e:'Bacterial cell walls are made of peptidoglycan (murein). Plant cell walls are made of cellulose, and fungal cell walls of chitin.',
+ t:'Yeast is a single-celled fungus, so its cell wall has chitin.'},
+
+{s:'B', q:'Consider these statements about the human heart:' +
+ st(['The pulmonary artery carries deoxygenated blood.','The left ventricle has the thickest wall of the four chambers.','The right atrium receives oxygenated blood from the lungs.','Valves stop the blood from flowing backwards.']) + 'Which statements are correct?',
+ o:['I and III only','II and IV only','I, II and IV only','I, II, III and IV'], a:2,
+ e:'Oxygenated blood from the lungs enters the left atrium through the pulmonary veins, so statement III is wrong. The right atrium receives deoxygenated blood from the body. The left ventricle pumps blood to the whole body, so its wall is the thickest.',
+ t:'Right side of the heart handles deoxygenated blood, left side handles oxygenated blood. If the left ventricle fails, blood backs up into the lungs.'},
+
+{s:'B', q:'The oxygen released by green plants during photosynthesis comes from',
+ o:['carbon dioxide','glucose','chlorophyll','water'], a:3,
+ e:'Light energy absorbed by chlorophyll splits water molecules into hydrogen and oxygen (photolysis of water). The oxygen is released, and the hydrogen is used to reduce CO<sub>2</sub> to carbohydrate.',
+ t:'Site of photosynthesis: chloroplast. Gases enter and leave through stomata: CO<sub>2</sub> in, O<sub>2</sub> out.'},
+
+{s:'B', q:'During hard exercise, our muscle cells run short of oxygen. Pyruvate in these cells is then converted into',
+ o:['lactic acid, with the release of a little energy','ethanol and carbon dioxide','carbon dioxide and water, with the release of a lot of energy','glucose'], a:0,
+ e:'With too little oxygen, muscle cells break pyruvate down to lactic acid (a 3-carbon molecule) and release little energy. The build-up of lactic acid causes cramps.',
+ t:'Yeast without oxygen: ethanol + CO<sub>2</sub>. With oxygen, in mitochondria: CO<sub>2</sub> + water and the most energy.'},
+
+{s:'B', q:'How does a nerve impulse cross the synapse between two neurons?',
+ o:['As an electric spark that jumps across the gap','Through chemicals released at the end of the axon','Through blood flowing between the two neurons','Through direct contact of the two cell bodies'], a:1,
+ e:'Inside a neuron the impulse travels electrically: dendrite &rarr; cell body &rarr; axon &rarr; nerve ending. At the end of the axon it sets off the release of chemicals, which cross the gap and start a similar impulse in the dendrite of the next neuron.',
+ t:'Dendrites receive, the axon transmits.'},
+
+/* ===== Environment (2) ===== */
+{s:'E', q:'In the food chain grass &rarr; grasshopper &rarr; frog &rarr; snake, the grass traps 20,000 J of energy. By the 10% law, how much energy is available to the frog?',
+ o:['2,000 J','20 J','200 J','2 J'], a:2,
+ e:'Only about 10% of the energy passes to the next trophic level. Grass 20,000 J &rarr; grasshopper 2,000 J &rarr; frog 200 J &rarr; snake 20 J.',
+ t:'Producers make their own food from sunlight. Energy flow in a food chain is one-way and falls at every step.'},
+
+{s:'E', q:'Which of these statements about ozone is <u>not</u> correct?',
+ o:['In the upper atmosphere it is formed from oxygen by the action of ultraviolet rays','Chlorofluorocarbons (CFCs) damage the ozone layer','The Montreal Protocol of 1987 deals with ozone-depleting substances','At ground level it is harmless and good for breathing'], a:3,
+ e:'Ozone (O<sub>3</sub>) in the stratosphere shields us from ultraviolet radiation, but at ground level it is a poisonous gas and an air pollutant. CFCs from old refrigerants and aerosols break it down, which led to the Montreal Protocol.',
+ t:'UV splits O<sub>2</sub> into free oxygen atoms; an atom then joins O<sub>2</sub> to form O<sub>3</sub>.'}
+];
+
+/* ---------- app ---------- */
+const $ = id => document.getElementById(id), L = 'ABCD', N = Q.length;
+const ORDER = ['P','C','B','E'];
+const first = k => Q.findIndex(q => q.s === k);
+const count = k => Q.filter(q => q.s === k).length;
+const SHORT = k => k === 'E' ? 'Env.' : SEC[k][0];
+let S = null;
+
+function show(v){ ['start','test','result'].forEach(x => $(x).hidden = x !== v); window.scrollTo(0,0); }
+function fmt(s){ s = Math.max(0, s); return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+function num(x){ return (Math.round(x*100)/100).toFixed(2).replace(/\.00$/,''); }
+
+/* start screen */
+$('route').innerHTML = ORDER.map(k => '<div style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><i></i><b>'+count(k)+'</b><span>'+SHORT(k)+'</span></div>').join('');
+$('tMin').textContent = CFG.minutes + ' minutes';
+$('startBtn').onclick = begin;
+
+function begin(){
+  S = { mode: document.querySelector('input[name=mode]:checked').value, cur: 0,
+        ans: Q.map(() => -1), mark: Q.map(() => false), left: CFG.minutes*60, t0: Date.now(), timer: null, filter: 'all' };
+  $('line').innerHTML = ORDER.map(k => '<div class="seg" data-s="'+k+'" style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><button class="name" data-go="'+first(k)+'" aria-label="'+SEC[k][0]+'">'+SHORT(k)+'</button><div class="ticks">' +
+    Q.map((q,i) => q.s === k ? '<i data-t="'+i+'"></i>' : '').join('') + '</div></div>').join('');
+  $('grid').innerHTML = ORDER.map(k => '<h3>'+SEC[k][0]+'</h3>' + Q.map((q,i) => q.s === k ? '<button data-go="'+i+'">'+(i+1)+'</button>' : '').join('')).join('');
+  const exam = S.mode === 'exam';
+  $('clock').hidden = !exam;
+  $('clock').className = 'clock';
+  $('clock').textContent = fmt(S.left);
+  if (exam) S.timer = setInterval(tick, 1000);
+  show('test'); render();
+}
+function tick(){
+  S.left--;
+  $('clock').textContent = fmt(S.left);
+  if (S.left <= 120) $('clock').classList.add('low');
+  if (S.left <= 0) finish(true);
+}
+function solution(q){
+  return '<b class="h">Answer: ' + L[q.a] + '.</b> ' + q.e + (q.t ? '<div class="tip"><b>Remember:</b> ' + q.t + '</div>' : '');
+}
+function render(){
+  const i = S.cur, q = Q[i], locked = S.mode === 'practice' && S.ans[i] > -1;
+  $('qmeta').innerHTML = '<span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+' of '+N+'</span>';
+  $('stem').innerHTML = q.q;
+  $('opts').innerHTML = q.o.map((o,k) => {
+    let c = 'opt';
+    if (locked) c += k === q.a ? ' right' : (k === S.ans[i] ? ' wrong' : '');
+    else if (k === S.ans[i]) c += ' sel';
+    return '<button class="'+c+'" data-k="'+k+'"'+(locked?' disabled':'')+'><b>'+L[k]+'</b><span>'+o+'</span></button>';
+  }).join('');
+  $('sol').hidden = !locked;
+  $('sol').innerHTML = locked ? solution(q) : '';
+  $('clear').hidden = S.mode !== 'exam' || S.ans[i] < 0;
+  $('prev').disabled = i === 0;
+  $('next').textContent = i === N-1 ? 'Submit test' : 'Next';
+  $('markBtn').textContent = S.mark[i] ? 'Marked for review' : 'Mark for review';
+  $('markBtn').classList.toggle('marked', S.mark[i]);
+  $('markBtn').setAttribute('aria-pressed', S.mark[i]);
+  paint();
+}
+function paint(){
+  const cls = j => (S.ans[j] > -1 ? ' done' : '') + (S.mark[j] ? ' rev' : '') + (j === S.cur ? ' cur' : '');
+  document.querySelectorAll('#line i[data-t]').forEach(el => el.className = cls(+el.dataset.t).trim());
+  document.querySelectorAll('#grid button').forEach(el => el.className = cls(+el.dataset.go).trim());
+  document.querySelectorAll('#line .seg').forEach(el => el.classList.toggle('on', el.dataset.s === Q[S.cur].s));
+}
+function go(i){ S.cur = Math.max(0, Math.min(N-1, i)); render(); window.scrollTo(0,0); }
+
+$('opts').onclick = e => {
+  const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+  S.ans[S.cur] = +b.dataset.k; render();
+};
+$('clear').onclick = () => { S.ans[S.cur] = -1; render(); };
+$('prev').onclick = () => go(S.cur - 1);
+$('next').onclick = () => S.cur === N-1 ? ask() : go(S.cur + 1);
+$('markBtn').onclick = () => { S.mark[S.cur] = !S.mark[S.cur]; render(); };
+$('line').onclick = e => { const b = e.target.closest('[data-go]'); if (b) go(+b.dataset.go); };
+$('allBtn').onclick = () => $('pal').hidden = false;
+$('palClose').onclick = () => $('pal').hidden = true;
+$('pal').onclick = e => { if (e.target === $('pal')) $('pal').hidden = true; };
+$('grid').onclick = e => { const b = e.target.closest('[data-go]'); if (b) { $('pal').hidden = true; go(+b.dataset.go); } };
+$('palSubmit').onclick = () => { $('pal').hidden = true; ask(); };
+
+function ask(){
+  const done = S.ans.filter(a => a > -1).length, rev = S.mark.filter(Boolean).length;
+  $('dlgP').textContent = 'Answered ' + done + ' of ' + N + '. Not answered: ' + (N - done) + '.' + (rev ? ' Marked for review: ' + rev + '.' : '') +
+    (S.mode === 'exam' ? ' Time left: ' + fmt(S.left) + '.' : '');
+  $('dlg').hidden = false;
+}
+$('dlgNo').onclick = () => $('dlg').hidden = true;
+$('dlgYes').onclick = () => finish(false);
+
+/* result */
+function finish(auto){
+  clearInterval(S.timer);
+  $('dlg').hidden = true; $('pal').hidden = true;
+  const used = S.mode === 'exam' ? CFG.minutes*60 - Math.max(0, S.left) : Math.round((Date.now() - S.t0)/1000);
+  let c = 0, w = 0; const by = {};
+  ORDER.forEach(k => by[k] = { c:0, w:0, n:count(k) });
+  Q.forEach((q,i) => { if (S.ans[i] < 0) return; if (S.ans[i] === q.a) { c++; by[q.s].c++; } else { w++; by[q.s].w++; } });
+  const sk = N - c - w, score = c*CFG.right - w*CFG.wrong;
+  $('rNote').textContent = auto ? 'Time ended, so the test was submitted. Your score' : 'General Science Set 10: your score';
+  $('rScore').textContent = num(score);
+  $('rLine').innerHTML = c + ' correct gives +' + num(c*CFG.right) + '. ' + w + ' wrong costs &minus;' + num(w*CFG.wrong) + '.';
+  $('tally').innerHTML = [[c,'Correct'],[w,'Wrong'],[sk,'Skipped'],[(c+w ? Math.round(100*c/(c+w)) : 0)+'%','Accuracy'],[fmt(used),'Time used']]
+    .map(x => '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+  $('secs').innerHTML = ORDER.map(k => { const b = by[k], s = b.c*CFG.right - b.w*CFG.wrong;
+    return '<div class="secrow" style="--c:'+DARK[k]+'"><span>'+SEC[k][0]+'</span><div class="meter"><i style="width:'+(100*b.c/b.n)+'%"></i></div><b>'+b.c+'/'+b.n+' &nbsp;('+num(s)+')</b></div>'; }).join('');
+  S.counts = { all:N, wrong:w, skipped:sk, correct:c };
+  S.filter = w ? 'wrong' : 'all';
+  review(); show('result');
+}
+function review(){
+  const names = { all:'All', wrong:'Wrong', skipped:'Skipped', correct:'Correct' };
+  $('filters').innerHTML = Object.keys(names).map(f => '<button data-f="'+f+'" class="'+(S.filter===f?'on':'')+'">'+names[f]+' '+S.counts[f]+'</button>').join('');
+  const html = Q.map((q,i) => {
+    const a = S.ans[i], stt = a < 0 ? 'skipped' : (a === q.a ? 'correct' : 'wrong');
+    if (S.filter !== 'all' && S.filter !== stt) return '';
+    const lab = { correct:['c','Correct'], wrong:['w','Wrong'], skipped:['s','Skipped'] }[stt];
+    return '<div class="rq"><div class="qmeta"><span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+'</span><span class="status '+lab[0]+'">'+lab[1]+'</span></div>' +
+      '<div class="stem">'+q.q+'</div><div class="opts">' +
+      q.o.map((o,k) => '<div class="opt'+(k===q.a?' right':(k===a?' wrong':''))+'"><b>'+L[k]+'</b><span>'+o+(k===a?' <i>(your answer)</i>':'')+'</span></div>').join('') +
+      '</div><div class="sol">'+solution(q)+'</div></div>';
+  }).join('');
+  $('review').innerHTML = html || '<div class="panel">No questions in this list. Pick another filter above.</div>';
+}
+$('filters').onclick = e => { const b = e.target.closest('[data-f]'); if (b) { S.filter = b.dataset.f; review(); } };
+$('again').onclick = () => show('start');
+</script>
+</body>
+</html>
