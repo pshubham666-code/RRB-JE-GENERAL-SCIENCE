@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>General Science Set 11 | RRB JE CBT-1 2026 | THE EXAM ENGINEER</title>
+<meta name="description" content="General Science Set 11: bilingual (English and Hindi) 30-question mock test for RRB JE CBT-1 2026 with 1/3 negative marking and full solutions. By THE EXAM ENGINEER.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12284a;--navy2:#1d3b6a;--orange:#ff922b;--paper:#f3f5f9;--card:#fff;--line:#d8dfeb;--ink:#17233a;--muted:#5b6880;--ok:#1b7f3b;--okbg:#e6f4ea;--bad:#c92a2a;--badbg:#fdeaea;--rev:#6741d9;--r:10px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 Mukta,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+sub,sup{font-size:.72em;line-height:0}
+
+/* buttons */
+.btn{border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:11px 16px;font-weight:600;min-height:48px}
+.btn.main{background:var(--orange);border-color:var(--orange);color:#1c1300}
+.btn.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+
+/* start */
+.hero{background:var(--navy);color:#fff;padding:26px 0 30px}
+.brand{font-weight:800;color:var(--orange);text-decoration:none;letter-spacing:.02em}
+.hero h1{font-size:clamp(34px,9vw,54px);line-height:1.02;font-weight:800;margin:14px 0 10px;letter-spacing:-.01em}
+.hero p{margin:0;color:#c9d5ea;max-width:34em}
+.route{display:flex;gap:6px;margin-top:26px}
+.route div{min-width:38px}
+.route i{display:block;height:8px;border-radius:4px;background:var(--c)}
+.route b{display:block;font-size:22px;line-height:1.1;margin-top:8px}
+.route span{font-size:14px;color:#c9d5ea;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:16px 0}
+.panel h2{font-size:18px;margin:0 0 10px;color:var(--navy)}
+.terms{margin:0;padding:0;list-style:none}
+.terms li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
+.terms li:first-child{border-top:0}
+.terms b{white-space:nowrap}
+.mode{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:var(--r);margin-top:8px;cursor:pointer}
+.mode:has(input:checked){border-color:var(--navy);background:#eef3fb}
+.mode input{margin-top:6px;accent-color:var(--navy);width:18px;height:18px;flex:none}
+.mode b{display:block}
+.mode span span{color:var(--muted);font-size:15.5px}
+#startBtn{width:100%;font-size:19px;margin:4px 0 14px}
+.foot{color:var(--muted);font-size:15px;text-align:center;padding:6px 0 34px}
+.foot a{color:var(--navy);font-weight:600}
+
+/* test */
+.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;padding:10px 0 12px}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.toprow b{font-weight:800;white-space:nowrap}
+.clock{font-variant-numeric:tabular-nums;font-weight:800;font-size:19px;background:var(--navy2);border-radius:8px;padding:2px 10px}
+.clock.low{background:var(--bad)}
+.allq{background:transparent;border:1px solid #5d76a1;color:#fff;border-radius:8px;padding:3px 12px;font-weight:600;font-size:15.5px;min-height:34px;white-space:nowrap}
+.line{display:flex;gap:8px;margin-top:10px}
+.seg{min-width:38px}
+.seg button.name{display:block;width:100%;background:none;border:0;padding:0 0 4px;text-align:left;color:#c9d5ea;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.on button.name{color:#fff}
+.ticks{display:flex;gap:2px}
+.ticks i{flex:1;height:9px;border-radius:2px;background:#3a5383}
+.ticks i.done{background:var(--c)}
+.ticks i.rev{background:#b197fc}
+.ticks i.cur{box-shadow:0 0 0 2px #fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0 110px}
+.qmeta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;margin-bottom:8px}
+.chip{background:var(--c);color:#fff;border-radius:6px;padding:0 9px;font-weight:600}
+.stem{font-size:18.5px;line-height:1.45;font-weight:600}
+.stem .st{font-weight:400;margin:8px 0;padding:0;list-style:none}
+.stem .st li{padding:2px 0 2px 2.1em;text-indent:-2.1em}
+.stem table{border-collapse:collapse;width:100%;margin:10px 0;font-weight:400;font-size:16.5px}
+.stem th,.stem td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.stem th{background:#eef3fb;color:var(--navy)}
+.opts{display:grid;gap:9px;margin-top:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:11px 12px;min-height:50px;color:var(--ink)}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:15px;line-height:1}
+.opt.sel{border-color:var(--navy);background:#eef3fb}
+.opt.sel b{background:var(--navy);border-color:var(--navy);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--okbg)}
+.opt.right b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.wrong b{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default;opacity:1}
+.clear{background:none;border:0;color:var(--navy);text-decoration:underline;padding:10px 0 0;font-size:15.5px}
+.sol{margin-top:14px;border-left:4px solid var(--orange);background:#fff7ec;border-radius:0 var(--r) var(--r) 0;padding:10px 12px;font-size:16.5px}
+.sol b.h{color:var(--navy)}
+.sol .tip{margin-top:6px;color:#7a4a00}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
+.bar .wrap{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:8px}
+.bar .btn{padding:8px 6px;font-size:15.5px;line-height:1.2}
+.btn.marked{border-color:var(--rev);color:var(--rev);background:#f3effe}
+
+/* language */
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.lang button{border:0;background:none;padding:6px 14px;font-weight:600;min-height:40px;color:var(--ink)}
+.lang button+button{border-left:1px solid var(--line)}
+.lang button.on{background:var(--navy);color:#fff}
+.top .lang{border-color:#5d76a1;background:transparent;flex:none}
+.top .lang button{color:#fff;padding:3px 9px;min-height:34px;font-size:15px}
+.top .lang button+button{border-left-color:#5d76a1}
+.top .lang button.on{background:#fff;color:var(--navy)}
+.stem .hi{font-weight:400;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.opt .hi{display:block;color:var(--muted)}
+.sol .hi{margin-top:6px}
+.headrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:22px 0 4px}
+.headrow h2.sec{margin:0}
+
+/* sheet + dialog */
+.shade{position:fixed;inset:0;background:rgba(18,40,74,.55);z-index:10;display:grid;align-items:end}
+.shade.mid{align-items:center;padding:16px}
+.sheet{background:#fff;border-radius:16px 16px 0 0;padding:16px;max-height:86vh;overflow:auto;width:100%;max-width:760px;margin:0 auto}
+.shade.mid .sheet{border-radius:16px;max-width:420px}
+.sheet h2{margin:0 0 4px;font-size:20px;color:var(--navy)}
+.sheet p{margin:0 0 12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 12px}
+.grid h3{grid-column:1/-1;margin:8px 0 0;font-size:15px;color:var(--muted);font-weight:600}
+.grid button{height:44px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:600}
+.grid button.done{background:var(--navy);border-color:var(--navy);color:#fff}
+.grid button.rev{border-color:var(--rev);box-shadow:inset 0 -5px 0 var(--rev)}
+.grid button.cur{outline:3px solid var(--orange);outline-offset:1px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted);margin-bottom:12px}
+.key i{display:inline-block;width:14px;height:14px;border-radius:4px;border:1.5px solid var(--line);vertical-align:-2px;margin-right:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* result */
+.score{background:var(--navy);color:#fff;padding:24px 0 26px}
+.score p{margin:0;color:#c9d5ea}
+.score .big{font-size:clamp(52px,16vw,84px);font-weight:800;line-height:1;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.score .big small{font-size:.32em;font-weight:600;color:#c9d5ea}
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.tally div{background:var(--navy2);border-radius:var(--r);padding:8px 10px}
+.tally b{display:block;font-size:24px;line-height:1.15}
+.tally span{font-size:14px;color:#c9d5ea}
+.secrow{display:grid;grid-template-columns:104px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.secrow:first-of-type{border-top:0}
+.meter{height:10px;border-radius:5px;background:#e6ebf3;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--c)}
+.secrow b{font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.filters button{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:4px 14px;font-weight:600;font-size:15.5px;min-height:38px}
+.filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.rq{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.rq .stem{font-size:17px}
+.rq .opt{min-height:0;padding:7px 10px;font-size:16px}
+.rq .opt b{width:24px;height:24px;font-size:13.5px}
+.status{margin-left:auto;font-weight:600;border-radius:6px;padding:0 9px}
+.status.c{background:var(--okbg);color:var(--ok)}
+.status.w{background:var(--badbg);color:var(--bad)}
+.status.s{background:#e9edf4;color:var(--muted)}
+.end{display:grid;gap:8px;margin:18px 0 14px}
+.end a{text-align:center;text-decoration:none;display:block}
+h2.sec{font-size:20px;color:var(--navy);margin:22px 0 4px}
+
+@media (max-width:350px){.top .lang button{padding:3px 6px;font-size:14px}.allq{padding:3px 8px;font-size:14px}.clock{font-size:17px;padding:2px 7px}.toprow{gap:6px}}
+@media (min-width:620px){
+  .bar .btn{font-size:17px}
+  .end{grid-template-columns:1fr 1fr}
+  .tally{grid-template-columns:repeat(5,1fr)}
+  .grid{grid-template-columns:repeat(10,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){.opt,.btn{transition:background .12s,border-color .12s}}
+@media print{.top,.bar,.filters,.end{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ Start ============ -->
+<main id="start">
+  <div class="hero"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <h1>General Science<br>Set 11</h1>
+    <p>30 questions in English and Hindi for RRB JE CBT-1 2026, weighted on the topics of the RRB JE 2024 papers and the October 2026 railway shifts.</p>
+    <div class="route" id="route"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="panel">
+      <h2>Marking and time</h2>
+      <ul class="terms">
+        <li><span>Correct answer</span><b>+1</b></li>
+        <li><span>Wrong answer</span><b>&minus;1/3</b></li>
+        <li><span>Left blank</span><b>0</b></li>
+        <li><span>Time in exam mode</span><b id="tMin">25 minutes</b></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>Question language</h2>
+      <div class="lang" role="group" aria-label="Question language">
+        <button data-l="en">English</button><button data-l="hi" lang="hi">हिंदी</button><button data-l="both" class="on">Both</button>
+      </div>
+      <p style="margin:8px 0 0;color:var(--muted);font-size:15.5px">You can change the language at any time during the test.</p>
+    </div>
+    <div class="panel">
+      <h2>How do you want to attempt?</h2>
+      <label class="mode"><input type="radio" name="mode" value="exam" checked>
+        <span><b>Exam mode</b><span id="mExam">Timer runs. Answers and solutions open after you submit.</span></span></label>
+      <label class="mode"><input type="radio" name="mode" value="practice">
+        <span><b>Practice mode</b><span>No timer. The answer and solution open as soon as you pick an option.</span></span></label>
+    </div>
+    <button class="btn main" id="startBtn">Start test</button>
+    <p class="foot">By THE EXAM ENGINEER (SSC JE AIR 14, RRB JE 2025 DMS)<br>
+      <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join on Telegram: t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<!-- ============ Test ============ -->
+<main id="test" hidden>
+  <div class="top"><div class="wrap">
+    <div class="toprow">
+      <div class="lang" role="group" aria-label="Question language"><button data-l="en">EN</button><button data-l="hi" lang="hi">हिं</button><button data-l="both" class="on">Both</button></div>
+      <span class="clock" id="clock" role="timer">25:00</span>
+      <button class="allq" id="allBtn">Questions</button>
+    </div>
+    <div class="line" id="line"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="qmeta" id="qmeta"></div>
+      <div class="stem" id="stem"></div>
+      <div class="opts" id="opts"></div>
+      <button class="clear" id="clear">Clear my answer</button>
+      <div class="sol" id="sol" hidden></div>
+    </div>
+  </div>
+  <div class="bar"><div class="wrap">
+    <button class="btn" id="prev">Previous</button>
+    <button class="btn" id="markBtn" aria-pressed="false">Mark for review</button>
+    <button class="btn dark" id="next">Next</button>
+  </div></div>
+</main>
+
+<!-- question sheet -->
+<div class="shade" id="pal" hidden>
+  <div class="sheet" role="dialog" aria-label="Questions">
+    <h2>Questions</h2>
+    <div class="key"><span><i style="background:var(--navy);border-color:var(--navy)"></i>Answered</span><span><i></i>Not answered</span><span><i style="border-color:var(--rev);box-shadow:inset 0 -4px 0 var(--rev)"></i>Marked for review</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="two">
+      <button class="btn" id="palClose">Back to question</button>
+      <button class="btn main" id="palSubmit">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- submit dialog -->
+<div class="shade mid" id="dlg" hidden>
+  <div class="sheet" role="alertdialog" aria-labelledby="dlgT">
+    <h2 id="dlgT">Submit the test?</h2>
+    <p id="dlgP"></p>
+    <div class="two">
+      <button class="btn" id="dlgNo">Keep going</button>
+      <button class="btn main" id="dlgYes">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Result ============ -->
+<main id="result" hidden>
+  <div class="score"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <p style="margin-top:12px" id="rNote">General Science Set 11: your score</p>
+    <div class="big"><span id="rScore">0</span> <small>out of 30</small></div>
+    <p id="rLine"></p>
+    <div class="tally" id="tally"></div>
+  </div></div>
+  <div class="wrap">
+    <h2 class="sec">Subject-wise</h2>
+    <div class="panel" id="secs" style="margin-top:8px"></div>
+    <div class="headrow"><h2 class="sec">Answers and solutions</h2>
+      <div class="lang" role="group" aria-label="Question language"><button data-l="en">EN</button><button data-l="hi" lang="hi">हिं</button><button data-l="both" class="on">Both</button></div></div>
+    <div class="filters" id="filters"></div>
+    <div id="review"></div>
+    <div class="end">
+      <button class="btn" id="again">Take the test again</button>
+      <a class="btn main" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join THE EXAM ENGINEER on Telegram</a>
+    </div>
+    <p class="foot">More sets and notes: <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<script>
+/* ---------- settings: change the timer or marking here ---------- */
+const CFG = { minutes: 25, right: 1, wrong: 1/3 };
+
+const SEC = {
+  P: ['Physics',     '#4dabf7'],
+  C: ['Chemistry',   '#ff922b'],
+  B: ['Biology',     '#51cf66'],
+  E: ['Environment', '#22b8cf']
+};
+const DARK = { P:'#1864ab', C:'#c2540a', B:'#2b8a3e', E:'#0b7285' };
+
+/* helpers for statement lists and match tables */
+const st = a => '<ul class="st">' + a.map((x,i)=>'<li>'+['I','II','III','IV'][i]+'. &nbsp;'+x+'</li>').join('') + '</ul>';
+const mt = (h1,l,h2,r) => '<table><tr><th>'+h1+'</th><th>'+h2+'</th></tr>' +
+  l.map((x,i)=>'<tr><td>'+'ABCD'[i]+'. '+x+'</td><td>'+(i+1)+'. '+r[i]+'</td></tr>').join('') + '</table>';
+
+/* ---------- questions: s = subject, a = index of correct option (0 = A); qh/oh/eh/th are the Hindi versions ---------- */
+const Q = [
+/* ===== Physics (10) ===== */
+{s:'P',
+ q:`A wire of resistance 20 Ω is cut into four equal parts, and the parts are connected in parallel. The equivalent resistance is`,
+ qh:`20 Ω प्रतिरोध के एक तार को चार बराबर भागों में काटा जाता है और इन भागों को पार्श्वक्रम (समांतर) में जोड़ा जाता है। तुल्य प्रतिरोध होगा`,
+ o:[`1.25 Ω`,`5 Ω`,`20 Ω`,`80 Ω`], a:0,
+ e:`Each part has resistance 20/4 = 5 Ω. Four equal resistors in parallel give 5/4 = 1.25 Ω.`,
+ eh:`हर भाग का प्रतिरोध = 20/4 = 5 Ω। चार बराबर प्रतिरोध पार्श्वक्रम में जोड़ने पर तुल्य प्रतिरोध = 5/4 = 1.25 Ω।`,
+ t:`A wire of resistance R cut into n equal parts and joined in parallel gives R/n<sup>2</sup>.`,
+ th:`R प्रतिरोध के तार को n बराबर भागों में काटकर पार्श्वक्रम में जोड़ें तो तुल्य प्रतिरोध R/n<sup>2</sup> होता है।`},
+
+{s:'P',
+ q:`Two bulbs rated 100 W, 220 V and 40 W, 220 V are connected in series across a 220 V supply. Which statement is correct?`,
+ qh:`100 W, 220 V और 40 W, 220 V के दो बल्ब श्रेणीक्रम में 220 V की आपूर्ति से जोड़े गए हैं। कौन-सा कथन सही है?`,
+ o:[`The 100 W bulb glows brighter`,`The 40 W bulb glows brighter`,`Both bulbs glow equally bright`,`Neither bulb glows at all`],
+ oh:[`100 W का बल्ब अधिक चमकेगा`,`40 W का बल्ब अधिक चमकेगा`,`दोनों बल्ब बराबर चमकेंगे`,`कोई भी बल्ब नहीं जलेगा`], a:1,
+ e:`R = V<sup>2</sup>/P, so the 100 W bulb has 484 Ω and the 40 W bulb has 1210 Ω. In series the same current flows through both, and P = I<sup>2</sup>R, so the bulb with the larger resistance (40 W) gives out more power.`,
+ eh:`R = V<sup>2</sup>/P से 100 W बल्ब का प्रतिरोध 484 Ω और 40 W बल्ब का 1210 Ω है। श्रेणीक्रम में दोनों में समान धारा बहती है और P = I<sup>2</sup>R, इसलिए अधिक प्रतिरोध वाला बल्ब (40 W) अधिक शक्ति देता है।`,
+ t:`In parallel, as in house wiring, each bulb gets the full voltage and the 100 W bulb is brighter.`,
+ th:`पार्श्वक्रम में (घर की वायरिंग की तरह) हर बल्ब को पूरा विभवांतर मिलता है और 100 W का बल्ब अधिक चमकता है।`},
+
+{s:'P',
+ q:`A 2 kW heater is used for 3 hours every day. At ₹6 per unit, what does it cost to run it for 30 days?`,
+ qh:`2 kW का एक हीटर प्रतिदिन 3 घंटे चलाया जाता है। ₹6 प्रति यूनिट की दर से इसे 30 दिन चलाने का खर्च कितना होगा?`,
+ o:[`₹360`,`₹540`,`₹1,080`,`₹3,600`], a:2,
+ e:`Energy used = 2 kW × 3 h × 30 = 180 kWh = 180 units. Cost = 180 × 6 = ₹1,080.`,
+ eh:`व्यय ऊर्जा = 2 kW × 3 h × 30 = 180 kWh = 180 यूनिट। खर्च = 180 × 6 = ₹1,080।`,
+ t:`1 unit = 1 kWh = 3.6 × 10<sup>6</sup> J. It is a unit of energy, not of power.`,
+ th:`1 यूनिट = 1 kWh = 3.6 × 10<sup>6</sup> J। यह ऊर्जा का मात्रक है, शक्ति का नहीं।`},
+
+{s:'P',
+ q:`Consider these statements about a household electric circuit:` + st([`A fuse is connected in series with the live wire.`,`All appliances are connected in parallel.`,`The fuse wire is made of a material with a high melting point.`,`The earth wire protects the user from a shock if the metal body of an appliance becomes live.`]) + `Which statements are correct?`,
+ qh:`घरेलू विद्युत परिपथ के बारे में इन कथनों पर विचार कीजिए:` + st([`फ्यूज़ को विद्युन्मय (लाइव) तार के साथ श्रेणीक्रम में जोड़ा जाता है।`,`सभी उपकरण पार्श्वक्रम में जोड़े जाते हैं।`,`फ्यूज़ का तार उच्च गलनांक वाले पदार्थ का बना होता है।`,`उपकरण के धात्विक आवरण में धारा आ जाने पर भू-संपर्क (अर्थ) तार उपयोगकर्ता को झटके से बचाता है।`]) + `कौन-से कथन सही हैं?`,
+ o:[`I and III only`,`II and III only`,`I, II and III only`,`I, II and IV only`],
+ oh:[`केवल I और III`,`केवल II और III`,`केवल I, II और III`,`केवल I, II और IV`], a:3,
+ e:`A fuse wire has a low melting point, so it melts and breaks the circuit when the current crosses the safe limit. Statement III is wrong. Parallel wiring gives every appliance the same voltage and its own switch.`,
+ eh:`फ्यूज़ के तार का गलनांक कम होता है, इसलिए धारा सुरक्षित सीमा से अधिक होते ही यह पिघलकर परिपथ तोड़ देता है। कथन III गलत है। पार्श्वक्रम में हर उपकरण को समान विभवांतर और अलग स्विच मिलता है।`,
+ t:`Insulation colours: live is red, neutral is black, earth is green.`,
+ th:`तारों के आवरण का रंग: विद्युन्मय लाल, उदासीन काला, भू-संपर्क हरा।`},
+
+{s:'P',
+ q:`A straight wire carries current towards the north. It is placed in a uniform magnetic field that points vertically downwards. The force on the wire acts towards the`,
+ qh:`एक सीधे तार में धारा उत्तर की ओर बह रही है। इसे ऊर्ध्वाधर नीचे की ओर दिष्ट एकसमान चुंबकीय क्षेत्र में रखा गया है। तार पर बल किस ओर लगेगा?`,
+ o:[`east`,`south`,`west`,`vertically upward direction`],
+ oh:[`पूर्व की ओर`,`दक्षिण की ओर`,`पश्चिम की ओर`,`ऊर्ध्वाधर ऊपर की ओर`], a:2,
+ e:`Use Fleming's left-hand rule: point the forefinger along the field (downwards) and the middle finger along the current (north). The thumb then points west, which is the direction of the force.`,
+ eh:`फ्लेमिंग का वाम-हस्त नियम लगाइए: तर्जनी को क्षेत्र की दिशा में (नीचे) और मध्यमा को धारा की दिशा में (उत्तर) रखिए। अँगूठा पश्चिम की ओर संकेत करता है, यही बल की दिशा है।`,
+ t:`Left hand for the motor (force on a conductor), right hand for the generator (induced current).`,
+ th:`वाम-हस्त नियम मोटर (चालक पर बल) के लिए और दक्षिण-हस्त नियम जनित्र (प्रेरित धारा) के लिए है।`},
+
+{s:'P',
+ q:`A coil is connected to a galvanometer. In which case does the galvanometer show no deflection?`,
+ qh:`एक कुंडली गैल्वेनोमीटर से जुड़ी है। किस स्थिति में गैल्वेनोमीटर में कोई विक्षेप नहीं होगा?`,
+ o:[`A bar magnet is pushed into the coil`,`The bar magnet is pulled out of the coil`,`The coil is moved towards a magnet kept at rest`,`The magnet is held at rest inside the coil`],
+ oh:[`छड़ चुंबक को कुंडली के अंदर धकेला जाए`,`छड़ चुंबक को कुंडली से बाहर खींचा जाए`,`कुंडली को स्थिर रखे चुंबक की ओर ले जाया जाए`,`चुंबक को कुंडली के अंदर स्थिर रखा जाए`], a:3,
+ e:`A current is induced only while the magnetic field through the coil is changing, that is, while the magnet and the coil move relative to each other. With the magnet at rest there is no change, so no current flows.`,
+ eh:`कुंडली में धारा तभी प्रेरित होती है जब उससे गुज़रने वाला चुंबकीय क्षेत्र बदल रहा हो, यानी चुंबक और कुंडली में आपेक्षिक गति हो। चुंबक स्थिर रहने पर कोई परिवर्तन नहीं होता, इसलिए धारा नहीं बहती।`,
+ t:`This is electromagnetic induction, the working principle of the electric generator. Faster motion gives a larger deflection.`,
+ th:`यह विद्युत चुंबकीय प्रेरण है, जो विद्युत जनित्र का कार्य-सिद्धांत है। गति जितनी तेज़, विक्षेप उतना अधिक।`},
+
+{s:'P',
+ q:`Two thin lenses of power +2.5 D and −1.5 D are placed in contact. The combination behaves as a`,
+ qh:`+2.5 D और −1.5 D क्षमता के दो पतले लेंस संपर्क में रखे गए हैं। यह संयोजन किसकी तरह व्यवहार करेगा?`,
+ o:[`converging lens of focal length 100 cm`,`diverging lens of focal length 100 cm`,`converging lens of focal length 25 cm`,`diverging lens of focal length 40 cm`],
+ oh:[`100 cm फोकस दूरी का अभिसारी लेंस`,`100 cm फोकस दूरी का अपसारी लेंस`,`25 cm फोकस दूरी का अभिसारी लेंस`,`40 cm फोकस दूरी का अपसारी लेंस`], a:0,
+ e:`Net power = +2.5 + (−1.5) = +1.0 D. Focal length = 1/P = 1 m = 100 cm. The power is positive, so the combination is converging (convex).`,
+ eh:`कुल क्षमता = +2.5 + (−1.5) = +1.0 D। फोकस दूरी = 1/P = 1 m = 100 cm। क्षमता धनात्मक है, इसलिए संयोजन अभिसारी (उत्तल) है।`,
+ t:`Powers of lenses in contact simply add with their signs: convex is +, concave is −.`,
+ th:`संपर्क में रखे लेंसों की क्षमताएँ चिह्न सहित जुड़ती हैं: उत्तल +, अवतल −।`},
+
+{s:'P',
+ q:`Match the observation with the phenomenon behind it:` + mt(`Observation`,[`Twinkling of stars`,`Blue colour of the sky`,`Working of an optical fibre`,`Splitting of white light by a prism`],`Phenomenon`,[`Total internal reflection`,`Scattering of light`,`Atmospheric refraction`,`Dispersion`]),
+ qh:`प्रेक्षण का उसके कारण (परिघटना) से मिलान कीजिए:` + mt(`प्रेक्षण`,[`तारों का टिमटिमाना`,`आकाश का नीला रंग`,`प्रकाशिक तंतु का कार्य करना`,`प्रिज़्म से श्वेत प्रकाश का रंगों में बँटना`],`परिघटना`,[`पूर्ण आंतरिक परावर्तन`,`प्रकाश का प्रकीर्णन`,`वायुमंडलीय अपवर्तन`,`वर्ण-विक्षेपण`]),
+ o:[`A-2, B-3, C-1, D-4`,`A-3, B-2, C-1, D-4`,`A-3, B-1, C-4, D-2`,`A-1, B-2, C-3, D-4`], a:1,
+ e:`Starlight bends by changing amounts as it passes through moving layers of air (atmospheric refraction). Air molecules scatter blue light the most. Light stays inside an optical fibre by repeated total internal reflection. A prism bends each colour by a different amount (dispersion).`,
+ eh:`तारों का प्रकाश वायु की बदलती परतों से गुज़रते हुए अलग-अलग मात्रा में मुड़ता है (वायुमंडलीय अपवर्तन)। वायु के अणु नीले प्रकाश का सबसे अधिक प्रकीर्णन करते हैं। प्रकाशिक तंतु में प्रकाश बार-बार पूर्ण आंतरिक परावर्तन से आगे बढ़ता है। प्रिज़्म हर रंग को अलग मात्रा में मोड़ता है (वर्ण-विक्षेपण)।`,
+ t:`Rainbow: dispersion, refraction and internal reflection in raindrops. Red sun at sunrise: scattering. Sunrise seen about 2 minutes early: atmospheric refraction.`,
+ th:`इंद्रधनुष: वर्षा की बूँदों में वर्ण-विक्षेपण, अपवर्तन और आंतरिक परावर्तन। सूर्योदय के समय लाल सूर्य: प्रकीर्णन। सूर्योदय का लगभग 2 मिनट पहले दिखना: वायुमंडलीय अपवर्तन।`},
+
+{s:'P',
+ q:`Light passes from air into glass of refractive index 1.5. (Speed of light in air = 3 × 10<sup>8</sup> m/s.) Which statement is correct?`,
+ qh:`प्रकाश वायु से 1.5 अपवर्तनांक वाले काँच में प्रवेश करता है। (वायु में प्रकाश की चाल = 3 × 10<sup>8</sup> m/s) कौन-सा कथन सही है?`,
+ o:[`Its speed becomes 2 × 10<sup>8</sup> m/s and its frequency decreases`,`Its speed becomes 4.5 × 10<sup>8</sup> m/s and its frequency stays the same`,`Its speed becomes 2 × 10<sup>8</sup> m/s and its frequency stays the same`,`Its speed stays the same and its wavelength decreases`],
+ oh:[`चाल 2 × 10<sup>8</sup> m/s हो जाती है और आवृत्ति घट जाती है`,`चाल 4.5 × 10<sup>8</sup> m/s हो जाती है और आवृत्ति वही रहती है`,`चाल 2 × 10<sup>8</sup> m/s हो जाती है और आवृत्ति वही रहती है`,`चाल वही रहती है और तरंगदैर्ध्य घट जाता है`], a:2,
+ e:`Speed in glass = c/n = (3 × 10<sup>8</sup>)/1.5 = 2 × 10<sup>8</sup> m/s. Frequency is fixed by the source and does not change on refraction. The wavelength decreases in the same ratio as the speed.`,
+ eh:`काँच में चाल = c/n = (3 × 10<sup>8</sup>)/1.5 = 2 × 10<sup>8</sup> m/s। आवृत्ति स्रोत से तय होती है और अपवर्तन में नहीं बदलती। तरंगदैर्ध्य उसी अनुपात में घटता है जिसमें चाल घटती है।`,
+ t:`Entering a denser medium, light slows down and bends towards the normal.`,
+ th:`सघन माध्यम में जाने पर प्रकाश धीमा होता है और अभिलंब की ओर मुड़ता है।`},
+
+{s:'P',
+ q:`A stone of mass 2 kg is dropped from a height of 20 m. Taking g = 10 m/s<sup>2</sup>, its kinetic energy when it is 5 m above the ground is`,
+ qh:`2 kg द्रव्यमान का एक पत्थर 20 m की ऊँचाई से गिराया जाता है। g = 10 m/s<sup>2</sup> लेने पर, भूमि से 5 m ऊपर इसकी गतिज ऊर्जा होगी`,
+ o:[`100 J`,`300 J`,`400 J`,`600 J`], a:1,
+ e:`Kinetic energy gained = potential energy lost = mg × (20 − 5) = 2 × 10 × 15 = 300 J.`,
+ eh:`प्राप्त गतिज ऊर्जा = स्थितिज ऊर्जा में कमी = mg × (20 − 5) = 2 × 10 × 15 = 300 J।`,
+ t:`Total energy stays 400 J throughout the fall: at 5 m it is 100 J potential + 300 J kinetic.`,
+ th:`पूरे पतन में कुल ऊर्जा 400 J ही रहती है: 5 m पर 100 J स्थितिज + 300 J गतिज।`},
+
+/* ===== Chemistry (10) ===== */
+{s:'C',
+ q:`Railway tracks are joined using the thermit reaction: Fe<sub>2</sub>O<sub>3</sub> + 2Al → Al<sub>2</sub>O<sub>3</sub> + 2Fe + heat. In this reaction`,
+ qh:`रेल की पटरियों को जोड़ने में थर्मिट अभिक्रिया का उपयोग होता है: Fe<sub>2</sub>O<sub>3</sub> + 2Al → Al<sub>2</sub>O<sub>3</sub> + 2Fe + ऊष्मा। इस अभिक्रिया में`,
+ o:[`aluminium is oxidised and acts as the reducing agent`,`aluminium is reduced and acts as the oxidising agent`,`iron(III) oxide is oxidised`,`heat is absorbed and it is a double displacement reaction`],
+ oh:[`ऐलुमिनियम उपचयित होता है और अपचायक का कार्य करता है`,`ऐलुमिनियम अपचयित होता है और उपचायक का कार्य करता है`,`आयरन(III) ऑक्साइड उपचयित होता है`,`ऊष्मा अवशोषित होती है और यह द्विविस्थापन अभिक्रिया है`], a:0,
+ e:`Aluminium gains oxygen, so it is oxidised; it takes oxygen away from Fe<sub>2</sub>O<sub>3</sub>, so it is the reducing agent. Fe<sub>2</sub>O<sub>3</sub> loses oxygen and is reduced. The reaction is a strongly exothermic displacement reaction, and the iron forms in the molten state.`,
+ eh:`ऐलुमिनियम ऑक्सीजन ग्रहण करता है, इसलिए उपचयित होता है; यह Fe<sub>2</sub>O<sub>3</sub> से ऑक्सीजन हटाता है, इसलिए अपचायक है। Fe<sub>2</sub>O<sub>3</sub> ऑक्सीजन खोकर अपचयित होता है। यह अत्यधिक ऊष्माक्षेपी विस्थापन अभिक्रिया है और आयरन गलित अवस्था में मिलता है।`,
+ t:`The substance that gets oxidised is the reducing agent; the one that gets reduced is the oxidising agent.`,
+ th:`जो पदार्थ उपचयित होता है वह अपचायक है; जो अपचयित होता है वह उपचायक है।`},
+
+{s:'C',
+ q:`Match the reaction with its type:` + mt(`Reaction`,[`CaO + H<sub>2</sub>O → Ca(OH)<sub>2</sub>`,`2AgCl → 2Ag + Cl<sub>2</sub> (in sunlight)`,`Zn + CuSO<sub>4</sub> → ZnSO<sub>4</sub> + Cu`,`Na<sub>2</sub>SO<sub>4</sub> + BaCl<sub>2</sub> → BaSO<sub>4</sub> + 2NaCl`],`Type`,[`Displacement`,`Combination`,`Double displacement`,`Decomposition`]),
+ qh:`अभिक्रिया का उसके प्रकार से मिलान कीजिए:` + mt(`अभिक्रिया`,[`CaO + H<sub>2</sub>O → Ca(OH)<sub>2</sub>`,`2AgCl → 2Ag + Cl<sub>2</sub> (सूर्य के प्रकाश में)`,`Zn + CuSO<sub>4</sub> → ZnSO<sub>4</sub> + Cu`,`Na<sub>2</sub>SO<sub>4</sub> + BaCl<sub>2</sub> → BaSO<sub>4</sub> + 2NaCl`],`प्रकार`,[`विस्थापन`,`संयोजन`,`द्विविस्थापन`,`वियोजन (अपघटन)`]),
+ o:[`A-2, B-1, C-4, D-3`,`A-4, B-2, C-1, D-3`,`A-2, B-4, C-1, D-3`,`A-2, B-4, C-3, D-1`], a:2,
+ e:`Two substances join to form one product (combination). One compound breaks up in sunlight (photolytic decomposition). Zinc pushes copper out of its salt (displacement). The two salts exchange ions and insoluble BaSO<sub>4</sub> settles (double displacement).`,
+ eh:`दो पदार्थ मिलकर एक उत्पाद बनाते हैं (संयोजन)। एक यौगिक सूर्य के प्रकाश में टूटता है (प्रकाश-अपघटन)। ज़िंक, कॉपर को उसके लवण से हटा देता है (विस्थापन)। दो लवण आयनों की अदला-बदली करते हैं और अविलेय BaSO<sub>4</sub> बैठ जाता है (द्विविस्थापन)।`,
+ t:`A reaction that gives an insoluble solid is also called a precipitation reaction. BaSO<sub>4</sub> is a white precipitate.`,
+ th:`जिस अभिक्रिया में अविलेय ठोस बनता है उसे अवक्षेपण अभिक्रिया भी कहते हैं। BaSO<sub>4</sub> श्वेत अवक्षेप है।`},
+
+{s:'C',
+ q:`When the equation a Al + b HCl → c AlCl<sub>3</sub> + d H<sub>2</sub> is balanced, the values of a, b, c and d are`,
+ qh:`समीकरण a Al + b HCl → c AlCl<sub>3</sub> + d H<sub>2</sub> को संतुलित करने पर a, b, c और d के मान क्रमशः हैं`,
+ o:[`1, 3, 1, 3`,`2, 6, 2, 3`,`2, 3, 2, 3`,`1, 6, 1, 3`], a:1,
+ e:`2Al + 6HCl → 2AlCl<sub>3</sub> + 3H<sub>2</sub>. Check: Al 2 = 2, H 6 = 6, Cl 6 = 6.`,
+ eh:`2Al + 6HCl → 2AlCl<sub>3</sub> + 3H<sub>2</sub>। जाँच: Al 2 = 2, H 6 = 6, Cl 6 = 6।`,
+ t:`Balance by changing the numbers in front of the formulae. Never change the subscripts inside a formula.`,
+ th:`संतुलन के लिए सूत्रों के आगे के गुणांक बदलिए। सूत्र के अंदर के पादांक कभी नहीं बदले जाते।`},
+
+{s:'C',
+ q:`What is obtained when electricity is passed through brine (an aqueous solution of sodium chloride)?`,
+ qh:`लवण जल (ब्राइन, सोडियम क्लोराइड का जलीय विलयन) में विद्युत धारा प्रवाहित करने पर क्या प्राप्त होता है?`,
+ o:[`Hydrogen at the anode, chlorine at the cathode, and sodium hydroxide in the solution`,`Sodium metal at the cathode and chlorine at the anode`,`Oxygen at the anode and hydrogen at the cathode; sodium chloride stays unchanged`,`Chlorine at the anode, hydrogen at the cathode, and sodium hydroxide in the solution`],
+ oh:[`ऐनोड पर हाइड्रोजन, कैथोड पर क्लोरीन और विलयन में सोडियम हाइड्रॉक्साइड`,`कैथोड पर सोडियम धातु और ऐनोड पर क्लोरीन`,`ऐनोड पर ऑक्सीजन और कैथोड पर हाइड्रोजन; सोडियम क्लोराइड अपरिवर्तित रहता है`,`ऐनोड पर क्लोरीन, कैथोड पर हाइड्रोजन और विलयन में सोडियम हाइड्रॉक्साइड`], a:3,
+ e:`2NaCl + 2H<sub>2</sub>O → 2NaOH + Cl<sub>2</sub> + H<sub>2</sub>. Chlorine is given off at the anode and hydrogen at the cathode, and sodium hydroxide forms near the cathode. This is the chlor-alkali process.`,
+ eh:`2NaCl + 2H<sub>2</sub>O → 2NaOH + Cl<sub>2</sub> + H<sub>2</sub>। ऐनोड पर क्लोरीन और कैथोड पर हाइड्रोजन मुक्त होती है, तथा कैथोड के पास सोडियम हाइड्रॉक्साइड बनता है। इसे क्लोर-क्षार प्रक्रम कहते हैं।`,
+ t:`Chlorine passed over dry slaked lime gives bleaching powder, CaOCl<sub>2</sub>.`,
+ th:`शुष्क बुझे चूने पर क्लोरीन प्रवाहित करने से विरंजक चूर्ण CaOCl<sub>2</sub> बनता है।`},
+
+{s:'C',
+ q:`Baking powder is a mixture of baking soda and a mild edible acid. Which acid is commonly used?`,
+ qh:`बेकिंग पाउडर, बेकिंग सोडा और एक मंद खाद्य अम्ल का मिश्रण है। सामान्यतः कौन-सा अम्ल प्रयोग किया जाता है?`,
+ o:[`Hydrochloric acid`,`Tartaric acid`,`Sulphuric acid`,`Carbonic acid`],
+ oh:[`हाइड्रोक्लोरिक अम्ल`,`टार्टरिक अम्ल`,`सल्फ्यूरिक अम्ल`,`कार्बोनिक अम्ल`], a:1,
+ e:`When baking powder is heated or mixed with water, NaHCO<sub>3</sub> reacts with the acid and gives off CO<sub>2</sub>, which makes the cake rise and turn soft. The acid also neutralises the sodium carbonate that would otherwise taste bitter.`,
+ eh:`बेकिंग पाउडर को गर्म करने या जल में मिलाने पर NaHCO<sub>3</sub> अम्ल से अभिक्रिया करके CO<sub>2</sub> देता है, जिससे केक फूलकर मुलायम हो जाता है। अम्ल उस सोडियम कार्बोनेट को भी उदासीन कर देता है जो स्वाद कड़वा कर देता।`,
+ t:`Baking soda is NaHCO<sub>3</sub>. Washing soda is Na<sub>2</sub>CO<sub>3</sub>·10H<sub>2</sub>O. Plaster of Paris is CaSO<sub>4</sub>·½H<sub>2</sub>O.`,
+ th:`बेकिंग सोडा NaHCO<sub>3</sub> है। धोने का सोडा Na<sub>2</sub>CO<sub>3</sub>·10H<sub>2</sub>O है। प्लास्टर ऑफ पेरिस CaSO<sub>4</sub>·½H<sub>2</sub>O है।`},
+
+{s:'C',
+ q:`Solution A has pH 3 and solution B has pH 6. Compared with B, the hydrogen ion concentration of A is`,
+ qh:`विलयन A का pH 3 है और विलयन B का pH 6 है। B की तुलना में A में हाइड्रोजन आयन की सांद्रता`,
+ o:[`2 times higher`,`3 times higher`,`1000 times higher`,`1000 times lower`],
+ oh:[`2 गुनी अधिक है`,`3 गुनी अधिक है`,`1000 गुनी अधिक है`,`1000 गुनी कम है`], a:2,
+ e:`Each step of 1 on the pH scale is a 10-fold change in hydrogen ion concentration. A difference of 3 means 10 × 10 × 10 = 1000 times. Lower pH means more hydrogen ions, so A is the more acidic solution.`,
+ eh:`pH स्केल पर 1 का हर अंतर हाइड्रोजन आयन सांद्रता में 10 गुना परिवर्तन दर्शाता है। 3 का अंतर यानी 10 × 10 × 10 = 1000 गुना। pH कम होने का अर्थ है अधिक हाइड्रोजन आयन, इसलिए A अधिक अम्लीय है।`,
+ t:`pH 7 is neutral. Tooth decay starts when the pH of the mouth falls below 5.5.`,
+ th:`pH 7 उदासीन होता है। मुँह का pH 5.5 से कम होने पर दाँतों का क्षय शुरू हो जाता है।`},
+
+{s:'C',
+ q:`Zinc carbonate ore is heated strongly in a limited supply of air to change it into zinc oxide. This process is called`,
+ qh:`ज़िंक कार्बोनेट अयस्क को वायु की सीमित मात्रा में प्रबल रूप से गर्म करके ज़िंक ऑक्साइड में बदला जाता है। यह प्रक्रम कहलाता है`,
+ o:[`calcination`,`roasting`,`smelting`,`electrolytic refining`],
+ oh:[`निस्तापन`,`भर्जन`,`प्रगलन`,`विद्युत-अपघटनी परिष्करण`], a:0,
+ e:`ZnCO<sub>3</sub> → ZnO + CO<sub>2</sub>. Heating a carbonate ore in limited air is calcination. The oxide is then reduced with carbon: ZnO + C → Zn + CO.`,
+ eh:`ZnCO<sub>3</sub> → ZnO + CO<sub>2</sub>। कार्बोनेट अयस्क को सीमित वायु में गर्म करना निस्तापन है। इसके बाद ऑक्साइड का कार्बन से अपचयन किया जाता है: ZnO + C → Zn + CO।`,
+ t:`Sulphide ores are roasted in excess air: 2ZnS + 3O<sub>2</sub> → 2ZnO + 2SO<sub>2</sub>.`,
+ th:`सल्फाइड अयस्कों का वायु की अधिकता में भर्जन किया जाता है: 2ZnS + 3O<sub>2</sub> → 2ZnO + 2SO<sub>2</sub>।`},
+
+{s:'C',
+ q:`Which of these is the next member of the homologous series after ethene (C<sub>2</sub>H<sub>4</sub>)?`,
+ qh:`एथीन (C<sub>2</sub>H<sub>4</sub>) के बाद उसकी समजातीय श्रेणी का अगला सदस्य कौन-सा है?`,
+ o:[`C<sub>2</sub>H<sub>6</sub>`,`C<sub>3</sub>H<sub>8</sub>`,`C<sub>3</sub>H<sub>6</sub>`,`C<sub>3</sub>H<sub>4</sub>`], a:2,
+ e:`Ethene is an alkene, with the general formula C<sub>n</sub>H<sub>2n</sub>. Successive members differ by one CH<sub>2</sub> unit (14 u), so the next member is C<sub>3</sub>H<sub>6</sub>, propene.`,
+ eh:`एथीन एक ऐल्कीन है, जिसका सामान्य सूत्र C<sub>n</sub>H<sub>2n</sub> है। क्रमागत सदस्यों में एक CH<sub>2</sub> इकाई (14 u) का अंतर होता है, इसलिए अगला सदस्य C<sub>3</sub>H<sub>6</sub> (प्रोपीन) है।`,
+ t:`Alkanes C<sub>n</sub>H<sub>2n+2</sub> (single bonds), alkenes C<sub>n</sub>H<sub>2n</sub> (a double bond), alkynes C<sub>n</sub>H<sub>2n−2</sub> (a triple bond).`,
+ th:`ऐल्केन C<sub>n</sub>H<sub>2n+2</sub> (एकल आबंध), ऐल्कीन C<sub>n</sub>H<sub>2n</sub> (द्विआबंध), ऐल्काइन C<sub>n</sub>H<sub>2n−2</sub> (त्रिआबंध)।`},
+
+{s:'C',
+ q:`Ethanol is warmed with ethanoic acid and a few drops of concentrated sulphuric acid. A sweet-smelling compound forms. The compound and the reaction are`,
+ qh:`एथेनॉल को एथेनॉइक अम्ल और सांद्र सल्फ्यूरिक अम्ल की कुछ बूँदों के साथ गर्म किया जाता है। मीठी गंध वाला एक यौगिक बनता है। यह यौगिक और अभिक्रिया क्रमशः हैं`,
+ o:[`sodium ethanoate; saponification`,`ethene; dehydration`,`ethanal; oxidation`,`ethyl ethanoate; esterification`],
+ oh:[`सोडियम एथेनोएट; साबुनीकरण`,`एथीन; निर्जलीकरण`,`एथेनैल; उपचयन`,`एथिल एथेनोएट; एस्टरीकरण`], a:3,
+ e:`CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH → CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O, with acid as the catalyst. An acid and an alcohol give an ester, so the reaction is esterification. Esters are used in perfumes and flavouring agents.`,
+ eh:`CH<sub>3</sub>COOH + C<sub>2</sub>H<sub>5</sub>OH → CH<sub>3</sub>COOC<sub>2</sub>H<sub>5</sub> + H<sub>2</sub>O, अम्ल उत्प्रेरक की उपस्थिति में। अम्ल और ऐल्कोहॉल मिलकर एस्टर बनाते हैं, इसलिए यह एस्टरीकरण है। एस्टर का उपयोग इत्र और स्वाद बढ़ाने वाले पदार्थों में होता है।`,
+ t:`An ester heated with sodium hydroxide gives back the alcohol and the sodium salt of the acid. This is saponification, used to make soap.`,
+ th:`एस्टर को सोडियम हाइड्रॉक्साइड के साथ गर्म करने पर ऐल्कोहॉल और अम्ल का सोडियम लवण वापस मिलते हैं। यह साबुनीकरण है, जिससे साबुन बनता है।`},
+
+{s:'C',
+ q:`An element has the electronic configuration 2, 8, 7. Its position in the modern periodic table and its valency are`,
+ qh:`एक तत्व का इलेक्ट्रॉनिक विन्यास 2, 8, 7 है। आधुनिक आवर्त सारणी में इसका स्थान और इसकी संयोजकता है`,
+ o:[`Period 2, Group 17, valency 7`,`Period 3, Group 17, valency 1`,`Period 3, Group 7, valency 7`,`Period 7, Group 3, valency 3`],
+ oh:[`आवर्त 2, समूह 17, संयोजकता 7`,`आवर्त 3, समूह 17, संयोजकता 1`,`आवर्त 3, समूह 7, संयोजकता 7`,`आवर्त 7, समूह 3, संयोजकता 3`], a:1,
+ e:`Three shells mean Period 3. Seven valence electrons mean Group 10 + 7 = 17. The atom needs one more electron to complete its octet, so its valency is 1. The element is chlorine, a halogen.`,
+ eh:`तीन कोश हैं, इसलिए आवर्त 3। सात संयोजकता इलेक्ट्रॉन हैं, इसलिए समूह 10 + 7 = 17। अष्टक पूरा करने के लिए एक इलेक्ट्रॉन चाहिए, इसलिए संयोजकता 1 है। यह तत्व क्लोरीन (एक हैलोजन) है।`,
+ t:`Period number = number of shells. Across a period, atomic size and metallic character decrease.`,
+ th:`आवर्त संख्या = कोशों की संख्या। आवर्त में बाएँ से दाएँ जाने पर परमाणु आकार और धात्विक गुण घटते हैं।`},
+
+/* ===== Biology (8) ===== */
+{s:'B',
+ q:`A pure tall pea plant (TT) is crossed with a pure dwarf pea plant (tt), and the F<sub>1</sub> plants are self-pollinated. What fraction of the F<sub>2</sub> plants is pure tall (TT)?`,
+ qh:`मटर के शुद्ध लंबे पौधे (TT) का संकरण शुद्ध बौने पौधे (tt) से कराया जाता है और F<sub>1</sub> पौधों में स्व-परागण कराया जाता है। F<sub>2</sub> पीढ़ी के पौधों का कितना भाग शुद्ध लंबा (TT) होगा?`,
+ o:[`1/4`,`1/2`,`3/4`,`All of them`],
+ oh:[`1/4`,`1/2`,`3/4`,`सभी पौधे`], a:0,
+ e:`All F<sub>1</sub> plants are Tt (tall). Tt × Tt gives TT : Tt : tt = 1 : 2 : 1. Three-fourths of the F<sub>2</sub> plants look tall, but only one-fourth are pure tall (TT).`,
+ eh:`F<sub>1</sub> के सभी पौधे Tt (लंबे) होते हैं। Tt × Tt से TT : Tt : tt = 1 : 2 : 1 मिलता है। F<sub>2</sub> के तीन-चौथाई पौधे लंबे दिखते हैं, पर शुद्ध लंबे (TT) केवल एक-चौथाई होते हैं।`,
+ t:`Monohybrid cross: 3 : 1 by appearance (phenotype), 1 : 2 : 1 by gene make-up (genotype).`,
+ th:`एकसंकर संकरण: लक्षण-प्ररूप अनुपात 3 : 1, जीन-प्ररूप अनुपात 1 : 2 : 1।`},
+
+{s:'B',
+ q:`Consider these statements about sex determination in humans:` + st([`Human body cells have 23 pairs of chromosomes.`,`A woman has two X chromosomes, while a man has one X and one Y chromosome.`,`The sex of the child is decided by the chromosome in the mother's egg.`,`A child who receives a Y chromosome from the father is a boy.`]) + `Which statements are correct?`,
+ qh:`मानव में लिंग निर्धारण के बारे में इन कथनों पर विचार कीजिए:` + st([`मानव की कायिक कोशिकाओं में गुणसूत्रों के 23 जोड़े होते हैं।`,`स्त्री में दो X गुणसूत्र होते हैं, जबकि पुरुष में एक X और एक Y गुणसूत्र होता है।`,`शिशु का लिंग माता के अंडाणु के गुणसूत्र से निर्धारित होता है।`,`जिस शिशु को पिता से Y गुणसूत्र मिलता है, वह लड़का होता है।`]) + `कौन-से कथन सही हैं?`,
+ o:[`I and II only`,`II and III only`,`I, III and IV only`,`I, II and IV only`],
+ oh:[`केवल I और II`,`केवल II और III`,`केवल I, III और IV`,`केवल I, II और IV`], a:3,
+ e:`Every egg carries an X chromosome. A sperm carries either X or Y, so the father's sperm decides the sex of the child: X gives a girl (XX), Y gives a boy (XY). Statement III is wrong.`,
+ eh:`हर अंडाणु में X गुणसूत्र होता है। शुक्राणु में X या Y होता है, इसलिए शिशु का लिंग पिता के शुक्राणु से तय होता है: X से लड़की (XX) और Y से लड़का (XY)। कथन III गलत है।`,
+ t:`Of the 23 pairs, 22 pairs are autosomes and 1 pair is the sex chromosomes.`,
+ th:`23 जोड़ों में से 22 जोड़े अलिंग गुणसूत्र और 1 जोड़ा लिंग गुणसूत्र होता है।`},
+
+{s:'B',
+ q:`After fertilisation in a flowering plant, the ovule and the ovary develop, respectively, into the`,
+ qh:`पुष्पी पादप में निषेचन के बाद बीजांड और अंडाशय क्रमशः किसमें विकसित होते हैं?`,
+ o:[`fruit and seed`,`seed and fruit`,`embryo and seed`,`seed and flower`],
+ oh:[`फल और बीज`,`बीज और फल`,`भ्रूण और बीज`,`बीज और पुष्प`], a:1,
+ e:`The zygote divides to form the embryo inside the ovule. The ovule develops a tough coat and becomes the seed. The ovary grows and ripens into the fruit. Petals, sepals, stamens, style and stigma usually dry up and fall off.`,
+ eh:`युग्मनज विभाजित होकर बीजांड के अंदर भ्रूण बनाता है। बीजांड पर कठोर आवरण बनता है और वह बीज बन जाता है। अंडाशय बढ़कर और पककर फल बनता है। पंखुड़ियाँ, बाह्यदल, पुंकेसर, वर्तिका और वर्तिकाग्र प्रायः सूखकर गिर जाते हैं।`,
+ t:`The pollen tube grows down the style and carries the male germ cell to the ovule.`,
+ th:`पराग नलिका वर्तिका से होकर बढ़ती है और नर युग्मक को बीजांड तक पहुँचाती है।`},
+
+{s:'B',
+ q:`In humans, the egg is normally fertilised in the`,
+ qh:`मानव में अंडाणु का निषेचन सामान्यतः कहाँ होता है?`,
+ o:[`ovary`,`uterus`,`oviduct (fallopian tube)`,`cervix`],
+ oh:[`अंडाशय`,`गर्भाशय`,`अंडवाहिनी (फैलोपियन नलिका)`,`गर्भाशय ग्रीवा`], a:2,
+ e:`The egg released by the ovary moves into the oviduct, where it meets the sperm. The zygote starts dividing and gets implanted in the lining of the uterus. The embryo gets its nutrition from the mother's blood through the placenta.`,
+ eh:`अंडाशय से निकला अंडाणु अंडवाहिनी में पहुँचता है, जहाँ उसका शुक्राणु से मिलन होता है। युग्मनज विभाजित होने लगता है और गर्भाशय की भित्ति में रोपित हो जाता है। भ्रूण को पोषण माता के रक्त से अपरा (प्लैसेंटा) द्वारा मिलता है।`,
+ t:`Fertilisation in the oviduct, implantation and growth in the uterus.`,
+ th:`निषेचन अंडवाहिनी में, रोपण और विकास गर्भाशय में।`},
+
+{s:'B',
+ q:`Which statement about transport in plants is correct?`,
+ qh:`पादपों में परिवहन के बारे में कौन-सा कथन सही है?`,
+ o:[`Xylem carries water and minerals upwards; phloem carries food both upwards and downwards`,`Xylem carries food; phloem carries water and minerals`,`Xylem and phloem both carry only water`,`Transport in phloem needs no energy, while xylem uses ATP`],
+ oh:[`जाइलम जल और खनिज लवणों को ऊपर की ओर ले जाता है; फ्लोएम भोजन को ऊपर और नीचे दोनों ओर ले जाता है`,`जाइलम भोजन का और फ्लोएम जल व खनिज लवणों का वहन करता है`,`जाइलम और फ्लोएम दोनों केवल जल का वहन करते हैं`,`फ्लोएम में परिवहन के लिए ऊर्जा नहीं चाहिए, जबकि जाइलम ATP का उपयोग करता है`], a:0,
+ e:`Xylem (tracheids and vessels) moves water and minerals from the roots upwards, mainly by the pull created by transpiration. Phloem (sieve tubes and companion cells) moves food from the leaves to all parts, in both directions, using energy from ATP. This is called translocation.`,
+ eh:`जाइलम (वाहिनिकाएँ और वाहिकाएँ) जल और खनिज लवणों को जड़ों से ऊपर ले जाता है, मुख्यतः वाष्पोत्सर्जन से बने खिंचाव के कारण। फ्लोएम (चालनी नलिकाएँ और सहचर कोशिकाएँ) भोजन को पत्तियों से सभी भागों तक, दोनों दिशाओं में, ATP की ऊर्जा से पहुँचाता है। इसे स्थानांतरण कहते हैं।`,
+ t:`Xylem: one-way, a physical process. Phloem: two-way, needs energy.`,
+ th:`जाइलम: एक-दिशीय, भौतिक प्रक्रम। फ्लोएम: द्वि-दिशीय, ऊर्जा की आवश्यकता।`},
+
+{s:'B',
+ q:`Match the hormone with the gland that secretes it:` + mt(`Hormone`,[`Thyroxine`,`Insulin`,`Adrenaline`,`Growth hormone`],`Gland`,[`Pituitary`,`Adrenal`,`Thyroid`,`Pancreas`]),
+ qh:`हॉर्मोन का उसे स्रावित करने वाली ग्रंथि से मिलान कीजिए:` + mt(`हॉर्मोन`,[`थायरॉक्सिन`,`इंसुलिन`,`ऐड्रीनलीन`,`वृद्धि हॉर्मोन`],`ग्रंथि`,[`पीयूष ग्रंथि`,`अधिवृक्क ग्रंथि`,`अवटु (थायरॉइड) ग्रंथि`,`अग्न्याशय`]),
+ o:[`A-3, B-2, C-4, D-1`,`A-1, B-4, C-2, D-3`,`A-3, B-4, C-2, D-1`,`A-4, B-3, C-1, D-2`], a:2,
+ e:`Thyroxine (thyroid) controls metabolism and needs iodine; its lack causes goitre. Insulin (pancreas) lowers blood sugar; its lack causes diabetes. Adrenaline (adrenal) prepares the body for an emergency. Growth hormone (pituitary) controls growth; too little in childhood causes dwarfism.`,
+ eh:`थायरॉक्सिन (अवटु ग्रंथि) उपापचय का नियंत्रण करता है और इसके लिए आयोडीन चाहिए; इसकी कमी से घेंघा होता है। इंसुलिन (अग्न्याशय) रक्त शर्करा घटाता है; इसकी कमी से मधुमेह होता है। ऐड्रीनलीन (अधिवृक्क) शरीर को आपात स्थिति के लिए तैयार करता है। वृद्धि हॉर्मोन (पीयूष) वृद्धि का नियंत्रण करता है; बचपन में इसकी कमी से बौनापन होता है।`,
+ t:`The pituitary is called the master gland. Iodised salt prevents goitre.`,
+ th:`पीयूष ग्रंथि को मास्टर ग्रंथि कहते हैं। आयोडीन युक्त नमक घेंघा से बचाता है।`},
+
+{s:'B',
+ q:`A potted plant kept near a window bends towards the light. This happens because auxin`,
+ qh:`खिड़की के पास रखा गमले का पौधा प्रकाश की ओर मुड़ जाता है। ऐसा इसलिए होता है क्योंकि ऑक्सिन`,
+ o:[`is destroyed by light in the whole shoot`,`collects on the lit side, where the cells grow longer`,`moves down to the roots`,`collects on the shaded side, where the cells grow longer`],
+ oh:[`प्रकाश से पूरे प्ररोह में नष्ट हो जाता है`,`प्रकाश वाली ओर एकत्र होता है, जहाँ कोशिकाएँ अधिक लंबी हो जाती हैं`,`नीचे जड़ों में चला जाता है`,`छाया वाली ओर एकत्र होता है, जहाँ कोशिकाएँ अधिक लंबी हो जाती हैं`], a:3,
+ e:`Auxin is made at the shoot tip. When light falls from one side, auxin diffuses to the shaded side. The cells there grow longer than those on the lit side, so the shoot bends towards the light. This is positive phototropism.`,
+ eh:`ऑक्सिन प्ररोह के शीर्ष पर बनता है। जब प्रकाश एक ओर से आता है तो ऑक्सिन छाया वाली ओर विसरित हो जाता है। वहाँ की कोशिकाएँ प्रकाश वाली ओर की कोशिकाओं से अधिक लंबी हो जाती हैं, इसलिए प्ररोह प्रकाश की ओर मुड़ता है। यह धनात्मक प्रकाशानुवर्तन है।`,
+ t:`Gibberellin: stem growth. Cytokinin: cell division. Abscisic acid: stops growth, causes wilting of leaves.`,
+ th:`जिबरेलिन: तने की वृद्धि। साइटोकाइनिन: कोशिका विभाजन। ऐब्सिसिक अम्ल: वृद्धि रोकता है, पत्तियों का मुरझाना।`},
+
+{s:'B',
+ q:`Which pair of vitamin and deficiency disease is <u>not</u> correctly matched?`,
+ qh:`विटामिन और उसकी कमी से होने वाले रोग का कौन-सा युग्म सही सुमेलित <u>नहीं</u> है?`,
+ o:[`Vitamin A and night blindness`,`Vitamin C and rickets`,`Vitamin B<sub>1</sub> and beriberi`,`Vitamin K and slow clotting of blood`],
+ oh:[`विटामिन A और रतौंधी`,`विटामिन C और रिकेट्स (सूखा रोग)`,`विटामिन B<sub>1</sub> और बेरी-बेरी`,`विटामिन K और रक्त का थक्का देर से जमना`], a:1,
+ e:`Lack of vitamin C causes scurvy (bleeding gums). Rickets is caused by lack of vitamin D, which is needed to absorb calcium for the bones.`,
+ eh:`विटामिन C की कमी से स्कर्वी (मसूड़ों से खून आना) होता है। रिकेट्स विटामिन D की कमी से होता है, जो हड्डियों के लिए कैल्सियम के अवशोषण में ज़रूरी है।`,
+ t:`Vitamins A, D, E and K dissolve in fat. Vitamins B and C dissolve in water.`,
+ th:`विटामिन A, D, E और K वसा में घुलनशील हैं। विटामिन B और C जल में घुलनशील हैं।`},
+
+/* ===== Environment (2) ===== */
+{s:'E',
+ q:`Acid rain is caused mainly by which gases in the air?`,
+ qh:`अम्ल वर्षा मुख्यतः वायु में उपस्थित किन गैसों के कारण होती है?`,
+ o:[`Sulphur dioxide and oxides of nitrogen`,`Carbon monoxide and methane`,`Ozone and chlorofluorocarbons`,`Carbon dioxide and water vapour`],
+ oh:[`सल्फर डाइऑक्साइड और नाइट्रोजन के ऑक्साइड`,`कार्बन मोनोऑक्साइड और मेथेन`,`ओज़ोन और क्लोरोफ्लोरोकार्बन`,`कार्बन डाइऑक्साइड और जलवाष्प`], a:0,
+ e:`Burning coal and petroleum releases sulphur dioxide and oxides of nitrogen. These dissolve in rain water to form sulphuric acid and nitric acid. Acid rain damages buildings made of marble, soil, crops and life in lakes.`,
+ eh:`कोयला और पेट्रोलियम जलाने से सल्फर डाइऑक्साइड और नाइट्रोजन के ऑक्साइड निकलते हैं। ये वर्षा के जल में घुलकर सल्फ्यूरिक अम्ल और नाइट्रिक अम्ल बनाते हैं। अम्ल वर्षा संगमरमर की इमारतों, मृदा, फसलों और झीलों के जीवों को हानि पहुँचाती है।`,
+ t:`Normal rain is slightly acidic (pH about 5.6) because of dissolved CO<sub>2</sub>. Rain with pH below 5.6 is called acid rain.`,
+ th:`घुली हुई CO<sub>2</sub> के कारण सामान्य वर्षा हल्की अम्लीय होती है (pH लगभग 5.6)। 5.6 से कम pH वाली वर्षा को अम्ल वर्षा कहते हैं।`},
+
+{s:'E',
+ q:`A pesticide enters this food chain: water → algae → small fish → large fish → fish-eating bird. Its concentration will be highest in the`,
+ qh:`एक पीड़कनाशी इस आहार श्रृंखला में प्रवेश करता है: जल → शैवाल → छोटी मछली → बड़ी मछली → मछली खाने वाला पक्षी। इसकी सांद्रता सबसे अधिक किसमें होगी?`,
+ o:[`water`,`algae`,`small fish`,`fish-eating bird`],
+ oh:[`जल`,`शैवाल`,`छोटी मछली`,`मछली खाने वाला पक्षी`], a:3,
+ e:`Pesticides such as DDT are non-biodegradable. They are neither broken down nor passed out of the body, so they build up at every trophic level. The top consumer ends up with the highest concentration. This is biological magnification.`,
+ eh:`DDT जैसे पीड़कनाशी अजैव निम्नीकरणीय होते हैं। ये न तो विघटित होते हैं और न शरीर से बाहर निकलते हैं, इसलिए हर पोषी स्तर पर इनकी मात्रा बढ़ती जाती है। शीर्ष उपभोक्ता में सांद्रता सबसे अधिक होती है। इसे जैव आवर्धन कहते हैं।`,
+ t:`Energy decreases up a food chain, but harmful chemicals increase.`,
+ th:`आहार श्रृंखला में ऊपर जाने पर ऊर्जा घटती है, पर हानिकारक रसायन बढ़ते हैं।`}
+];
+
+/* ---------- app ---------- */
+const $ = id => document.getElementById(id), L = 'ABCD', N = Q.length;
+const ORDER = ['P','C','B','E'];
+const first = k => Q.findIndex(q => q.s === k);
+const count = k => Q.filter(q => q.s === k).length;
+const SHORT = k => k === 'E' ? 'Env.' : SEC[k][0];
+let S = null, LANG = 'both';
+/* T(english, hindi, block): text in the chosen language */
+function T(en, hi, block){
+  if (!hi || hi === en || LANG === 'en') return en;
+  if (LANG === 'hi') return '<span lang="hi">' + hi + '</span>';
+  return block ? '<div>' + en + '</div><div class="hi" lang="hi">' + hi + '</div>' : en + '<span class="hi" lang="hi">' + hi + '</span>';
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-l]'); if (!b) return;
+  LANG = b.dataset.l;
+  document.querySelectorAll('[data-l]').forEach(x => x.classList.toggle('on', x.dataset.l === LANG));
+  if (!$('test').hidden) render();
+  if (!$('result').hidden) review();
+});
+
+function show(v){ ['start','test','result'].forEach(x => $(x).hidden = x !== v); window.scrollTo(0,0); }
+function fmt(s){ s = Math.max(0, s); return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+function num(x){ return (Math.round(x*100)/100).toFixed(2).replace(/\.00$/,''); }
+
+/* start screen */
+$('route').innerHTML = ORDER.map(k => '<div style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><i></i><b>'+count(k)+'</b><span>'+SHORT(k)+'</span></div>').join('');
+$('tMin').textContent = CFG.minutes + ' minutes';
+$('startBtn').onclick = begin;
+
+function begin(){
+  S = { mode: document.querySelector('input[name=mode]:checked').value, cur: 0,
+        ans: Q.map(() => -1), mark: Q.map(() => false), left: CFG.minutes*60, t0: Date.now(), timer: null, filter: 'all' };
+  $('line').innerHTML = ORDER.map(k => '<div class="seg" data-s="'+k+'" style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><button class="name" data-go="'+first(k)+'" aria-label="'+SEC[k][0]+'">'+SHORT(k)+'</button><div class="ticks">' +
+    Q.map((q,i) => q.s === k ? '<i data-t="'+i+'"></i>' : '').join('') + '</div></div>').join('');
+  $('grid').innerHTML = ORDER.map(k => '<h3>'+SEC[k][0]+'</h3>' + Q.map((q,i) => q.s === k ? '<button data-go="'+i+'">'+(i+1)+'</button>' : '').join('')).join('');
+  const exam = S.mode === 'exam';
+  $('clock').hidden = !exam;
+  $('clock').className = 'clock';
+  $('clock').textContent = fmt(S.left);
+  if (exam) S.timer = setInterval(tick, 1000);
+  show('test'); render();
+}
+function tick(){
+  S.left--;
+  $('clock').textContent = fmt(S.left);
+  if (S.left <= 120) $('clock').classList.add('low');
+  if (S.left <= 0) finish(true);
+}
+function solution(q){
+  return '<b class="h">Answer: ' + L[q.a] + '</b>' + '<div>' + T(q.e, q.eh, true) + '</div>' + (q.t ? '<div class="tip"><b>Remember:</b> ' + T(q.t, q.th, true) + '</div>' : '');
+}
+function render(){
+  const i = S.cur, q = Q[i], locked = S.mode === 'practice' && S.ans[i] > -1;
+  $('qmeta').innerHTML = '<span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+' of '+N+'</span>';
+  $('stem').innerHTML = T(q.q, q.qh, true);
+  $('opts').innerHTML = q.o.map((o,k) => {
+    let c = 'opt';
+    if (locked) c += k === q.a ? ' right' : (k === S.ans[i] ? ' wrong' : '');
+    else if (k === S.ans[i]) c += ' sel';
+    return '<button class="'+c+'" data-k="'+k+'"'+(locked?' disabled':'')+'><b>'+L[k]+'</b><span>'+T(o, q.oh && q.oh[k])+'</span></button>';
+  }).join('');
+  $('sol').hidden = !locked;
+  $('sol').innerHTML = locked ? solution(q) : '';
+  $('clear').hidden = S.mode !== 'exam' || S.ans[i] < 0;
+  $('prev').disabled = i === 0;
+  $('next').textContent = i === N-1 ? 'Submit test' : 'Next';
+  $('markBtn').textContent = S.mark[i] ? 'Marked for review' : 'Mark for review';
+  $('markBtn').classList.toggle('marked', S.mark[i]);
+  $('markBtn').setAttribute('aria-pressed', S.mark[i]);
+  paint();
+}
+function paint(){
+  const cls = j => (S.ans[j] > -1 ? ' done' : '') + (S.mark[j] ? ' rev' : '') + (j === S.cur ? ' cur' : '');
+  document.querySelectorAll('#line i[data-t]').forEach(el => el.className = cls(+el.dataset.t).trim());
+  document.querySelectorAll('#grid button').forEach(el => el.className = cls(+el.dataset.go).trim());
+  document.querySelectorAll('#line .seg').forEach(el => el.classList.toggle('on', el.dataset.s === Q[S.cur].s));
+}
+function go(i){ S.cur = Math.max(0, Math.min(N-1, i)); render(); window.scrollTo(0,0); }
+
+$('opts').onclick = e => {
+  const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+  S.ans[S.cur] = +b.dataset.k; render();
+};
+$('clear').onclick = () => { S.ans[S.cur] = -1; render(); };
+$('prev').onclick = () => go(S.cur - 1);
+$('next').onclick = () => S.cur === N-1 ? ask() : go(S.cur + 1);
+$('markBtn').onclick = () => { S.mark[S.cur] = !S.mark[S.cur]; render(); };
+$('line').onclick = e => { const b = e.target.closest('[data-go]'); if (b) go(+b.dataset.go); };
+$('allBtn').onclick = () => $('pal').hidden = false;
+$('palClose').onclick = () => $('pal').hidden = true;
+$('pal').onclick = e => { if (e.target === $('pal')) $('pal').hidden = true; };
+$('grid').onclick = e => { const b = e.target.closest('[data-go]'); if (b) { $('pal').hidden = true; go(+b.dataset.go); } };
+$('palSubmit').onclick = () => { $('pal').hidden = true; ask(); };
+
+function ask(){
+  const done = S.ans.filter(a => a > -1).length, rev = S.mark.filter(Boolean).length;
+  $('dlgP').textContent = 'Answered ' + done + ' of ' + N + '. Not answered: ' + (N - done) + '.' + (rev ? ' Marked for review: ' + rev + '.' : '') +
+    (S.mode === 'exam' ? ' Time left: ' + fmt(S.left) + '.' : '');
+  $('dlg').hidden = false;
+}
+$('dlgNo').onclick = () => $('dlg').hidden = true;
+$('dlgYes').onclick = () => finish(false);
+
+/* result */
+function finish(auto){
+  clearInterval(S.timer);
+  $('dlg').hidden = true; $('pal').hidden = true;
+  const used = S.mode === 'exam' ? CFG.minutes*60 - Math.max(0, S.left) : Math.round((Date.now() - S.t0)/1000);
+  let c = 0, w = 0; const by = {};
+  ORDER.forEach(k => by[k] = { c:0, w:0, n:count(k) });
+  Q.forEach((q,i) => { if (S.ans[i] < 0) return; if (S.ans[i] === q.a) { c++; by[q.s].c++; } else { w++; by[q.s].w++; } });
+  const sk = N - c - w, score = c*CFG.right - w*CFG.wrong;
+  $('rNote').textContent = auto ? 'Time ended, so the test was submitted. Your score' : 'General Science Set 11: your score';
+  $('rScore').textContent = num(score);
+  $('rLine').innerHTML = c + ' correct gives +' + num(c*CFG.right) + '. ' + w + ' wrong costs &minus;' + num(w*CFG.wrong) + '.';
+  $('tally').innerHTML = [[c,'Correct'],[w,'Wrong'],[sk,'Skipped'],[(c+w ? Math.round(100*c/(c+w)) : 0)+'%','Accuracy'],[fmt(used),'Time used']]
+    .map(x => '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+  $('secs').innerHTML = ORDER.map(k => { const b = by[k], s = b.c*CFG.right - b.w*CFG.wrong;
+    return '<div class="secrow" style="--c:'+DARK[k]+'"><span>'+SEC[k][0]+'</span><div class="meter"><i style="width:'+(100*b.c/b.n)+'%"></i></div><b>'+b.c+'/'+b.n+' &nbsp;('+num(s)+')</b></div>'; }).join('');
+  S.counts = { all:N, wrong:w, skipped:sk, correct:c };
+  S.filter = w ? 'wrong' : 'all';
+  review(); show('result');
+}
+function review(){
+  const names = { all:'All', wrong:'Wrong', skipped:'Skipped', correct:'Correct' };
+  $('filters').innerHTML = Object.keys(names).map(f => '<button data-f="'+f+'" class="'+(S.filter===f?'on':'')+'">'+names[f]+' '+S.counts[f]+'</button>').join('');
+  const html = Q.map((q,i) => {
+    const a = S.ans[i], stt = a < 0 ? 'skipped' : (a === q.a ? 'correct' : 'wrong');
+    if (S.filter !== 'all' && S.filter !== stt) return '';
+    const lab = { correct:['c','Correct'], wrong:['w','Wrong'], skipped:['s','Skipped'] }[stt];
+    return '<div class="rq"><div class="qmeta"><span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+'</span><span class="status '+lab[0]+'">'+lab[1]+'</span></div>' +
+      '<div class="stem">'+T(q.q, q.qh, true)+'</div><div class="opts">' +
+      q.o.map((o,k) => '<div class="opt'+(k===q.a?' right':(k===a?' wrong':''))+'"><b>'+L[k]+'</b><span>'+T(o, q.oh && q.oh[k])+(k===a?' <i>(your answer)</i>':'')+'</span></div>').join('') +
+      '</div><div class="sol">'+solution(q)+'</div></div>';
+  }).join('');
+  $('review').innerHTML = html || '<div class="panel">No questions in this list. Pick another filter above.</div>';
+}
+$('filters').onclick = e => { const b = e.target.closest('[data-f]'); if (b) { S.filter = b.dataset.f; review(); } };
+$('again').onclick = () => show('start');
+</script>
+</body>
+</html>
