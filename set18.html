@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>General Science Set 18 | RRB JE CBT-1 2026 | THE EXAM ENGINEER</title>
+<meta name="description" content="General Science Set 18: bilingual (English and Hindi) 30-question mock test for RRB JE CBT-1 2026 with 1/3 negative marking and full solutions. By THE EXAM ENGINEER.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#12284a;--navy2:#1d3b6a;--orange:#ff922b;--paper:#f3f5f9;--card:#fff;--line:#d8dfeb;--ink:#17233a;--muted:#5b6880;--ok:#1b7f3b;--okbg:#e6f4ea;--bad:#c92a2a;--badbg:#fdeaea;--rev:#6741d9;--r:10px}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 Mukta,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+sub,sup{font-size:.72em;line-height:0}
+
+/* buttons */
+.btn{border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:11px 16px;font-weight:600;min-height:48px}
+.btn.main{background:var(--orange);border-color:var(--orange);color:#1c1300}
+.btn.dark{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn:disabled{opacity:.4;cursor:default}
+
+/* start */
+.hero{background:var(--navy);color:#fff;padding:26px 0 30px}
+.brand{font-weight:800;color:var(--orange);text-decoration:none;letter-spacing:.02em}
+.hero h1{font-size:clamp(34px,9vw,54px);line-height:1.02;font-weight:800;margin:14px 0 10px;letter-spacing:-.01em}
+.hero p{margin:0;color:#c9d5ea;max-width:34em}
+.route{display:flex;gap:6px;margin-top:26px}
+.route div{min-width:38px}
+.route i{display:block;height:8px;border-radius:4px;background:var(--c)}
+.route b{display:block;font-size:22px;line-height:1.1;margin-top:8px}
+.route span{font-size:14px;color:#c9d5ea;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:16px 0}
+.panel h2{font-size:18px;margin:0 0 10px;color:var(--navy)}
+.terms{margin:0;padding:0;list-style:none}
+.terms li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--line)}
+.terms li:first-child{border-top:0}
+.terms b{white-space:nowrap}
+.mode{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:var(--r);margin-top:8px;cursor:pointer}
+.mode:has(input:checked){border-color:var(--navy);background:#eef3fb}
+.mode input{margin-top:6px;accent-color:var(--navy);width:18px;height:18px;flex:none}
+.mode b{display:block}
+.mode span span{color:var(--muted);font-size:15.5px}
+#startBtn{width:100%;font-size:19px;margin:4px 0 14px}
+.foot{color:var(--muted);font-size:15px;text-align:center;padding:6px 0 34px}
+.foot a{color:var(--navy);font-weight:600}
+
+/* test */
+.top{position:sticky;top:0;z-index:5;background:var(--navy);color:#fff;padding:10px 0 12px}
+.toprow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.toprow b{font-weight:800;white-space:nowrap}
+.clock{font-variant-numeric:tabular-nums;font-weight:800;font-size:19px;background:var(--navy2);border-radius:8px;padding:2px 10px}
+.clock.low{background:var(--bad)}
+.allq{background:transparent;border:1px solid #5d76a1;color:#fff;border-radius:8px;padding:3px 12px;font-weight:600;font-size:15.5px;min-height:34px;white-space:nowrap}
+.line{display:flex;gap:8px;margin-top:10px}
+.seg{min-width:38px}
+.seg button.name{display:block;width:100%;background:none;border:0;padding:0 0 4px;text-align:left;color:#c9d5ea;font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.on button.name{color:#fff}
+.ticks{display:flex;gap:2px}
+.ticks i{flex:1;height:9px;border-radius:2px;background:#3a5383}
+.ticks i.done{background:var(--c)}
+.ticks i.rev{background:#b197fc}
+.ticks i.cur{box-shadow:0 0 0 2px #fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:14px 0 110px}
+.qmeta{display:flex;align-items:center;gap:10px;color:var(--muted);font-size:15px;margin-bottom:8px}
+.chip{background:var(--c);color:#fff;border-radius:6px;padding:0 9px;font-weight:600}
+.stem{font-size:18.5px;line-height:1.45;font-weight:600}
+.stem .st{font-weight:400;margin:8px 0;padding:0;list-style:none}
+.stem .st li{padding:2px 0 2px 2.1em;text-indent:-2.1em}
+.stem table{border-collapse:collapse;width:100%;margin:10px 0;font-weight:400;font-size:16.5px}
+.stem th,.stem td{border:1px solid var(--line);padding:5px 8px;text-align:left;vertical-align:top}
+.stem th{background:#eef3fb;color:var(--navy)}
+.opts{display:grid;gap:9px;margin-top:14px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:11px 12px;min-height:50px;color:var(--ink)}
+.opt b{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:15px;line-height:1}
+.opt.sel{border-color:var(--navy);background:#eef3fb}
+.opt.sel b{background:var(--navy);border-color:var(--navy);color:#fff}
+.opt.right{border-color:var(--ok);background:var(--okbg)}
+.opt.right b{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--badbg)}
+.opt.wrong b{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default;opacity:1}
+.clear{background:none;border:0;color:var(--navy);text-decoration:underline;padding:10px 0 0;font-size:15.5px}
+.sol{margin-top:14px;border-left:4px solid var(--orange);background:#fff7ec;border-radius:0 var(--r) var(--r) 0;padding:10px 12px;font-size:16.5px}
+.sol b.h{color:var(--navy)}
+.sol .tip{margin-top:6px;color:#7a4a00}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
+.bar .wrap{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:8px}
+.bar .btn{padding:8px 6px;font-size:15.5px;line-height:1.2}
+.btn.marked{border-color:var(--rev);color:var(--rev);background:#f3effe}
+
+/* language */
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+.lang button{border:0;background:none;padding:6px 14px;font-weight:600;min-height:40px;color:var(--ink)}
+.lang button+button{border-left:1px solid var(--line)}
+.lang button.on{background:var(--navy);color:#fff}
+.top .lang{border-color:#5d76a1;background:transparent;flex:none}
+.top .lang button{color:#fff;padding:3px 9px;min-height:34px;font-size:15px}
+.top .lang button+button{border-left-color:#5d76a1}
+.top .lang button.on{background:#fff;color:var(--navy)}
+.stem .hi{font-weight:400;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.opt .hi{display:block;color:var(--muted)}
+.sol .hi{margin-top:6px}
+.headrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:22px 0 4px}
+.headrow h2.sec{margin:0}
+
+/* sheet + dialog */
+.shade{position:fixed;inset:0;background:rgba(18,40,74,.55);z-index:10;display:grid;align-items:end}
+.shade.mid{align-items:center;padding:16px}
+.sheet{background:#fff;border-radius:16px 16px 0 0;padding:16px;max-height:86vh;overflow:auto;width:100%;max-width:760px;margin:0 auto}
+.shade.mid .sheet{border-radius:16px;max-width:420px}
+.sheet h2{margin:0 0 4px;font-size:20px;color:var(--navy)}
+.sheet p{margin:0 0 12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 12px}
+.grid h3{grid-column:1/-1;margin:8px 0 0;font-size:15px;color:var(--muted);font-weight:600}
+.grid button{height:44px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:600}
+.grid button.done{background:var(--navy);border-color:var(--navy);color:#fff}
+.grid button.rev{border-color:var(--rev);box-shadow:inset 0 -5px 0 var(--rev)}
+.grid button.cur{outline:3px solid var(--orange);outline-offset:1px}
+.key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14.5px;color:var(--muted);margin-bottom:12px}
+.key i{display:inline-block;width:14px;height:14px;border-radius:4px;border:1.5px solid var(--line);vertical-align:-2px;margin-right:5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* result */
+.score{background:var(--navy);color:#fff;padding:24px 0 26px}
+.score p{margin:0;color:#c9d5ea}
+.score .big{font-size:clamp(52px,16vw,84px);font-weight:800;line-height:1;margin:8px 0 6px;font-variant-numeric:tabular-nums}
+.score .big small{font-size:.32em;font-weight:600;color:#c9d5ea}
+.tally{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.tally div{background:var(--navy2);border-radius:var(--r);padding:8px 10px}
+.tally b{display:block;font-size:24px;line-height:1.15}
+.tally span{font-size:14px;color:#c9d5ea}
+.secrow{display:grid;grid-template-columns:104px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.secrow:first-of-type{border-top:0}
+.meter{height:10px;border-radius:5px;background:#e6ebf3;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--c)}
+.secrow b{font-variant-numeric:tabular-nums}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 12px}
+.filters button{border:1.5px solid var(--line);background:#fff;border-radius:20px;padding:4px 14px;font-weight:600;font-size:15.5px;min-height:38px}
+.filters button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.rq{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.rq .stem{font-size:17px}
+.rq .opt{min-height:0;padding:7px 10px;font-size:16px}
+.rq .opt b{width:24px;height:24px;font-size:13.5px}
+.status{margin-left:auto;font-weight:600;border-radius:6px;padding:0 9px}
+.status.c{background:var(--okbg);color:var(--ok)}
+.status.w{background:var(--badbg);color:var(--bad)}
+.status.s{background:#e9edf4;color:var(--muted)}
+.end{display:grid;gap:8px;margin:18px 0 14px}
+.end a{text-align:center;text-decoration:none;display:block}
+h2.sec{font-size:20px;color:var(--navy);margin:22px 0 4px}
+
+@media (max-width:350px){.top .lang button{padding:3px 6px;font-size:14px}.allq{padding:3px 8px;font-size:14px}.clock{font-size:17px;padding:2px 7px}.toprow{gap:6px}}
+@media (min-width:620px){
+  .bar .btn{font-size:17px}
+  .end{grid-template-columns:1fr 1fr}
+  .tally{grid-template-columns:repeat(5,1fr)}
+  .grid{grid-template-columns:repeat(10,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){.opt,.btn{transition:background .12s,border-color .12s}}
+@media print{.top,.bar,.filters,.end{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ============ Start ============ -->
+<main id="start">
+  <div class="hero"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <h1>General Science<br>Set 18</h1>
+    <p>30 questions in English and Hindi for RRB JE CBT-1, based on RRB JE PYQs: same level, same pattern.</p>
+    <div class="route" id="route"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="panel">
+      <h2>Marking and time</h2>
+      <ul class="terms">
+        <li><span>Correct answer</span><b>+1</b></li>
+        <li><span>Wrong answer</span><b>&minus;1/3</b></li>
+        <li><span>Left blank</span><b>0</b></li>
+        <li><span>Time in exam mode</span><b id="tMin">25 minutes</b></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>Question language</h2>
+      <div class="lang" role="group" aria-label="Question language">
+        <button data-l="en">English</button><button data-l="hi" lang="hi">हिंदी</button><button data-l="both" class="on">Both</button>
+      </div>
+      <p style="margin:8px 0 0;color:var(--muted);font-size:15.5px">You can change the language at any time during the test.</p>
+    </div>
+    <div class="panel">
+      <h2>How do you want to attempt?</h2>
+      <label class="mode"><input type="radio" name="mode" value="exam" checked>
+        <span><b>Exam mode</b><span id="mExam">Timer runs. Answers and solutions open after you submit.</span></span></label>
+      <label class="mode"><input type="radio" name="mode" value="practice">
+        <span><b>Practice mode</b><span>No timer. The answer and solution open as soon as you pick an option.</span></span></label>
+    </div>
+    <button class="btn main" id="startBtn">Start test</button>
+    <p class="foot">By THE EXAM ENGINEER (SSC JE AIR 14, RRB JE 2025 DMS)<br>
+      <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join on Telegram: t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<!-- ============ Test ============ -->
+<main id="test" hidden>
+  <div class="top"><div class="wrap">
+    <div class="toprow">
+      <div class="lang" role="group" aria-label="Question language"><button data-l="en">EN</button><button data-l="hi" lang="hi">हिं</button><button data-l="both" class="on">Both</button></div>
+      <span class="clock" id="clock" role="timer">25:00</span>
+      <button class="allq" id="allBtn">Questions</button>
+    </div>
+    <div class="line" id="line"></div>
+  </div></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="qmeta" id="qmeta"></div>
+      <div class="stem" id="stem"></div>
+      <div class="opts" id="opts"></div>
+      <button class="clear" id="clear">Clear my answer</button>
+      <div class="sol" id="sol" hidden></div>
+    </div>
+  </div>
+  <div class="bar"><div class="wrap">
+    <button class="btn" id="prev">Previous</button>
+    <button class="btn" id="markBtn" aria-pressed="false">Mark for review</button>
+    <button class="btn dark" id="next">Next</button>
+  </div></div>
+</main>
+
+<!-- question sheet -->
+<div class="shade" id="pal" hidden>
+  <div class="sheet" role="dialog" aria-label="Questions">
+    <h2>Questions</h2>
+    <div class="key"><span><i style="background:var(--navy);border-color:var(--navy)"></i>Answered</span><span><i></i>Not answered</span><span><i style="border-color:var(--rev);box-shadow:inset 0 -4px 0 var(--rev)"></i>Marked for review</span></div>
+    <div class="grid" id="grid"></div>
+    <div class="two">
+      <button class="btn" id="palClose">Back to question</button>
+      <button class="btn main" id="palSubmit">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- submit dialog -->
+<div class="shade mid" id="dlg" hidden>
+  <div class="sheet" role="alertdialog" aria-labelledby="dlgT">
+    <h2 id="dlgT">Submit the test?</h2>
+    <p id="dlgP"></p>
+    <div class="two">
+      <button class="btn" id="dlgNo">Keep going</button>
+      <button class="btn main" id="dlgYes">Submit test</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Result ============ -->
+<main id="result" hidden>
+  <div class="score"><div class="wrap">
+    <a class="brand" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">THE EXAM ENGINEER</a>
+    <p style="margin-top:12px" id="rNote">General Science Set 18: your score</p>
+    <div class="big"><span id="rScore">0</span> <small>out of 30</small></div>
+    <p id="rLine"></p>
+    <div class="tally" id="tally"></div>
+  </div></div>
+  <div class="wrap">
+    <h2 class="sec">Subject-wise</h2>
+    <div class="panel" id="secs" style="margin-top:8px"></div>
+    <div class="headrow"><h2 class="sec">Answers and solutions</h2>
+      <div class="lang" role="group" aria-label="Question language"><button data-l="en">EN</button><button data-l="hi" lang="hi">हिं</button><button data-l="both" class="on">Both</button></div></div>
+    <div class="filters" id="filters"></div>
+    <div id="review"></div>
+    <div class="end">
+      <button class="btn" id="again">Take the test again</button>
+      <a class="btn main" href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">Join THE EXAM ENGINEER on Telegram</a>
+    </div>
+    <p class="foot">More sets and notes: <a href="https://t.me/the_exam_engineer" target="_blank" rel="noopener">t.me/the_exam_engineer</a></p>
+  </div>
+</main>
+
+<script>
+/* ---------- settings: change the timer or marking here ---------- */
+const CFG = { minutes: 25, right: 1, wrong: 1/3 };
+
+const SEC = {
+  P: ['Physics',     '#4dabf7'],
+  C: ['Chemistry',   '#ff922b'],
+  B: ['Biology',     '#51cf66'],
+  E: ['Environment', '#22b8cf']
+};
+const DARK = { P:'#1864ab', C:'#c2540a', B:'#2b8a3e', E:'#0b7285' };
+
+/* helpers for statement lists and match tables */
+const st = a => '<ul class="st">' + a.map((x,i)=>'<li>'+['I','II','III','IV'][i]+'. &nbsp;'+x+'</li>').join('') + '</ul>';
+const mt = (h1,l,h2,r) => '<table><tr><th>'+h1+'</th><th>'+h2+'</th></tr>' +
+  l.map((x,i)=>'<tr><td>'+'ABCD'[i]+'. '+x+'</td><td>'+(i+1)+'. '+r[i]+'</td></tr>').join('') + '</table>';
+
+/* ---------- questions: s = subject, a = index of correct option (0 = A); qh/oh/eh/th are the Hindi versions ---------- */
+const AB = (a, b, la, lb) => '<ul class="st"><li>' + la + ' ' + a + '</li><li>' + lb + ' ' + b + '</li></ul>';
+const Q = [
+/* ===== Physics (10) ===== */
+{s:'P',
+ q:`A boy whirls a stone tied to a string in a horizontal circle. If the string suddenly breaks, in which direction will the stone move?`,
+ qh:`एक लड़का धागे से बँधे पत्थर को क्षैतिज वृत्त में घुमा रहा है। यदि धागा अचानक टूट जाए, तो पत्थर किस दिशा में जाएगा?`,
+ o:[`Towards the centre of the circle`,`Along the tangent to the circle at that point`,`Away from the centre, along the radius`,`It will keep moving in the same circle`],
+ oh:[`वृत्त के केंद्र की ओर`,`उस बिंदु पर वृत्त की स्पर्श रेखा के अनुदिश`,`त्रिज्या के अनुदिश केंद्र से दूर`,`वह उसी वृत्त में घूमता रहेगा`], a:1,
+ e:`At every point of circular motion the velocity is along the tangent. The string supplies the inward (centripetal) force. When it breaks, there is no force to turn the stone, so it moves straight along the tangent.`,
+ eh:`वृत्तीय गति में हर बिंदु पर वेग स्पर्श रेखा के अनुदिश होता है। धागा अंदर की ओर (अभिकेंद्र) बल देता है। धागा टूटने पर पत्थर को मोड़ने वाला कोई बल नहीं रहता, इसलिए वह स्पर्श रेखा के अनुदिश सीधा चला जाता है।`,
+ t:`Sparks from a knife held against a rotating grinding wheel also fly off along the tangent.`,
+ th:`घूमते सान-पत्थर पर रखे चाकू से निकली चिनगारियाँ भी स्पर्श रेखा के अनुदिश उड़ती हैं।`},
+
+{s:'P',
+ q:`The same force acts on two trolleys A and B. A has a mass of 2 kg and B has a mass of 6 kg. What is the ratio of their accelerations, a<sub>A</sub> : a<sub>B</sub>?`,
+ qh:`दो ट्रॉलियों A और B पर समान बल लगता है। A का द्रव्यमान 2 kg और B का 6 kg है। उनके त्वरणों का अनुपात a<sub>A</sub> : a<sub>B</sub> क्या है?`,
+ o:[`1 : 3`,`1 : 1`,`3 : 1`,`9 : 1`], a:2,
+ e:`a = F/m, so for the same force acceleration is inversely proportional to mass. a<sub>A</sub> : a<sub>B</sub> = 6 : 2 = 3 : 1. The lighter trolley gets the larger acceleration.`,
+ eh:`a = F/m, इसलिए समान बल पर त्वरण द्रव्यमान के व्युत्क्रमानुपाती होता है। a<sub>A</sub> : a<sub>B</sub> = 6 : 2 = 3 : 1। हल्की ट्रॉली का त्वरण अधिक होता है।`,
+ t:`The SI unit of force is the newton: 1 N = 1 kg m/s<sup>2</sup>.`,
+ th:`बल का SI मात्रक न्यूटन है: 1 N = 1 kg m/s<sup>2</sup>।`},
+
+{s:'P',
+ q:`A sharp knife cuts vegetables more easily than a blunt one, even when the same force is applied. This is because the sharp edge`,
+ qh:`समान बल लगाने पर भी तेज़ चाकू भोथरे चाकू की तुलना में सब्ज़ियाँ आसानी से काटता है। इसका कारण है कि तेज़ धार`,
+ o:[`has a smaller area, so it exerts more pressure`,`has a larger area, so it exerts more pressure`,`increases the force applied by the hand`,`reduces the weight of the knife`],
+ oh:[`का क्षेत्रफल कम होता है, इसलिए यह अधिक दाब डालती है`,`का क्षेत्रफल अधिक होता है, इसलिए यह अधिक दाब डालती है`,`हाथ द्वारा लगाए गए बल को बढ़ा देती है`,`चाकू का भार कम कर देती है`], a:0,
+ e:`Pressure = thrust ÷ area. For the same force, the very small area of a sharp edge gives a much larger pressure, so it cuts easily.`,
+ eh:`दाब = प्रणोद ÷ क्षेत्रफल। समान बल के लिए तेज़ धार का बहुत छोटा क्षेत्रफल बहुत अधिक दाब देता है, इसलिए वह आसानी से काटती है।`,
+ t:`For the opposite reason, school bags have broad straps and heavy vehicles have wide tyres: a larger area means less pressure.`,
+ th:`इसके उल्टे कारण से स्कूल बैग की पट्टियाँ चौड़ी और भारी वाहनों के टायर चौड़े होते हैं: अधिक क्षेत्रफल यानी कम दाब।`},
+
+{s:'P',
+ q:`An iron nail sinks in water, but a large ship made of iron floats. Why does the ship float?`,
+ qh:`लोहे की कील जल में डूब जाती है, पर लोहे का बना बड़ा जहाज़ तैरता है। जहाज़ क्यों तैरता है?`,
+ o:[`Iron becomes lighter when it is made into a ship`,`Sea water has no upward force on small objects`,`The ship is hollow and displaces water weighing as much as itself`,`The engines of the ship keep it up`],
+ oh:[`जहाज़ बनाने पर लोहा हल्का हो जाता है`,`समुद्री जल छोटी वस्तुओं पर ऊपर की ओर बल नहीं लगाता`,`जहाज़ खोखला है और अपने भार जितने जल को विस्थापित करता है`,`जहाज़ के इंजन उसे ऊपर रखते हैं`], a:2,
+ e:`By Archimedes' principle, the upward buoyant force equals the weight of the liquid displaced. A hollow ship pushes aside a large volume of water, enough to equal its own weight, so it floats. A solid nail displaces very little water compared with its weight.`,
+ eh:`आर्किमिडीज़ के सिद्धांत से ऊपर की ओर उत्प्लावन बल विस्थापित द्रव के भार के बराबर होता है। खोखला जहाज़ बहुत अधिक आयतन का जल हटाता है, जो उसके अपने भार के बराबर हो जाता है, इसलिए वह तैरता है। ठोस कील अपने भार की तुलना में बहुत कम जल हटाती है।`,
+ t:`An object floats if its density is less than that of the liquid and sinks if it is more. Lactometers and hydrometers work on this principle.`,
+ th:`वस्तु का घनत्व द्रव से कम हो तो वह तैरती है और अधिक हो तो डूबती है। दुग्धमापी और घनत्वमापी इसी सिद्धांत पर काम करते हैं।`},
+
+{s:'P',
+ q:`Sound travels through air as a longitudinal wave. This means that`,
+ qh:`वायु में ध्वनि अनुदैर्ध्य तरंग के रूप में चलती है। इसका अर्थ है कि`,
+ o:[`the particles of air move along with the wave from the source to the listener`,`the particles vibrate at right angles to the direction of the wave`,`no particles are needed for the wave to travel`,`the particles vibrate back and forth along the direction of the wave, forming compressions and rarefactions`],
+ oh:[`वायु के कण तरंग के साथ स्रोत से श्रोता तक चले जाते हैं`,`कण तरंग की दिशा के लंबवत कंपन करते हैं`,`तरंग के चलने के लिए किसी कण की आवश्यकता नहीं होती`,`कण तरंग की दिशा में आगे-पीछे कंपन करते हैं, जिससे संपीडन और विरलन बनते हैं`], a:3,
+ e:`In a longitudinal wave the particles of the medium vibrate to and fro about their mean positions in the direction in which the wave travels. Regions of high pressure (compressions) and low pressure (rarefactions) are formed. The particles themselves do not travel with the wave.`,
+ eh:`अनुदैर्ध्य तरंग में माध्यम के कण अपनी माध्य स्थिति के इर्द-गिर्द उसी दिशा में आगे-पीछे कंपन करते हैं जिसमें तरंग चलती है। उच्च दाब (संपीडन) और निम्न दाब (विरलन) के क्षेत्र बनते हैं। कण स्वयं तरंग के साथ आगे नहीं जाते।`,
+ t:`In a transverse wave, such as ripples on water or light, the particles move at right angles to the direction of the wave.`,
+ th:`अनुप्रस्थ तरंग में, जैसे जल की लहरें या प्रकाश, कण तरंग की दिशा के लंबवत चलते हैं।`},
+
+{s:'P',
+ q:`A camera forms a small, real and inverted image of a distant building on its sensor using a convex lens. Where is the building placed with respect to the lens?`,
+ qh:`एक कैमरा उत्तल लेंस की मदद से दूर स्थित इमारत का छोटा, वास्तविक और उल्टा प्रतिबिंब अपने सेंसर पर बनाता है। इमारत लेंस के सापेक्ष कहाँ स्थित है?`,
+ o:[`Beyond 2F`,`At 2F`,`Between F and 2F`,`Between the lens and F`],
+ oh:[`2F से आगे`,`2F पर`,`F और 2F के बीच`,`लेंस और F के बीच`], a:0,
+ e:`A convex lens forms a real, inverted and diminished image only when the object is beyond 2F. The image then lies between F and 2F on the other side, close to the lens, where the sensor is placed.`,
+ eh:`उत्तल लेंस वास्तविक, उल्टा और छोटा प्रतिबिंब तभी बनाता है जब वस्तु 2F से आगे हो। तब प्रतिबिंब दूसरी ओर F और 2F के बीच, लेंस के पास बनता है, जहाँ सेंसर रखा होता है।`,
+ t:`Object at 2F: image at 2F, same size. Object between F and 2F: image beyond 2F, enlarged (used in projectors).`,
+ th:`वस्तु 2F पर: प्रतिबिंब 2F पर, समान आकार। वस्तु F और 2F के बीच: प्रतिबिंब 2F से आगे, बड़ा (प्रोजेक्टर में उपयोग)।`},
+
+{s:'P',
+ q:`An elderly person can neither read a newspaper clearly nor see distant objects clearly. Which type of spectacle lens is most suitable for him?`,
+ qh:`एक बुज़ुर्ग व्यक्ति न तो अख़बार स्पष्ट पढ़ पाता है और न ही दूर की वस्तुएँ स्पष्ट देख पाता है। उसके लिए किस प्रकार का चश्मे का लेंस सबसे उपयुक्त है?`,
+ o:[`A concave lens only`,`A convex lens only`,`A cylindrical lens`,`A bifocal lens`],
+ oh:[`केवल अवतल लेंस`,`केवल उत्तल लेंस`,`बेलनाकार लेंस`,`द्विफोकसी लेंस`], a:3,
+ e:`He has both myopia and hypermetropia. A bifocal lens has a concave part on top for distant vision and a convex part at the bottom for reading.`,
+ eh:`उसे निकट-दृष्टि और दीर्घ-दृष्टि दोनों दोष हैं। द्विफोकसी लेंस में ऊपर का भाग अवतल होता है (दूर देखने के लिए) और नीचे का भाग उत्तल (पढ़ने के लिए)।`,
+ t:`With age, the eye lens loses flexibility and the near point moves away. This is presbyopia. A cloudy eye lens is a cataract.`,
+ th:`आयु बढ़ने पर नेत्र लेंस का लचीलापन घटता है और निकट बिंदु दूर चला जाता है। इसे जरा-दूरदृष्टिता कहते हैं। नेत्र लेंस का धुंधला होना मोतियाबिंद है।`},
+
+{s:'P',
+ q:`Three resistors of 6 Ω each are available. What are the largest and the smallest resistances that can be obtained using all three?`,
+ qh:`6 Ω के तीन प्रतिरोधक उपलब्ध हैं। तीनों का उपयोग करके अधिकतम और न्यूनतम कितना प्रतिरोध प्राप्त किया जा सकता है?`,
+ o:[`18 Ω and 6 Ω`,`12 Ω and 3 Ω`,`18 Ω and 2 Ω`,`9 Ω and 2 Ω`],
+ oh:[`18 Ω और 6 Ω`,`12 Ω और 3 Ω`,`18 Ω और 2 Ω`,`9 Ω और 2 Ω`], a:2,
+ e:`All three in series give the largest value: 6 + 6 + 6 = 18 Ω. All three in parallel give the smallest value: 6/3 = 2 Ω.`,
+ eh:`तीनों को श्रेणीक्रम में जोड़ने पर अधिकतम मान मिलता है: 6 + 6 + 6 = 18 Ω। तीनों को पार्श्वक्रम में जोड़ने पर न्यूनतम मान मिलता है: 6/3 = 2 Ω।`,
+ t:`Two in parallel with the third in series give 3 + 6 = 9 Ω; two in series with the third in parallel give 4 Ω.`,
+ th:`दो को पार्श्वक्रम में और तीसरे को श्रेणीक्रम में जोड़ने पर 3 + 6 = 9 Ω; दो को श्रेणीक्रम में और तीसरे को पार्श्वक्रम में जोड़ने पर 4 Ω मिलता है।`},
+
+{s:'P',
+ q:`An electric heater rated 1 kW, 220 V is to be used in a house. Which fuse rating is the most suitable for its circuit?`,
+ qh:`1 kW, 220 V अंकित एक विद्युत हीटर घर में प्रयोग किया जाना है। इसके परिपथ के लिए किस अनुमतांक का फ्यूज़ सबसे उपयुक्त है?`,
+ o:[`1 A`,`2 A`,`5 A`,`30 A`], a:2,
+ e:`Current drawn = P/V = 1000/220 ≈ 4.5 A. The fuse must be a little above this, so a 5 A fuse is suitable. A 1 A or 2 A fuse would melt at once, and a 30 A fuse would give no protection.`,
+ eh:`ली गई धारा = P/V = 1000/220 ≈ 4.5 A। फ्यूज़ इससे थोड़ा अधिक का होना चाहिए, इसलिए 5 A का फ्यूज़ उपयुक्त है। 1 A या 2 A का फ्यूज़ तुरंत पिघल जाएगा और 30 A का फ्यूज़ कोई सुरक्षा नहीं देगा।`,
+ t:`Domestic circuits usually have a 5 A line for bulbs and fans and a 15 A line for heavy appliances such as geysers and air conditioners.`,
+ th:`घरेलू परिपथों में प्रायः बल्ब और पंखों के लिए 5 A की लाइन और गीज़र तथा एयर कंडीशनर जैसे भारी उपकरणों के लिए 15 A की लाइन होती है।`},
+
+{s:'P',
+ q:`What is the pattern of magnetic field lines inside a long straight solenoid carrying a steady current?`,
+ qh:`स्थिर धारा वाली लंबी सीधी परिनालिका के अंदर चुंबकीय क्षेत्र रेखाओं का स्वरूप कैसा होता है?`,
+ o:[`Concentric circles around the axis`,`Parallel straight lines, showing a uniform field`,`Lines that cross each other at the centre`,`There are no field lines inside a solenoid`],
+ oh:[`अक्ष के चारों ओर संकेंद्रीय वृत्त`,`समांतर सरल रेखाएँ, जो एकसमान क्षेत्र दर्शाती हैं`,`केंद्र पर एक-दूसरे को काटने वाली रेखाएँ`,`परिनालिका के अंदर कोई क्षेत्र रेखा नहीं होती`], a:1,
+ e:`Inside a long solenoid the field lines are parallel straight lines, so the field is the same at all points. This strong uniform field is used to magnetise a piece of soft iron and make an electromagnet.`,
+ eh:`लंबी परिनालिका के अंदर क्षेत्र रेखाएँ समांतर सरल रेखाएँ होती हैं, इसलिए सभी बिंदुओं पर क्षेत्र समान होता है। इस प्रबल एकसमान क्षेत्र से नर्म लोहे को चुंबकित करके विद्युत चुंबक बनाया जाता है।`,
+ t:`Outside, the field of a solenoid looks like that of a bar magnet. Around a straight wire, the field lines are concentric circles.`,
+ th:`बाहर परिनालिका का क्षेत्र छड़ चुंबक जैसा दिखता है। सीधे तार के चारों ओर क्षेत्र रेखाएँ संकेंद्रीय वृत्त होती हैं।`},
+
+/* ===== Chemistry (10) ===== */
+{s:'C',
+ q:`During the electrolysis of water, the gases collected at the cathode and the anode are in the volume ratio`,
+ qh:`जल के विद्युत अपघटन में कैथोड और ऐनोड पर एकत्र गैसों के आयतन का अनुपात होता है`,
+ o:[`hydrogen : oxygen = 1 : 2`,`hydrogen : oxygen = 2 : 1`,`oxygen : hydrogen = 2 : 1`,`hydrogen : oxygen = 1 : 1`],
+ oh:[`हाइड्रोजन : ऑक्सीजन = 1 : 2`,`हाइड्रोजन : ऑक्सीजन = 2 : 1`,`ऑक्सीजन : हाइड्रोजन = 2 : 1`,`हाइड्रोजन : ऑक्सीजन = 1 : 1`], a:1,
+ e:`2H<sub>2</sub>O → 2H<sub>2</sub> + O<sub>2</sub>. Hydrogen is collected at the cathode and oxygen at the anode, and twice as much hydrogen is formed as oxygen. This is a decomposition reaction caused by electricity.`,
+ eh:`2H<sub>2</sub>O → 2H<sub>2</sub> + O<sub>2</sub>। कैथोड पर हाइड्रोजन और ऐनोड पर ऑक्सीजन एकत्र होती है, और हाइड्रोजन ऑक्सीजन से दोगुनी बनती है। यह विद्युत से होने वाली वियोजन अभिक्रिया है।`,
+ t:`A burning matchstick near hydrogen gives a pop sound; oxygen makes a glowing splinter burst into flame.`,
+ th:`हाइड्रोजन के पास जलती तीली ले जाने पर पॉप की ध्वनि होती है; ऑक्सीजन सुलगती तीली को प्रज्वलित कर देती है।`},
+
+{s:'C',
+ q:`Aluminium has a valency of 3 and oxygen a valency of 2. What is the chemical formula of aluminium oxide?`,
+ qh:`ऐलुमिनियम की संयोजकता 3 और ऑक्सीजन की संयोजकता 2 है। ऐलुमिनियम ऑक्साइड का रासायनिक सूत्र क्या है?`,
+ o:[`AlO`,`Al<sub>3</sub>O<sub>2</sub>`,`AlO<sub>3</sub>`,`Al<sub>2</sub>O<sub>3</sub>`], a:3,
+ e:`Cross over the valencies: Al gets 2 and O gets 3, giving Al<sub>2</sub>O<sub>3</sub>. Check: 2 × (+3) = +6 and 3 × (−2) = −6, so the compound is neutral.`,
+ eh:`संयोजकताओं को आपस में बदल दीजिए: Al को 2 और O को 3 मिलते हैं, जिससे Al<sub>2</sub>O<sub>3</sub> बनता है। जाँच: 2 × (+3) = +6 और 3 × (−2) = −6, इसलिए यौगिक उदासीन है।`,
+ t:`The positive and negative charges in a formula must always balance.`,
+ th:`किसी सूत्र में धन और ऋण आवेश सदैव संतुलित होने चाहिए।`},
+
+{s:'C',
+ q:`The pH values of four body fluids are given. Which one is slightly basic?`,
+ qh:`शरीर के चार तरलों के pH मान दिए गए हैं। इनमें से कौन-सा हल्का क्षारीय है?`,
+ o:[`Gastric juice, pH 1.2`,`Saliva before a meal, pH 6.8`,`Urine, pH 6.0`,`Blood, pH 7.4`],
+ oh:[`जठर रस, pH 1.2`,`भोजन से पहले लार, pH 6.8`,`मूत्र, pH 6.0`,`रुधिर, pH 7.4`], a:3,
+ e:`A pH above 7 is basic. Blood, at about 7.4, is slightly basic. Gastric juice is strongly acidic because it contains hydrochloric acid.`,
+ eh:`7 से अधिक pH क्षारीय होता है। लगभग 7.4 pH वाला रुधिर हल्का क्षारीय है। जठर रस में हाइड्रोक्लोरिक अम्ल होता है, इसलिए वह प्रबल अम्लीय है।`,
+ t:`Our body works within a narrow pH range of about 7.0 to 7.8.`,
+ th:`हमारा शरीर लगभग 7.0 से 7.8 की सँकरी pH सीमा में काम करता है।`},
+
+{s:'C',
+ q:`Which two metals can melt if kept on the palm of the hand?`,
+ qh:`कौन-सी दो धातुएँ हथेली पर रखने पर पिघल सकती हैं?`,
+ o:[`Gallium and caesium`,`Sodium and potassium`,`Mercury and lead`,`Tin and zinc`],
+ oh:[`गैलियम और सीज़ियम`,`सोडियम और पोटैशियम`,`मरकरी और लेड`,`टिन और ज़िंक`], a:0,
+ e:`Gallium (about 30 °C) and caesium (about 28 °C) have melting points below body temperature, so they melt on the palm.`,
+ eh:`गैलियम (लगभग 30 °C) और सीज़ियम (लगभग 28 °C) का गलनांक शरीर के ताप से कम है, इसलिए ये हथेली पर पिघल जाती हैं।`,
+ t:`Mercury is already a liquid at room temperature. Tungsten has the highest melting point among metals.`,
+ th:`मरकरी कमरे के ताप पर पहले से ही द्रव है। धातुओं में टंग्स्टन का गलनांक सबसे अधिक है।`},
+
+{s:'C',
+ q:`Iron nails are kept in three test tubes: (I) in tap water, open to air; (II) in boiled water covered with a layer of oil; (III) in dry air with anhydrous calcium chloride. In which test tube will the nails rust?`,
+ qh:`लोहे की कीलें तीन परखनलियों में रखी गई हैं: (I) नल के जल में, वायु के संपर्क में; (II) उबले जल में जिस पर तेल की परत है; (III) निर्जल कैल्सियम क्लोराइड के साथ शुष्क वायु में। किस परखनली में कीलों पर जंग लगेगी?`,
+ o:[`I only`,`II only`,`III only`,`II and III`],
+ oh:[`केवल I`,`केवल II`,`केवल III`,`II और III`], a:0,
+ e:`Rusting needs both air (oxygen) and water. In II, boiling removes the dissolved air and the oil stops more air from dissolving. In III, calcium chloride absorbs the moisture. Only in I are both present.`,
+ eh:`जंग लगने के लिए वायु (ऑक्सीजन) और जल दोनों आवश्यक हैं। II में उबालने से घुली वायु निकल जाती है और तेल की परत और वायु को घुलने नहीं देती। III में कैल्सियम क्लोराइड नमी सोख लेता है। केवल I में दोनों उपस्थित हैं।`,
+ t:`Rust is hydrated iron(III) oxide, Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O.`,
+ th:`जंग जलयोजित आयरन(III) ऑक्साइड Fe<sub>2</sub>O<sub>3</sub>·xH<sub>2</sub>O है।`},
+
+{s:'C',
+ q:`Which of these ions has the same electronic configuration as a neon atom (2, 8)?`,
+ qh:`इनमें से किस आयन का इलेक्ट्रॉनिक विन्यास नियॉन परमाणु (2, 8) जैसा है?`,
+ o:[`K<sup>+</sup>`,`Cl<sup>−</sup>`,`Na<sup>+</sup>`,`Ca<sup>2+</sup>`], a:2,
+ e:`Sodium (2, 8, 1) loses one electron to form Na<sup>+</sup>, which has the configuration 2, 8, like neon. K<sup>+</sup>, Cl<sup>−</sup> and Ca<sup>2+</sup> all have 2, 8, 8, like argon.`,
+ eh:`सोडियम (2, 8, 1) एक इलेक्ट्रॉन खोकर Na<sup>+</sup> बनाता है, जिसका विन्यास 2, 8 है, नियॉन जैसा। K<sup>+</sup>, Cl<sup>−</sup> और Ca<sup>2+</sup> सभी का विन्यास 2, 8, 8 है, आर्गन जैसा।`,
+ t:`Atoms lose or gain electrons to reach the stable configuration of the nearest noble gas.`,
+ th:`परमाणु निकटतम उत्कृष्ट गैस का स्थायी विन्यास पाने के लिए इलेक्ट्रॉन खोते या ग्रहण करते हैं।`},
+
+{s:'C',
+ q:`Sodium, magnesium, aluminium and silicon lie in the third period of the periodic table. Which of them is the most metallic?`,
+ qh:`सोडियम, मैग्नीशियम, ऐलुमिनियम और सिलिकॉन आवर्त सारणी के तीसरे आवर्त में हैं। इनमें सबसे अधिक धात्विक कौन है?`,
+ o:[`Silicon`,`Aluminium`,`Magnesium`,`Sodium`],
+ oh:[`सिलिकॉन`,`ऐलुमिनियम`,`मैग्नीशियम`,`सोडियम`], a:3,
+ e:`Metallic character is the tendency to lose electrons. Across a period from left to right it decreases, because the nucleus holds the electrons more strongly. Sodium, on the far left, loses its electron most easily.`,
+ eh:`धात्विक गुण इलेक्ट्रॉन खोने की प्रवृत्ति है। आवर्त में बाएँ से दाएँ जाने पर यह घटता है, क्योंकि नाभिक इलेक्ट्रॉनों को अधिक मज़बूती से पकड़ता है। सबसे बाईं ओर का सोडियम सबसे आसानी से इलेक्ट्रॉन खोता है।`,
+ t:`Silicon is a metalloid. Down a group, metallic character increases.`,
+ th:`सिलिकॉन उपधातु है। समूह में नीचे जाने पर धात्विक गुण बढ़ता है।`},
+
+{s:'C',
+ q:`Ice at 0 °C cools a drink better than the same mass of water at 0 °C. This is because ice`,
+ qh:`0 °C की बर्फ उतने ही द्रव्यमान के 0 °C जल की तुलना में पेय को अधिक ठंडा करती है। इसका कारण है कि बर्फ`,
+ o:[`has a lower temperature than the water`,`absorbs extra heat (latent heat of fusion) from the drink to melt`,`is heavier than water`,`does not take any heat from the drink`],
+ oh:[`का ताप जल से कम होता है`,`पिघलने के लिए पेय से अतिरिक्त ऊष्मा (संगलन की गुप्त ऊष्मा) सोखती है`,`जल से भारी होती है`,`पेय से कोई ऊष्मा नहीं लेती`], a:1,
+ e:`Both are at the same temperature, but ice first has to absorb its latent heat of fusion to turn into water at 0 °C. This extra heat is taken from the drink, so the drink cools more.`,
+ eh:`दोनों का ताप समान है, पर बर्फ को पहले 0 °C के जल में बदलने के लिए संगलन की गुप्त ऊष्मा सोखनी पड़ती है। यह अतिरिक्त ऊष्मा पेय से ली जाती है, इसलिए पेय अधिक ठंडा होता है।`,
+ t:`For the same reason, steam at 100 °C causes more severe burns than boiling water at 100 °C.`,
+ th:`इसी कारण 100 °C की भाप 100 °C के उबलते जल से अधिक गंभीर जलन पैदा करती है।`},
+
+{s:'C',
+ q:`Which functional group is present in propanone, CH<sub>3</sub>COCH<sub>3</sub>?`,
+ qh:`प्रोपेनोन CH<sub>3</sub>COCH<sub>3</sub> में कौन-सा क्रियात्मक समूह उपस्थित है?`,
+ o:[`Alcohol (–OH)`,`Aldehyde (–CHO)`,`Ketone (–CO–)`,`Carboxylic acid (–COOH)`],
+ oh:[`ऐल्कोहॉल (–OH)`,`ऐल्डिहाइड (–CHO)`,`कीटोन (–CO–)`,`कार्बोक्सिलिक अम्ल (–COOH)`], a:2,
+ e:`In propanone the C=O group is joined to carbon atoms on both sides, which makes it a ketone. The name ends in "-one".`,
+ eh:`प्रोपेनोन में C=O समूह दोनों ओर कार्बन परमाणुओं से जुड़ा है, जो इसे कीटोन बनाता है। इसका नाम "-ओन" पर समाप्त होता है।`,
+ t:`Name endings: -ol for alcohol, -al for aldehyde, -one for ketone, -oic acid for carboxylic acid. Propanone is commonly called acetone.`,
+ th:`नाम के अंत: ऐल्कोहॉल के लिए -ऑल, ऐल्डिहाइड के लिए -ऐल, कीटोन के लिए -ओन, कार्बोक्सिलिक अम्ल के लिए -ऑइक अम्ल। प्रोपेनोन को सामान्यतः ऐसीटोन कहते हैं।`},
+
+{s:'C',
+ q:`A temperature of 25 °C on the Kelvin scale is`,
+ qh:`25 °C का ताप केल्विन पैमाने पर होगा`,
+ o:[`298 K`,`248 K`,`273 K`,`−248 K`], a:0,
+ e:`Temperature in K = temperature in °C + 273. So 25 + 273 = 298 K.`,
+ eh:`केल्विन में ताप = सेल्सियस में ताप + 273। इसलिए 25 + 273 = 298 K।`,
+ t:`The Kelvin scale has no negative values. 0 K, or −273 °C, is absolute zero.`,
+ th:`केल्विन पैमाने पर कोई ऋणात्मक मान नहीं होता। 0 K, यानी −273 °C, परम शून्य है।`},
+
+/* ===== Biology (8) ===== */
+{s:'B',
+ q:`Which statement about prokaryotic cells such as bacteria is correct?`,
+ qh:`जीवाणु जैसी प्रोकैरियोटी कोशिकाओं के बारे में कौन-सा कथन सही है?`,
+ o:[`They have a well-defined nucleus with a nuclear membrane`,`Their nuclear material lies in the cytoplasm without a nuclear membrane, in a region called the nucleoid`,`They contain many membrane-bound organelles such as mitochondria`,`They are always multicellular`],
+ oh:[`इनमें केंद्रक झिल्ली वाला सुस्पष्ट केंद्रक होता है`,`इनका केंद्रकीय पदार्थ बिना केंद्रक झिल्ली के कोशिकाद्रव्य में, केंद्रकाभ नामक क्षेत्र में, रहता है`,`इनमें माइटोकॉन्ड्रिया जैसे अनेक झिल्ली-युक्त कोशिकांग होते हैं`,`ये सदैव बहुकोशिकीय होते हैं`], a:1,
+ e:`Prokaryotes lack a nuclear membrane, so their poorly defined nuclear region is called the nucleoid. They also lack membrane-bound organelles.`,
+ eh:`प्रोकैरियोट में केंद्रक झिल्ली नहीं होती, इसलिए इनके अस्पष्ट केंद्रकीय क्षेत्र को केंद्रकाभ कहते हैं। इनमें झिल्ली-युक्त कोशिकांग भी नहीं होते।`,
+ t:`Bacteria and blue-green algae are prokaryotes. Cells with a true nucleus are eukaryotes.`,
+ th:`जीवाणु और नील-हरित शैवाल प्रोकैरियोट हैं। सच्चे केंद्रक वाली कोशिकाएँ यूकैरियोटी होती हैं।`},
+
+{s:'B',
+ q:`Blood is classified as a connective tissue because`,
+ qh:`रुधिर को संयोजी ऊतक माना जाता है, क्योंकि`,
+ o:[`it covers the outer surface of the body`,`it carries messages from the brain`,`it contracts and relaxes to cause movement`,`its cells float in a fluid matrix and it connects different parts of the body by transporting materials`],
+ oh:[`यह शरीर की बाहरी सतह को ढकता है`,`यह मस्तिष्क से संदेश ले जाता है`,`यह संकुचित और शिथिल होकर गति कराता है`,`इसकी कोशिकाएँ तरल आधात्री में तैरती हैं और यह पदार्थों के परिवहन द्वारा शरीर के भागों को जोड़ता है`], a:3,
+ e:`Like other connective tissues, blood has cells suspended in a matrix, here the fluid plasma. It links all parts of the body by carrying gases, food, hormones and wastes.`,
+ eh:`अन्य संयोजी ऊतकों की तरह रुधिर में कोशिकाएँ एक आधात्री, यहाँ तरल प्लैज़्मा, में निलंबित रहती हैं। यह गैसें, भोजन, हॉर्मोन और अपशिष्ट ले जाकर शरीर के सभी भागों को जोड़ता है।`,
+ t:`Other connective tissues: bone, cartilage, ligament, tendon, areolar and adipose tissue.`,
+ th:`अन्य संयोजी ऊतक: अस्थि, उपास्थि, स्नायु, कंडरा, एरिओलर और वसामय ऊतक।`},
+
+{s:'B',
+ q:`Which type of muscle works throughout life without getting tired and is not under our control?`,
+ qh:`कौन-सी पेशी जीवन भर बिना थके काम करती है और हमारे नियंत्रण में नहीं होती?`,
+ o:[`Skeletal (striated) muscle`,`Smooth muscle of the arm`,`Cardiac muscle`,`Muscle of the tongue`],
+ oh:[`कंकाल (रेखित) पेशी`,`भुजा की अरेखित पेशी`,`हृदय पेशी`,`जीभ की पेशी`], a:2,
+ e:`Cardiac muscle is found only in the heart. It contracts and relaxes rhythmically all through life and is involuntary.`,
+ eh:`हृदय पेशी केवल हृदय में पाई जाती है। यह जीवन भर लयबद्ध रूप से संकुचित और शिथिल होती रहती है और अनैच्छिक होती है।`,
+ t:`Skeletal muscles are voluntary. Smooth muscles, found in the stomach, intestine and blood vessels, are involuntary.`,
+ th:`कंकाल पेशियाँ ऐच्छिक होती हैं। आमाशय, आँत और रुधिर वाहिकाओं में पाई जाने वाली अरेखित पेशियाँ अनैच्छिक होती हैं।`},
+
+{s:'B',
+ q:`A farmer grows soyabean and maize in alternate rows in the same field at the same time. This practice is called`,
+ qh:`एक किसान एक ही खेत में एक ही समय सोयाबीन और मक्का को बारी-बारी की पंक्तियों में उगाता है। इस पद्धति को कहते हैं`,
+ o:[`intercropping`,`mixed cropping`,`crop rotation`,`hybridisation`],
+ oh:[`अंतरफसलीकरण`,`मिश्रित फसल`,`फसल चक्र`,`संकरण`], a:0,
+ e:`In intercropping, two or more crops are grown in a definite row pattern. Crops with different nutrient needs are chosen so that the nutrients are used fully and pests do not spread easily.`,
+ eh:`अंतरफसलीकरण में दो या अधिक फसलें निश्चित पंक्ति क्रम में उगाई जाती हैं। भिन्न पोषक आवश्यकता वाली फसलें चुनी जाती हैं ताकि पोषक तत्वों का पूरा उपयोग हो और पीड़क आसानी से न फैलें।`,
+ t:`Mixed cropping has no definite row pattern. Crop rotation means growing different crops one after another on the same land.`,
+ th:`मिश्रित फसल में कोई निश्चित पंक्ति क्रम नहीं होता। फसल चक्र का अर्थ है एक ही भूमि पर क्रम से अलग-अलग फसलें उगाना।`},
+
+{s:'B',
+ q:`In poultry farming, what is the difference between layers and broilers?`,
+ qh:`कुक्कुट पालन में लेयर और ब्रॉयलर में क्या अंतर है?`,
+ o:[`Layers are reared for meat and broilers for eggs`,`Layers are reared for eggs and broilers for meat`,`Both are reared only for feathers`,`Layers are wild birds and broilers are domestic birds`],
+ oh:[`लेयर मांस के लिए और ब्रॉयलर अंडों के लिए पाले जाते हैं`,`लेयर अंडों के लिए और ब्रॉयलर मांस के लिए पाले जाते हैं`,`दोनों केवल पंखों के लिए पाले जाते हैं`,`लेयर जंगली और ब्रॉयलर पालतू पक्षी हैं`], a:1,
+ e:`Layers are egg-laying birds. Broilers are reared for meat and are given a diet rich in protein, with enough fat and high levels of vitamins A and K.`,
+ eh:`लेयर अंडे देने वाली मुर्गियाँ हैं। ब्रॉयलर मांस के लिए पाले जाते हैं और उन्हें प्रोटीन से भरपूर, पर्याप्त वसा और विटामिन A व K की अधिक मात्रा वाला आहार दिया जाता है।`,
+ t:`Indian breeds such as Aseel are crossed with foreign breeds such as Leghorn to get better varieties.`,
+ th:`बेहतर किस्में पाने के लिए असील जैसी भारतीय नस्लों का लेगहॉर्न जैसी विदेशी नस्लों से संकरण कराया जाता है।`},
+
+{s:'B',
+ q:`Birds and mammals have a four-chambered heart in which oxygenated and deoxygenated blood do not mix. Why is this important for them?`,
+ qh:`पक्षियों और स्तनधारियों में चार कक्षों वाला हृदय होता है जिसमें ऑक्सीजनित और विऑक्सीजनित रुधिर नहीं मिलते। यह उनके लिए क्यों महत्वपूर्ण है?`,
+ o:[`It lets them live without lungs`,`It makes their blood cold`,`It gives a highly efficient supply of oxygen, which they need to maintain a constant body temperature`,`It allows blood to pass through the heart only once`],
+ oh:[`इससे वे बिना फेफड़ों के जी सकते हैं`,`इससे उनका रुधिर ठंडा हो जाता है`,`इससे ऑक्सीजन की बहुत कुशल आपूर्ति होती है, जो शरीर का ताप स्थिर रखने के लिए उन्हें चाहिए`,`इससे रुधिर हृदय से केवल एक बार गुज़रता है`], a:2,
+ e:`Birds and mammals use a lot of energy to keep their body temperature constant. Keeping the two kinds of blood separate gives the body well-oxygenated blood. Blood passes through the heart twice in one cycle, which is double circulation.`,
+ eh:`पक्षी और स्तनधारी शरीर का ताप स्थिर रखने में बहुत ऊर्जा खर्च करते हैं। दोनों प्रकार के रुधिर को अलग रखने से शरीर को भरपूर ऑक्सीजन वाला रुधिर मिलता है। एक चक्र में रुधिर हृदय से दो बार गुज़रता है, यही दोहरा परिसंचरण है।`,
+ t:`Fishes have a two-chambered heart; amphibians and most reptiles have a three-chambered heart.`,
+ th:`मछलियों का हृदय दो कक्षों वाला होता है; उभयचरों और अधिकांश सरीसृपों का हृदय तीन कक्षों वाला होता है।`},
+
+{s:'B',
+ q:`Red blood cells are not found in the urine of a healthy person. This is because they`,
+ qh:`स्वस्थ व्यक्ति के मूत्र में लाल रुधिर कोशिकाएँ नहीं पाई जातीं। इसका कारण है कि वे`,
+ o:[`are too large to pass through the filter in the glomerulus`,`are destroyed in the urinary bladder`,`are reabsorbed in the ureter`,`are made only after urine is formed`],
+ oh:[`केशिकागुच्छ की छलनी से गुज़रने के लिए बहुत बड़ी होती हैं`,`मूत्राशय में नष्ट हो जाती हैं`,`मूत्रवाहिनी में पुनः अवशोषित हो जाती हैं`,`मूत्र बनने के बाद ही बनती हैं`], a:0,
+ e:`In the glomerulus, water and small dissolved substances such as urea, salts and glucose are filtered out of the blood. Blood cells and large proteins are too big to pass through, so they stay in the blood.`,
+ eh:`केशिकागुच्छ में जल और यूरिया, लवण व ग्लूकोज़ जैसे छोटे घुले पदार्थ रुधिर से छन जाते हैं। रुधिर कोशिकाएँ और बड़े प्रोटीन इतने बड़े होते हैं कि गुज़र नहीं पाते, इसलिए रुधिर में ही रहते हैं।`,
+ t:`When the kidneys fail, the blood is filtered by a machine; this is called dialysis.`,
+ th:`वृक्कों के काम न करने पर रुधिर को मशीन से छाना जाता है; इसे अपोहन (डायलिसिस) कहते हैं।`},
+
+{s:'B',
+ q:`Offspring produced by sexual reproduction show more variation than those produced by asexual reproduction. This is because in sexual reproduction`,
+ qh:`लैंगिक जनन से उत्पन्न संतानों में अलैंगिक जनन की तुलना में अधिक विभिन्नता होती है। इसका कारण है कि लैंगिक जनन में`,
+ o:[`only one parent is involved`,`the DNA is copied without any change`,`the offspring are produced by budding`,`DNA from two different parents is combined`],
+ oh:[`केवल एक जनक भाग लेता है`,`DNA की प्रतिलिपि बिना किसी परिवर्तन के बनती है`,`संतानें मुकुलन द्वारा बनती हैं`,`दो भिन्न जनकों का DNA संयोजित होता है`], a:3,
+ e:`Gametes from two parents fuse, so each offspring gets a new combination of genes. Variation helps a species to survive when the environment changes.`,
+ eh:`दो जनकों के युग्मक संलयित होते हैं, इसलिए हर संतान को जीनों का नया संयोजन मिलता है। विभिन्नता पर्यावरण बदलने पर जाति को जीवित रहने में मदद करती है।`,
+ t:`In asexual reproduction only small variations arise, from errors in copying DNA.`,
+ th:`अलैंगिक जनन में केवल छोटी विभिन्नताएँ होती हैं, जो DNA की प्रतिलिपि में त्रुटियों से आती हैं।`},
+
+/* ===== Environment (2) ===== */
+{s:'E',
+ q:`Protecting tigers in their natural habitat by setting up national parks and tiger reserves is an example of`,
+ qh:`राष्ट्रीय उद्यान और बाघ अभयारण्य बनाकर बाघों की उनके प्राकृतिक आवास में रक्षा करना किसका उदाहरण है?`,
+ o:[`ex-situ conservation`,`in-situ conservation`,`afforestation`,`biomagnification`],
+ oh:[`बाह्य-स्थाने (एक्स-सीटू) संरक्षण`,`स्वस्थाने (इन-सीटू) संरक्षण`,`वनरोपण`,`जैव आवर्धन`], a:1,
+ e:`Conserving a species in its own natural home is in-situ conservation. National parks, wildlife sanctuaries and biosphere reserves are examples.`,
+ eh:`किसी जाति का उसके अपने प्राकृतिक आवास में संरक्षण स्वस्थाने संरक्षण है। राष्ट्रीय उद्यान, वन्यजीव अभयारण्य और जैवमंडल आरक्षित क्षेत्र इसके उदाहरण हैं।`,
+ t:`Zoos, botanical gardens and seed banks are ex-situ conservation, outside the natural habitat.`,
+ th:`चिड़ियाघर, वनस्पति उद्यान और बीज बैंक बाह्य-स्थाने संरक्षण हैं, यानी प्राकृतिक आवास के बाहर।`},
+
+{s:'E',
+ q:`Noise pollution is measured in decibels (dB). Long exposure to noise above about 80 dB can cause`,
+ qh:`ध्वनि प्रदूषण डेसिबल (dB) में मापा जाता है। लगभग 80 dB से अधिक शोर के लंबे संपर्क से हो सकता है`,
+ o:[`better hearing`,`acid rain`,`ozone depletion`,`loss of hearing, stress and sleeplessness`],
+ oh:[`सुनने की क्षमता में सुधार`,`अम्ल वर्षा`,`ओज़ोन अवक्षय`,`श्रवण क्षमता में कमी, तनाव और अनिद्रा`], a:3,
+ e:`Loud sound over a long time damages the ear and can cause partial or permanent hearing loss. It also causes stress, high blood pressure and lack of sleep.`,
+ eh:`लंबे समय तक तेज़ ध्वनि कान को हानि पहुँचाती है और आंशिक या स्थायी बहरापन कर सकती है। इससे तनाव, उच्च रक्तदाब और नींद की कमी भी होती है।`,
+ t:`Planting trees along roads and using silencers in vehicles help reduce noise pollution.`,
+ th:`सड़कों के किनारे पेड़ लगाना और वाहनों में साइलेंसर का उपयोग ध्वनि प्रदूषण कम करने में मदद करते हैं।`}
+];
+
+/* ---------- app ---------- */
+const $ = id => document.getElementById(id), L = 'ABCD', N = Q.length;
+const ORDER = ['P','C','B','E'].filter(k => Q.some(q => q.s === k));
+const first = k => Q.findIndex(q => q.s === k);
+const count = k => Q.filter(q => q.s === k).length;
+const SHORT = k => k === 'E' ? 'Env.' : SEC[k][0];
+let S = null, LANG = 'both';
+/* T(english, hindi, block): text in the chosen language */
+function T(en, hi, block){
+  if (!hi || hi === en || LANG === 'en') return en;
+  if (LANG === 'hi') return '<span lang="hi">' + hi + '</span>';
+  return block ? '<div>' + en + '</div><div class="hi" lang="hi">' + hi + '</div>' : en + '<span class="hi" lang="hi">' + hi + '</span>';
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-l]'); if (!b) return;
+  LANG = b.dataset.l;
+  document.querySelectorAll('[data-l]').forEach(x => x.classList.toggle('on', x.dataset.l === LANG));
+  if (!$('test').hidden) render();
+  if (!$('result').hidden) review();
+});
+
+function show(v){ ['start','test','result'].forEach(x => $(x).hidden = x !== v); window.scrollTo(0,0); }
+function fmt(s){ s = Math.max(0, s); return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+function num(x){ return (Math.round(x*100)/100).toFixed(2).replace(/\.00$/,''); }
+
+/* start screen */
+$('route').innerHTML = ORDER.map(k => '<div style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><i></i><b>'+count(k)+'</b><span>'+SHORT(k)+'</span></div>').join('');
+$('tMin').textContent = CFG.minutes + ' minutes';
+$('startBtn').onclick = begin;
+
+function begin(){
+  S = { mode: document.querySelector('input[name=mode]:checked').value, cur: 0,
+        ans: Q.map(() => -1), mark: Q.map(() => false), left: CFG.minutes*60, t0: Date.now(), timer: null, filter: 'all' };
+  $('line').innerHTML = ORDER.map(k => '<div class="seg" data-s="'+k+'" style="flex:'+count(k)+';--c:'+SEC[k][1]+'"><button class="name" data-go="'+first(k)+'" aria-label="'+SEC[k][0]+'">'+SHORT(k)+'</button><div class="ticks">' +
+    Q.map((q,i) => q.s === k ? '<i data-t="'+i+'"></i>' : '').join('') + '</div></div>').join('');
+  $('grid').innerHTML = ORDER.map(k => '<h3>'+SEC[k][0]+'</h3>' + Q.map((q,i) => q.s === k ? '<button data-go="'+i+'">'+(i+1)+'</button>' : '').join('')).join('');
+  const exam = S.mode === 'exam';
+  $('clock').hidden = !exam;
+  $('clock').className = 'clock';
+  $('clock').textContent = fmt(S.left);
+  if (exam) S.timer = setInterval(tick, 1000);
+  show('test'); render();
+}
+function tick(){
+  S.left--;
+  $('clock').textContent = fmt(S.left);
+  if (S.left <= 120) $('clock').classList.add('low');
+  if (S.left <= 0) finish(true);
+}
+function solution(q){
+  return '<b class="h">Answer: ' + L[q.a] + '</b>' + '<div>' + T(q.e, q.eh, true) + '</div>' + (q.t ? '<div class="tip"><b>Remember:</b> ' + T(q.t, q.th, true) + '</div>' : '');
+}
+function render(){
+  const i = S.cur, q = Q[i], locked = S.mode === 'practice' && S.ans[i] > -1;
+  $('qmeta').innerHTML = '<span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+' of '+N+'</span>';
+  $('stem').innerHTML = T(q.q, q.qh, true);
+  $('opts').innerHTML = q.o.map((o,k) => {
+    let c = 'opt';
+    if (locked) c += k === q.a ? ' right' : (k === S.ans[i] ? ' wrong' : '');
+    else if (k === S.ans[i]) c += ' sel';
+    return '<button class="'+c+'" data-k="'+k+'"'+(locked?' disabled':'')+'><b>'+L[k]+'</b><span>'+T(o, q.oh && q.oh[k])+'</span></button>';
+  }).join('');
+  $('sol').hidden = !locked;
+  $('sol').innerHTML = locked ? solution(q) : '';
+  $('clear').hidden = S.mode !== 'exam' || S.ans[i] < 0;
+  $('prev').disabled = i === 0;
+  $('next').textContent = i === N-1 ? 'Submit test' : 'Next';
+  $('markBtn').textContent = S.mark[i] ? 'Marked for review' : 'Mark for review';
+  $('markBtn').classList.toggle('marked', S.mark[i]);
+  $('markBtn').setAttribute('aria-pressed', S.mark[i]);
+  paint();
+}
+function paint(){
+  const cls = j => (S.ans[j] > -1 ? ' done' : '') + (S.mark[j] ? ' rev' : '') + (j === S.cur ? ' cur' : '');
+  document.querySelectorAll('#line i[data-t]').forEach(el => el.className = cls(+el.dataset.t).trim());
+  document.querySelectorAll('#grid button').forEach(el => el.className = cls(+el.dataset.go).trim());
+  document.querySelectorAll('#line .seg').forEach(el => el.classList.toggle('on', el.dataset.s === Q[S.cur].s));
+}
+function go(i){ S.cur = Math.max(0, Math.min(N-1, i)); render(); window.scrollTo(0,0); }
+
+$('opts').onclick = e => {
+  const b = e.target.closest('.opt'); if (!b || b.disabled) return;
+  S.ans[S.cur] = +b.dataset.k; render();
+};
+$('clear').onclick = () => { S.ans[S.cur] = -1; render(); };
+$('prev').onclick = () => go(S.cur - 1);
+$('next').onclick = () => S.cur === N-1 ? ask() : go(S.cur + 1);
+$('markBtn').onclick = () => { S.mark[S.cur] = !S.mark[S.cur]; render(); };
+$('line').onclick = e => { const b = e.target.closest('[data-go]'); if (b) go(+b.dataset.go); };
+$('allBtn').onclick = () => $('pal').hidden = false;
+$('palClose').onclick = () => $('pal').hidden = true;
+$('pal').onclick = e => { if (e.target === $('pal')) $('pal').hidden = true; };
+$('grid').onclick = e => { const b = e.target.closest('[data-go]'); if (b) { $('pal').hidden = true; go(+b.dataset.go); } };
+$('palSubmit').onclick = () => { $('pal').hidden = true; ask(); };
+
+function ask(){
+  const done = S.ans.filter(a => a > -1).length, rev = S.mark.filter(Boolean).length;
+  $('dlgP').textContent = 'Answered ' + done + ' of ' + N + '. Not answered: ' + (N - done) + '.' + (rev ? ' Marked for review: ' + rev + '.' : '') +
+    (S.mode === 'exam' ? ' Time left: ' + fmt(S.left) + '.' : '');
+  $('dlg').hidden = false;
+}
+$('dlgNo').onclick = () => $('dlg').hidden = true;
+$('dlgYes').onclick = () => finish(false);
+
+/* result */
+function finish(auto){
+  clearInterval(S.timer);
+  $('dlg').hidden = true; $('pal').hidden = true;
+  const used = S.mode === 'exam' ? CFG.minutes*60 - Math.max(0, S.left) : Math.round((Date.now() - S.t0)/1000);
+  let c = 0, w = 0; const by = {};
+  ORDER.forEach(k => by[k] = { c:0, w:0, n:count(k) });
+  Q.forEach((q,i) => { if (S.ans[i] < 0) return; if (S.ans[i] === q.a) { c++; by[q.s].c++; } else { w++; by[q.s].w++; } });
+  const sk = N - c - w, score = c*CFG.right - w*CFG.wrong;
+  $('rNote').textContent = auto ? 'Time ended, so the test was submitted. Your score' : 'General Science Set 18: your score';
+  $('rScore').textContent = num(score);
+  $('rLine').innerHTML = c + ' correct gives +' + num(c*CFG.right) + '. ' + w + ' wrong costs &minus;' + num(w*CFG.wrong) + '.';
+  $('tally').innerHTML = [[c,'Correct'],[w,'Wrong'],[sk,'Skipped'],[(c+w ? Math.round(100*c/(c+w)) : 0)+'%','Accuracy'],[fmt(used),'Time used']]
+    .map(x => '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join('');
+  $('secs').innerHTML = ORDER.map(k => { const b = by[k], s = b.c*CFG.right - b.w*CFG.wrong;
+    return '<div class="secrow" style="--c:'+DARK[k]+'"><span>'+SEC[k][0]+'</span><div class="meter"><i style="width:'+(100*b.c/b.n)+'%"></i></div><b>'+b.c+'/'+b.n+' &nbsp;('+num(s)+')</b></div>'; }).join('');
+  S.counts = { all:N, wrong:w, skipped:sk, correct:c };
+  S.filter = w ? 'wrong' : 'all';
+  review(); show('result');
+}
+function review(){
+  const names = { all:'All', wrong:'Wrong', skipped:'Skipped', correct:'Correct' };
+  $('filters').innerHTML = Object.keys(names).map(f => '<button data-f="'+f+'" class="'+(S.filter===f?'on':'')+'">'+names[f]+' '+S.counts[f]+'</button>').join('');
+  const html = Q.map((q,i) => {
+    const a = S.ans[i], stt = a < 0 ? 'skipped' : (a === q.a ? 'correct' : 'wrong');
+    if (S.filter !== 'all' && S.filter !== stt) return '';
+    const lab = { correct:['c','Correct'], wrong:['w','Wrong'], skipped:['s','Skipped'] }[stt];
+    return '<div class="rq"><div class="qmeta"><span class="chip" style="--c:'+DARK[q.s]+'">'+SEC[q.s][0]+'</span><span>Question '+(i+1)+'</span><span class="status '+lab[0]+'">'+lab[1]+'</span></div>' +
+      '<div class="stem">'+T(q.q, q.qh, true)+'</div><div class="opts">' +
+      q.o.map((o,k) => '<div class="opt'+(k===q.a?' right':(k===a?' wrong':''))+'"><b>'+L[k]+'</b><span>'+T(o, q.oh && q.oh[k])+(k===a?' <i>(your answer)</i>':'')+'</span></div>').join('') +
+      '</div><div class="sol">'+solution(q)+'</div></div>';
+  }).join('');
+  $('review').innerHTML = html || '<div class="panel">No questions in this list. Pick another filter above.</div>';
+}
+$('filters').onclick = e => { const b = e.target.closest('[data-f]'); if (b) { S.filter = b.dataset.f; review(); } };
+$('again').onclick = () => show('start');
+</script>
+</body>
+</html>
